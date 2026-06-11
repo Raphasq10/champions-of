@@ -184,8 +184,8 @@
             position: relative;
             width: 100%;
             max-width: 1920px;
-            height: auto;
-            min-height: 100vh;
+            height: 900px;
+            min-height: 900px;
             margin: 0 auto;
             background-color: #1a1a1a;
             background-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(15, 15, 15, 0.9) 60%, rgba(15, 15, 15, 1)), 
@@ -196,7 +196,7 @@
             display: flex;
             align-items: flex-start; /* Alterado de center para empurrar pro topo */
             justify-content: flex-end;
-            padding: 40px 20px;
+            padding: 0 20px; /* Removido o padding top de 40px para a medida de 160px ser exata */
         }
 
         .hero-container {
@@ -208,12 +208,12 @@
             align-items: flex-start;
             text-align: left;
             padding-left: 619px; /* 1600px - 981px (bloco do conteúdo) = 619px */
-            padding-top: 80px; /* Compensa o menu fixo e alinha no topo conforme solicitado */
+            padding-top: 100px; /* Reduzido de 160px para caber na tela do navegador */
         }
 
         /* TEXTOS PRINCIPAIS */
         .hero-text-section {
-            margin-bottom: 50px; /* Reduzido para subir os cards e aproximá-los da logo */
+            margin-bottom: 20px; /* Reduzido de 50px */
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -243,7 +243,7 @@
             font-size: 42pt;
             font-weight: 600;
             letter-spacing: 3px;
-            margin-bottom: 35px;
+            margin-bottom: 10px; /* Reduzido de 35px */
             font-family: var(--font-title);
             text-transform: uppercase;
         }
@@ -256,7 +256,7 @@
             text-transform: uppercase;
             text-align: center; /* Centralizado */
             width: 100%;
-            margin-bottom: 25px; /* Mais próximo dos cards */
+            margin-bottom: 15px; /* Reduzido de 25px */
             opacity: 0.9;
         }
 
@@ -268,10 +268,10 @@
         /* GRID DE CARDS DOS PRODUTOS */
         .hero-cards-container {
             display: flex;
-            gap: 15px; /* Gaps calculados: 4x229 + 3x15 = 916+45 = 961px < 981px ✓ */
+            gap: 20px; /* Espaçamento distribuído */
             justify-content: flex-start;
             width: 100%;
-            max-width: 981px;
+            max-width: 982px; /* Medida exata do bloco de conteúdo */
             flex-wrap: nowrap;
         }
 
@@ -280,7 +280,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 22px 12px 18px;
-            width: 229px; /* Exatamente 229px como no mockup */
+            width: 230px; /* Medida extraída da imagem (230px) */
+            height: 370px; /* Altura exata da imagem */
             flex-shrink: 0;
             display: flex;
             flex-direction: column;

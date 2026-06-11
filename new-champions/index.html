@@ -184,17 +184,17 @@
             position: relative;
             width: 100%;
             max-width: 1920px;
-            height: 1080px;
-            min-height: 1080px;
+            height: auto;
+            min-height: 100vh;
             margin: 0 auto;
             background-color: #1a1a1a;
             background-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(15, 15, 15, 0.9) 60%, rgba(15, 15, 15, 1)), 
-                              url('img/banner-hero-BG-V2.jpg');
+                              url('img/banner-hero-bg-v3.jpg');
             background-size: cover;
             background-position: left top;
             background-repeat: no-repeat;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Alterado de center para empurrar pro topo */
             justify-content: flex-end;
             padding: 40px 20px;
         }
@@ -208,17 +208,22 @@
             align-items: flex-start;
             text-align: left;
             padding-left: 619px; /* 1600px - 981px (bloco do conteúdo) = 619px */
-            padding-top: 160px; /* Posiciona o conteúdo no terço superior do hero */
+            padding-top: 80px; /* Compensa o menu fixo e alinha no topo conforme solicitado */
         }
 
         /* TEXTOS PRINCIPAIS */
         .hero-text-section {
-            margin-bottom: 60px; /* Espaço generoso entre o bloco de texto e os cards */
+            margin-bottom: 50px; /* Reduzido para subir os cards e aproximá-los da logo */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .hero-subtitle {
             color: #ff5a00;
-            font-size: 1rem;
+            font-size: 60pt;
             font-weight: 400;
             letter-spacing: 4px;
             margin-bottom: 4px;
@@ -235,7 +240,7 @@
 
         .hero-tagline {
             color: #ff5a00;
-            font-size: 1.3rem;
+            font-size: 42pt;
             font-weight: 600;
             letter-spacing: 3px;
             margin-bottom: 35px;
@@ -245,11 +250,14 @@
 
         .hero-description {
             color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 400;
+            font-size: 22pt;
+            font-weight: 300; /* Peso menor */
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 0;
+            text-align: center; /* Centralizado */
+            width: 100%;
+            margin-bottom: 25px; /* Mais próximo dos cards */
+            opacity: 0.9;
         }
 
         .hero-description .highlight {
@@ -324,10 +332,31 @@
         }
         
         .device-img img {
+            max-width: 90%;
             max-height: 100%;
-            max-width: 100%;
+            object-fit: contain;
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Padronização de Tamanhos Específicos */
+        .card-fire .device-img img { 
+            width: 55%; 
+        }
+        .card-ultimate .device-img img { 
+            width: 120%; 
+            max-width: none;
+            margin-top: 15px;
+        }
+        .card-infinity .device-img img { 
+            width: 120%; 
+            max-width: none;
+            margin-top: 15px;
+        }
+        .card-play .device-img img { 
+            width: 120%; 
+            max-width: none;
+            margin-top: 15px;
         }
 
         .hero-card:hover .device-img img {
@@ -356,12 +385,13 @@
         }
 
         .logo-img {
-            height: 30px;
+            height: 45px;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2;
+            margin-top: 5px;
         }
         
         .logo-img img {
@@ -375,12 +405,73 @@
             transform: scale(1.05);
         }
 
-        /* RESPONSIVIDADE BÁSICA */
+        /* RESPONSIVIDADE HERO */
+        @media (max-width: 1600px) {
+            .hero-container {
+                padding-left: 45%; /* Ajuste dinâmico para telas um pouco menores que 1600px */
+            }
+        }
+
         @media (max-width: 1200px) {
-            .hero-container { padding-left: 0; }
             .hero { 
-                background-image: linear-gradient(to top, rgba(15,15,15,1) 40%, rgba(15,15,15,0.7)), url('img/banner-hero-champions-bg.jpg'); 
-                justify-content: center; 
+                background-image: linear-gradient(to top, rgba(26,26,26,1) 20%, rgba(26,26,26,0.8) 50%, rgba(26,26,26,0) 100%), url('img/banner-hero-BG-V2.jpg'); 
+                background-position: center top;
+                min-height: auto;
+                height: auto;
+                padding-top: 350px; /* Dá espaço para a imagem no topo antes do conteúdo */
+                justify-content: center;
+            }
+            .hero-container { 
+                padding-left: 0;
+                padding-top: 0;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-main-logo {
+                margin: 0 auto 10px auto;
+            }
+            .hero-cards-container {
+                flex-wrap: wrap; /* Permite quebrar linha */
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 250px;
+                background-size: cover;
+                background-position: center 0%;
+            }
+            .hero-main-logo {
+                width: 320px;
+            }
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            .hero-description {
+                font-size: 0.85rem;
+            }
+            .hero-card {
+                width: 45%; /* 2 por linha no mobile */
+                max-width: 180px;
+                padding: 15px 10px;
+            }
+            .device-img {
+                height: 70px;
+                margin-bottom: 15px;
+            }
+            .icon-img {
+                height: 40px;
+                margin-bottom: 10px;
+            }
+            .logo-img {
+                height: 20px;
+            }
+            .hero-text-section {
+                margin-bottom: 30px;
             }
         }
 
@@ -751,11 +842,11 @@
             background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('../wp-content/uploads/2023/06/pexels-mikhail-nilov-7682340.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* Efeito Parallax */
             background-repeat: no-repeat;
             padding: 110px 0;
             text-align: center;
-            border-top: 1px solid var(--dark-card-border);
-            border-bottom: 1px solid var(--dark-card-border);
+            border: none; /* Removendo as bordas que criavam a sensação de caixa/padding indesejado */
         }
 
         .support-cta-subtitle {
@@ -778,10 +869,7 @@
         }
 
         .support-cta-title span {
-            color: var(--text-light);
-            background: var(--primary-grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .support-cta .btn-premium {
@@ -1143,14 +1231,16 @@
                 <h3 class="hero-subtitle">FAMÍLIA</h3>
                 <img src="img/logo-champions-fundo-escuro.png" alt="Champions Logo" class="hero-main-logo">
                 <h2 class="hero-tagline">A MARCA CAMPEÃ</h2>
-                <p class="hero-description">
-                    A MELHOR PROGRAMAÇÃO <span class="highlight">DENTRO DA SUA CASA</span>
-                </p>
             </div>
+            
+            <p class="hero-description">
+                A MELHOR PROGRAMAÇÃO <span class="highlight">DENTRO DA SUA CASA</span>
+            </p>
                 
             <div class="hero-cards-container">
                 <!-- Card 1: FIRE -->
-                <a href="#product-fire" class="hero-card">
+                <a href="#product-fire" class="hero-card card-fire">
+                    <div class="badge-new">Novo</div>
                     <div class="device-img">
                         <img src="img/fire/sem fundo/champions-fire-vião-frontal.png" alt="Champions Fire">
                     </div>
@@ -1163,7 +1253,7 @@
                 </a>
 
                 <!-- Card 2: ULTIMATE -->
-                <a href="#product-ultimate" class="hero-card">
+                <a href="#product-ultimate" class="hero-card card-ultimate">
                     <div class="device-img">
                         <img src="img/ultimate/sem fundo/champions-ultimade-gx-pro-2.png" alt="Champions Ultimate">
                     </div>
@@ -1176,9 +1266,9 @@
                 </a>
 
                 <!-- Card 3: INFINITY -->
-                <a href="#product-infinity" class="hero-card">
+                <a href="#product-infinity" class="hero-card card-infinity">
                     <div class="device-img">
-                        <img src="img/inifinity/sem fundo/infinity-right.png" alt="Champions Infinity">
+                        <img src="img/inifinity/sem fundo/infinity-left.png" alt="Champions Infinity">
                     </div>
                     <div class="icon-img">
                         <img src="img/icones-champions-infinity.png" alt="Ícone Infinity">
@@ -1189,9 +1279,9 @@
                 </a>
 
                 <!-- Card 4: PLAY -->
-                <a href="#product-play" class="hero-card">
+                <a href="#product-play" class="hero-card card-play">
                     <div class="device-img">
-                        <img src="img/play/sem fundo/champions play gxpro 1.1.png" alt="Champions Play">
+                        <img src="img/play/sem fundo/champions-play gxpro-2.png" alt="Champions Play">
                     </div>
                     <div class="icon-img">
                         <img src="img/icone-champions-play.png" alt="Ícone Play">
@@ -1407,7 +1497,7 @@
         });
 
         // 2. Animação de Reveal on Scroll (Fade-up)
-        const revealElements = document.querySelectorAll('.product-row, .support-cta, .partners-section');
+        const revealElements = document.querySelectorAll('.product-row, .partners-section');
         revealElements.forEach(el => {
             gsap.from(el, {
                 scrollTrigger: {

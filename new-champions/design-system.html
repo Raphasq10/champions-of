@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions - Style Guide (Etapa 4: Grid e Layout)</title>
+    
+    <!-- Google Fonts importados para a tipografia oficial da marca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           0. DESIGN SYSTEM TOKENS - COMPILADO
+           ========================================== */
+        :root {
+            /* --------------------------------------
+               A. TOKENS DE CORES (ETAPA 1)
+               -------------------------------------- */
+            /* Paleta Primária */
+            --color-primary: #F56A25;          /* Laranja Oficial Champions */
+            
+            /* Paleta Secundária */
+            --color-secondary: #282C2F;        /* Cinza Escuro de Identidade */
+            --color-secondary-dark: #0C0D0E;   /* Charcoal Profundo */
+
+            /* Neutros */
+            --color-neutral-white: #FFFFFF;    /* Branco Absoluto */
+            --color-neutral-snow: #FCFCFC;     /* Branco Suave */
+            --color-neutral-light: #F9FAFA;    /* Cinza Ultra Claro */
+            --color-neutral-medium: #F3F3F3;   /* Cinza Claro */
+            --color-neutral-border-l: #E6E8EA; /* Cinza de Borda Suave */
+            --color-neutral-border-m: #D5D8DC; /* Cinza de Borda Média */
+            --color-neutral-dark: #3F444B;     /* Cinza Escuro de Componentes */
+
+            /* Cores de Acento/Destaque */
+            --color-accent: #F56A25;           /* Laranja de Ação/Destaque */
+            
+            /* Cores Funcionais */
+            --color-success: #4CAF50;          /* Verde de Confirmação/Sucesso */
+            --color-error: #D9534F;            /* Vermelho de Erro/Alerta */
+            --color-warning: #FFBC7D;          /* Laranja Claro de Alerta/Aviso */
+
+            /* Backgrounds */
+            --color-bg-default: #FFFFFF;       /* Fundo Geral */
+            --color-bg-header: #F3F3F3;        /* Fundo do Cabeçalho */
+            --color-bg-table: #F9FAFA;         /* Fundo de Linhas de Tabelas */
+            --color-bg-dark: #3F444B;          /* Fundo de Destaques Escuros */
+
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #F56A25 0%, #FF8C00 100%); /* Gradiente Oficial Laranja */
+            --gradient-cyan-purple: linear-gradient(135deg, #0693e3 0%, #9b51e0 100%); /* Gradiente Secundário Elementor */
+
+            /* --------------------------------------
+               B. TOKENS DE TIPOGRAFIA (ETAPA 2)
+               -------------------------------------- */
+            /* Font Families */
+            --font-display: 'Rubik', system-ui, -apple-system, sans-serif;
+            --font-body: 'Roboto', system-ui, -apple-system, sans-serif;
+
+            /* Escala Tipográfica (Font Sizes) */
+            --text-h1-size: 3.6875rem;     /* 59px - elementor-size-xxl */
+            --text-h2-size: 2.4375rem;     /* 39px - elementor-size-xl */
+            --text-h3-size: 1.8125rem;     /* 29px - elementor-size-large */
+            --text-menu-size: 1.1875rem;   /* 19px - elementor nav menu item */
+            --text-body-size: 1rem;        /* 16px - corpo de texto padrão */
+            --text-button-size: 0.875rem;  /* 14px - botões e CTAs */
+            --text-small-size: 0.75rem;    /* 12px - legendas e textos de apoio */
+
+            /* Font Weights */
+            --weight-light: 300;
+            --weight-normal: 400;
+            --weight-medium: 500;
+            --weight-bold: 700;
+
+            /* Line Heights */
+            --lh-h1: 1.2;
+            --lh-h2: 1.3;
+            --lh-h3: 1.4;
+            --lh-body: 1.6;
+            --lh-menu: 24px;
+            --lh-button: 1.3em;
+
+            /* Letter Spacing */
+            --ls-h1: -0.02em;
+            --ls-menu: -0.45px;
+            --ls-button: 1.53px;
+
+            /* --------------------------------------
+               C. TOKENS DE ESPAÇAMENTO (ETAPA 3)
+               -------------------------------------- */
+            --space-xxs: 0.3125rem;        /* 5px - Margens mínimas e micro-paddings */
+            --space-xs: 0.625rem;          /* 10px - Gap de colunas Elementor padrão / padding cards */
+            --space-sm: 0.9375rem;         /* 15px - Preenchimento vertical de botões */
+            --space-md: 1.25rem;           /* 20px - Preenchimento horizontal de botões e grids */
+            --space-lg: 1.5625rem;         /* 25px - Spacing interno de elementos em cards */
+            --space-xl: 1.875rem;          /* 30px - Paddings amplos de containers */
+            --space-xxl: 2.1875rem;        /* 35px - Gaps entre colunas principais e widgets */
+            --space-section: 2.8125rem;    /* 45px - Afastamento de itens de menu e blocos médios */
+            --space-section-lg: 3.125rem;  /* 50px - Ritmo vertical entre seções principais */
+
+            /* --------------------------------------
+               D. TOKENS DE GRID E LAYOUT (ETAPA 4)
+               -------------------------------------- */
+            --container-max: 1140px;       /* Largura máxima do container principal Elementor */
+            --container-narrow: 800px;     /* Largura máxima para blocos de texto/leitura */
+            --container-full: 100%;        /* Largura total */
+            
+            --container-padding-desktop: 15%; /* Padding lateral padrão em telas desktop */
+            --container-padding-tablet: 24px;  /* Padding lateral em tablets */
+            --container-padding-mobile: 16px;  /* Padding lateral em smartphones */
+
+            --grid-columns: 12;            /* Número padrão de colunas do grid */
+            --grid-gutter: 20px;           /* Espaçamento lateral padrão entre colunas */
+
+            /* Breakpoints */
+            --breakpoint-desktop: 1440px;  /* Desktop Largo */
+            --breakpoint-tablet-l: 1024px; /* Tablet Landscape */
+            --breakpoint-tablet-p: 991px;  /* Tablet Portrait */
+            --breakpoint-mobile-l: 767px;  /* Celular Landscape */
+            --breakpoint-mobile-p: 575px;  /* Celular Portrait */
+
+            /* --------------------------------------
+               E. TOKENS DE COMPONENTES (ETAPA 5)
+               -------------------------------------- */
+            --radius-xs: 2px;              /* Bordas de inputs e caixas pequenas */
+            --radius-sm: 4px;              /* Bordas de checkboxes, badges e tabelas */
+            --radius-md: 10px;             /* Cartões de produtos e containers secundários */
+            --radius-lg: 28px;             /* Botões arredondados e pílulas de ação */
+            --radius-full: 9999px;         /* Elementos circulares e tags dinâmicas */
+            
+            --shadow-none: none;
+            --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.08); /* Sombra para cartões padrão */
+            --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.12); /* Sombra para hover de cartões e cabeçalho */
+            --shadow-elevated: 2px 8px 23px 3px rgba(0, 0, 0, 0.15); /* Sombra para dropdowns e elementos superiores */
+            --shadow-accent: 4px 4px 10px 0px rgba(245, 106, 37, 0.15); /* Sombra com tom da marca */
+
+            --border-width-thin: 1px;
+            --border-width-medium: 2px;
+            --border-default: 1px solid var(--color-neutral-border-l); /* Borda padrão de tabelas/cards */
+            --border-active: 2px solid var(--color-primary); /* Borda de seleção ativa */
+
+            /* --------------------------------------
+               F. TOKENS DE EFEITOS E TEXTURAS (ETAPA 6)
+               -------------------------------------- */
+            --overlay-dark-soft: rgba(12, 13, 14, 0.3);      /* Overlay escuro sutil para imagens */
+            --overlay-dark-medium: rgba(12, 13, 14, 0.6);    /* Overlay escuro médio */
+            --overlay-dark-hard: rgba(12, 13, 14, 0.85);     /* Overlay escuro intenso para contraste de texto */
+            
+            --blur-glass: blur(12px) saturate(180%);         /* Blur para Glassmorphism */
+            --bg-glass-light: rgba(255, 255, 255, 0.4);       /* Fundo claro semi-transparente para Glassmorphism */
+            --bg-glass-dark: rgba(12, 13, 14, 0.65);         /* Fundo escuro semi-transparente para Glassmorphism */
+            
+            --transition-fast: 0.15s ease;                   /* Transição rápida para micro-interações */
+            --transition-base: 0.3s ease;                   /* Transição padrão para hover e estados */
+            --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Transição suave e elegante para transições de layout */
+            --transition-long: 10s linear;                   /* Para efeitos lentos como Ken Burns */
+            
+            --easing-default: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+            --easing-luxury: cubic-bezier(0.16, 1, 0.3, 1);  /* Easing elástico estilo Awwwards */
+
+            --pattern-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+            
+            --filter-image-dim: brightness(0.9) contrast(1.05); /* Filtro para imagens de produtos secundárias */
+            --filter-image-active: brightness(1.05) contrast(1.1); /* Filtro para imagem ativa em foco */
+            --filter-drop-shadow: drop-shadow(1px 0 6px rgba(0,0,0,0.3)); /* Sombra projetada clássica de SVGs/Icons */
+        }
+
+        /* ==========================================
+           1. ESTILOS DO STYLE GUIDE (TIPOGRAFIA NEUTRA SYSTEM-UI)
+           ========================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: var(--blur-glass);
+            -webkit-backdrop-filter: var(--blur-glass);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -0.5px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-title h1 span {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title p {
+            font-size: 13px;
+            color: #64748b;
+            margin: 4px 0 0 0;
+        }
+
+        .steps-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .step-link {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #475569;
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .step-link.active {
+            color: #ffffff;
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .step-link.disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            background-color: #f8fafc;
+            color: #94a3b8;
+            border-color: #e2e8f0;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        section {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #0f172a;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: -12px;
+            margin-bottom: 30px;
+        }
+
+        /* Cores Grid & Swatches */
+        .ds-colors-group, .ds-spacing-group, .ds-layout-group {
+            margin-bottom: 40px;
+        }
+
+        .ds-colors-group:last-child, .ds-spacing-group:last-child, .ds-layout-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .ds-colors-group h3, .ds-typo-group h3, .ds-spacing-group h3, .ds-layout-group h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 18px;
+            border-left: 3px solid var(--color-primary);
+            padding-left: 10px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .color-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+        }
+
+        .color-swatch {
+            height: 120px;
+            width: 100%;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .color-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .color-name, .space-name, .layout-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .color-token, .typo-token, .space-token, .layout-token {
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--color-primary);
+            background-color: rgba(245, 106, 37, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            width: fit-content;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.15s ease;
+            border: 1px dashed rgba(245, 106, 37, 0.2);
+        }
+
+        .color-token:hover, .typo-token:hover, .space-token:hover, .layout-token:hover {
+            background-color: rgba(245, 106, 37, 0.15);
+        }
+
+        .color-values, .space-values, .layout-values {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #64748b;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 10px;
+            margin-top: 4px;
+        }
+
+        .color-value-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .color-value-row span:first-child {
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .color-use, .space-use, .layout-use {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.4;
+            background-color: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 2px solid #cbd5e1;
+        }
+
+        .gradient-swatch {
+            height: 140px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 14px;
+        }
+
+        .gradient-code {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 0;
+            border: 1px solid #1e293b;
+        }
+
+        /* Estilos de Tipografia */
+        .ds-typo-group {
+            margin-bottom: 40px;
+        }
+
+        .ds-typo-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .family-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+        }
+
+        .family-card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .family-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .family-preview {
+            font-size: 24px;
+            color: #0f172a;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        .scale-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .scale-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #94a3b8;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .scale-table td {
+            padding: 24px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+
+        .scale-preview-col {
+            width: 55%;
+        }
+
+        .scale-meta-col {
+            width: 45%;
+        }
+
+        .scale-token-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .typo-spec-row {
+            display: flex;
+            gap: 16px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .typo-spec-row span {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .special-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .special-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .special-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #475569;
+            margin: 0;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .btn-sample {
+            background-color: var(--color-primary);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            font-size: var(--text-button-size);
+            font-weight: var(--weight-light);
+            text-transform: uppercase;
+            letter-spacing: var(--ls-button);
+            line-height: var(--lh-button);
+            padding: 15px 20px;
+            border-radius: 28px;
+            border: 2px solid var(--color-primary);
+            display: inline-block;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sample:hover {
+            color: var(--color-primary);
+            background-color: transparent;
+        }
+
+        .link-sample {
+            font-family: var(--font-display);
+            font-size: var(--text-menu-size);
+            font-weight: var(--weight-normal);
+            text-transform: uppercase;
+            line-height: var(--lh-menu);
+            letter-spacing: var(--ls-menu);
+            color: var(--color-secondary);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .link-sample:hover {
+            color: #000;
+        }
+
+        .link-sample::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .link-sample:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Estilos de Espaçamento */
+        .spacing-table-row {
+            display: flex;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .spacing-table-row:last-child {
+            border-bottom: none;
+        }
+
+        .spacing-info-col {
+            flex: 0 0 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .spacing-visual-col {
+            flex: 0 0 65%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .spacing-visual-bar {
+            height: 16px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(245, 106, 37, 0.2);
+            min-width: 2px;
+        }
+
+        .spacing-pixel-label {
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .spacing-demo-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .spacing-selector-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .spacing-selector-btn {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .spacing-selector-btn.active {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            border-color: var(--color-primary);
+        }
+
+        .spacing-demo-box-wrapper {
+            background-color: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            position: relative;
+        }
+
+        .demo-box {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .demo-gap-indicator {
+            background-color: rgba(245, 106, 37, 0.15);
+            border-top: 1px dashed var(--color-primary);
+            border-bottom: 1px dashed var(--color-primary);
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--color-primary);
+            font-weight: 700;
+            transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .demo-gap-indicator::before, .demo-gap-indicator::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 1px;
+            background-color: var(--color-primary);
+        }
+
+        .demo-gap-indicator::before { top: 0; }
+        .demo-gap-indicator::after { bottom: 0; }
+
+        .rhythm-demo {
+            display: flex;
+            flex-direction: column;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        .rhythm-section {
+            background-color: #f1f5f9;
+            padding: 24px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .rhythm-gap {
+            height: var(--space-section-lg);
+            background-color: rgba(245, 106, 37, 0.1);
+            border-top: 1px dashed var(--color-primary);
+            border-bottom: 1px dashed var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--color-primary);
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* Estilos de Layout & Grid (Etapa 4) */
+        .ds-layout-container-preview {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container-box-outer {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .container-box-inner {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            box-sizing: border-box;
+            transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Grid de 12 Colunas Visualizer */
+        .grid-visualizer {
+            display: grid;
+            grid-template-columns: repeat(var(--grid-columns), 1fr);
+            gap: var(--grid-gutter);
+            width: 100%;
+            background-color: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .grid-col-visual {
+            background-color: rgba(245, 106, 37, 0.15);
+            border: 1px solid rgba(245, 106, 37, 0.3);
+            border-radius: 4px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* Tabela Breakpoints */
+        .breakpoints-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .breakpoints-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #94a3b8;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .breakpoints-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+        }
+
+        .breakpoint-tag {
+            background-color: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        /* ==========================================
+           1E. ESTILOS DE COMPONENTES (ETAPA 5)
+           ========================================== */
+        .radius-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .radius-demo-card {
+            background-color: #ffffff;
+            border: var(--border-default);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .radius-demo-box {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border: var(--border-default);
+        }
+
+        .shadow-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .shadow-demo-card {
+            background-color: #ffffff;
+            border: var(--border-default);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .shadow-demo-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .buttons-demo-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            background-color: #f8fafc;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: var(--border-default);
+            justify-content: center;
+        }
+
+        /* Botão Secundário */
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: var(--text-button-size);
+            font-weight: var(--weight-light);
+            text-transform: uppercase;
+            letter-spacing: var(--ls-button);
+            line-height: var(--lh-button);
+            padding: 15px 20px;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-secondary);
+            display: inline-block;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--color-secondary);
+            background-color: transparent;
+        }
+
+        /* Botão Ghost */
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--color-primary);
+            font-family: var(--font-body);
+            font-size: var(--text-button-size);
+            font-weight: var(--weight-light);
+            text-transform: uppercase;
+            letter-spacing: var(--ls-button);
+            line-height: var(--lh-button);
+            padding: 15px 20px;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-primary);
+            display: inline-block;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ghost:hover {
+            color: #ffffff;
+            background-color: var(--color-primary);
+        }
+
+        /* Botão Swiper */
+        .btn-swiper {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            background-color: #ffffff;
+            border: var(--border-default);
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--color-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn-swiper:hover {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-accent);
+        }
+
+        /* Cards Demo */
+        .cards-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card-demo {
+            background-color: #ffffff;
+            border: var(--border-default);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card-demo:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-4px);
+        }
+
+        .product-card-image {
+            height: 180px;
+            background-color: var(--color-neutral-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .product-card-title {
+            font-family: var(--font-display);
+            font-size: var(--text-h3-size);
+            font-weight: var(--weight-bold);
+            color: var(--color-secondary-dark);
+            margin: 0;
+        }
+
+        .product-card-desc {
+            font-family: var(--font-body);
+            font-size: var(--text-body-size);
+            color: var(--color-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .badge-flex {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .badge-pill {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: var(--radius-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+        }
+
+        .badge-pill.primary {
+            background-color: var(--color-primary);
+            color: #ffffff;
+        }
+
+        .badge-pill.secondary {
+            background-color: var(--color-secondary);
+            color: #ffffff;
+        }
+
+        .badge-pill.outline {
+            background-color: transparent;
+            border: 1px solid var(--color-neutral-border-m);
+            color: var(--color-secondary);
+        }
+
+        /* Form Inputs */
+        .form-demo-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: var(--border-default);
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .select-input {
+            width: 100%;
+            padding: 12px;
+            border: var(--border-default);
+            border-radius: var(--radius-xs);
+            font-family: var(--font-body);
+            font-size: 14px;
+            background-color: var(--color-neutral-snow);
+            color: var(--color-secondary-dark);
+            outline: none;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .select-input:focus {
+            border-color: var(--color-primary);
+        }
+
+        /* Divisores */
+        .divider-demo-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 24px;
+            background-color: #ffffff;
+            border-radius: var(--radius-md);
+            border: var(--border-default);
+        }
+
+        .divider-solid {
+            height: 1px;
+            background-color: var(--color-neutral-border-l);
+            width: 100%;
+        }
+
+        .divider-thick {
+            border-top: var(--divider-border-width, 1.9px) solid var(--divider-color, #0c0d0e);
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        /* Viewport Simulator */
+        .viewport-simulator-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .viewport-box-outer {
+            width: 100%;
+            height: 120px;
+            background-color: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            transition: width 0.4s ease, max-width 0.4s ease;
+            margin: 0 auto;
+        }
+
+        .viewport-padding-left, .viewport-padding-right {
+            background-color: rgba(245, 106, 37, 0.15);
+            border-right: 1px dashed var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: width 0.4s ease, flex-basis 0.4s ease;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        .viewport-padding-right {
+            border-right: none;
+            border-left: 1px dashed var(--color-primary);
+        }
+
+        .viewport-content-area {
+            flex-grow: 1;
+            background-color: #1e293b;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            gap: 4px;
+            text-align: center;
+        }
+
+        #viewport-content-width {
+            font-family: monospace;
+            font-size: 11px;
+            color: #38bdf8;
+        }
+
+        /* ==========================================
+           1F. ESTILOS DE EFEITOS E TEXTURAS (ETAPA 6)
+           ========================================== */
+        .effects-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .effect-card-demo {
+            background-color: #ffffff;
+            border: var(--border-default);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .overlay-preview-container {
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23282C2F"/><circle cx="200" cy="100" r="80" fill="%23F56A25"/><text x="200" y="105" font-family="sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">FUNDO DE IMAGEM</text></svg>');
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius-sm);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .overlay-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .glass-preview-container {
+            height: 200px;
+            background: linear-gradient(135deg, #f56a25, #9b51e0, #0693e3);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .glass-card {
+            backdrop-filter: var(--blur-glass);
+            -webkit-backdrop-filter: var(--blur-glass);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            text-align: center;
+            color: inherit;
+            width: 80%;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .glass-card.light {
+            background-color: var(--bg-glass-light);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #0c0d0e;
+        }
+
+        .glass-card.dark {
+            background-color: var(--bg-glass-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .noise-preview-card {
+            height: 150px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-sm);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .noise-overlay-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--pattern-noise);
+            pointer-events: none;
+        }
+
+        .filters-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .filter-img-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-demo-svg {
+            width: 100%;
+            height: 70px;
+            background-color: var(--color-neutral-medium);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Easing Simulators */
+        .easing-demo-container {
+            background-color: #f8fafc;
+            border: var(--border-default);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .easing-track {
+            width: 100%;
+            height: 50px;
+            background-color: #e2e8f0;
+            border-radius: var(--radius-full);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .easing-ball {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            box-shadow: var(--shadow-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .easing-control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Toast de Cópia */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="header-title">
+                <h1>Champions Design System <span>Guia Completo</span></h1>
+                <p>Guia de Estilo Baseado em Engenharia Reversa do WordPress</p>
+            </div>
+            <div class="steps-nav">
+                <a href="#cores" class="step-link active">1. Cores</a>
+                <a href="#tipografia" class="step-link active">2. Tipografia</a>
+                <a href="#espacamento" class="step-link active">3. Espaçamento</a>
+                <a href="#layout" class="step-link active">4. Grid e Layout</a>
+                <a href="#componentes" class="step-link active">5. Componentes</a>
+                <a href="#efeitos" class="step-link active">6. Efeitos e Texturas</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO 1: CORES (PRESERVADA) -->
+        <section class="ds-colors" id="cores">
+            <h2>Cores</h2>
+            <p class="section-desc">Paleta cromática oficial da Champions extraída através da análise técnica dos arquivos do site.</p>
+
+            <div class="ds-colors-group">
+                <h3>Paleta Primária</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-primary);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Laranja Oficial Champions</h4>
+                            <div class="color-token" onclick="copyToken('--color-primary')">var(--color-primary)</div>
+                            <div class="color-use">Dominante visual. Aplicado em botões principais, links ativos e detalhes identitários.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F56A25</span></div>
+                                <div class="color-value-row"><span>RGB:</span> <span>rgb(245, 106, 37)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Paleta Secundária</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-secondary);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Cinza Escuro de Identidade</h4>
+                            <div class="color-token" onclick="copyToken('--color-secondary')">var(--color-secondary)</div>
+                            <div class="color-use">Usado em subcabeçalhos, textos de menu primários e na estruturação secundária.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#282C2F</span></div>
+                                <div class="color-value-row"><span>RGB:</span> <span>rgb(40, 44, 47)</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-secondary-dark);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Charcoal Profundo</h4>
+                            <div class="color-token" onclick="copyToken('--color-secondary-dark')">var(--color-secondary-dark)</div>
+                            <div class="color-use">Usado principalmente para títulos de alta ênfase (H1, H2) e elementos textuais com destaque forte.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#0C0D0E</span></div>
+                                <div class="color-value-row"><span>RGB:</span> <span>rgb(12, 13, 14)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Neutros (Escala de Cinzas)</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-neutral-white); border-bottom: 1px solid #e2e8f0;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Branco Absoluto</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-white')">var(--color-neutral-white)</div>
+                            <div class="color-use">Fundo padrão das seções principais da página e containers de cartões do Elementor.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#FFFFFF</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-neutral-snow); border-bottom: 1px solid #e2e8f0;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Branco Suave</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-snow')">var(--color-neutral-snow)</div>
+                            <div class="color-use">Fundo secundário para diferenciação leve de containers do Gutenberg.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#FCFCFC</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-neutral-light);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Cinza Ultra Claro</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-light')">var(--color-neutral-light)</div>
+                            <div class="color-use">Fundo de seções específicas e linhas ímpares de tabelas de especificações.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F9FAFA</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-neutral-medium);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Cinza Claro</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-medium')">var(--color-neutral-medium)</div>
+                            <div class="color-use">Fundo da seção de cabeçalho (Header) e divisores de conteúdo.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F3F3F3</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-neutral-dark);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Cinza Escuro de Componente</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-dark')">var(--color-neutral-dark)</div>
+                            <div class="color-use">Cinza escuro corporativo usado em componentes do Elementor ou layouts de rodapés escuros.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#3F444B</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="border: 1px solid var(--color-neutral-border-l); background-color: #ffffff;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Borda Suave</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-border-l')">var(--color-neutral-border-l)</div>
+                            <div class="color-use">Bordas internas e divisores sutis em grids de especificações.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#E6E8EA</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="border: 1px solid var(--color-neutral-border-m); background-color: #ffffff;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Borda Média</h4>
+                            <div class="color-token" onclick="copyToken('--color-neutral-border-m')">var(--color-neutral-border-m)</div>
+                            <div class="color-use">Contornos externos de cards e delimitadores do Elementor.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#D5D8DC</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Cores de Acento / Destaque</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-accent);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Laranja de Ação</h4>
+                            <div class="color-token" onclick="copyToken('--color-accent')">var(--color-accent)</div>
+                            <div class="color-use">Pontos críticos de conversão: Botões de CTA, links hover ativos.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F56A25</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Cores Funcionais</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-success);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Sucesso</h4>
+                            <div class="color-token" onclick="copyToken('--color-success')">var(--color-success)</div>
+                            <div class="color-use">Indicador de sucesso em contatos, formulários corretos ou badges afirmativos.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#4CAF50</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-error);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Erro / Alerta</h4>
+                            <div class="color-token" onclick="copyToken('--color-error')">var(--color-error)</div>
+                            <div class="color-use">Campos obrigatórios ausentes, notificações de falhas e avisos graves.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#D9534F</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-warning);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Aviso / Notificação</h4>
+                            <div class="color-token" onclick="copyToken('--color-warning')">var(--color-warning)</div>
+                            <div class="color-use">Mensagens de status pendente, backgrounds de avisos do painel.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#FFBC7D</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Backgrounds de Seção</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-bg-default); border-bottom: 1px solid #e2e8f0;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Fundo Padrão (White)</h4>
+                            <div class="color-token" onclick="copyToken('--color-bg-default')">var(--color-bg-default)</div>
+                            <div class="color-use">Aplicado na maioria das seções de conteúdo do showroom.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#FFFFFF</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-bg-header); border-bottom: 1px solid #e2e8f0;"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Fundo do Cabeçalho</h4>
+                            <div class="color-token" onclick="copyToken('--color-bg-header')">var(--color-bg-header)</div>
+                            <div class="color-use">Fundo do menu superior (Header) e áreas divisórias.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F3F3F3</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background-color: var(--color-bg-table);"></div>
+                        <div class="color-info">
+                            <h4 class="color-name">Fundo Alternado</h4>
+                            <div class="color-token" onclick="copyToken('--color-bg-table')">var(--color-bg-table)</div>
+                            <div class="color-use">Linhas alternadas de tabelas para melhoria de leitura.</div>
+                            <div class="color-values">
+                                <div class="color-value-row"><span>HEX:</span> <span>#F9FAFA</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-colors-group">
+                <h3>Gradientes</h3>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 20px;">
+                    <div>
+                        <div class="gradient-swatch" style="background: var(--gradient-primary);"></div>
+                        <div class="gradient-card-info">
+                            <h4 class="color-name">Gradiente Oficial Champions</h4>
+                            <div class="color-token" onclick="copyToken('--gradient-primary')" style="margin-bottom: 8px;">var(--gradient-primary)</div>
+                            <div class="color-use" style="margin-bottom: 12px;">Utilizado em botões de destaque, backgrounds de banners e transições de cor de acento. Direção de 135 graus, do Laranja Oficial ao Amarelo Laranja.</div>
+                            <pre class="gradient-code">background: linear-gradient(135deg, #F56A25 0%, #FF8C00 100%);</pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="gradient-swatch" style="background: var(--gradient-cyan-purple);"></div>
+                        <div class="gradient-card-info">
+                            <h4 class="color-name">Gradiente Elementor Padrão (Cyan to Purple)</h4>
+                            <div class="color-token" onclick="copyToken('--gradient-cyan-purple')" style="margin-bottom: 8px;">var(--gradient-cyan-purple)</div>
+                            <div class="color-use" style="margin-bottom: 12px;">Preset de gradiente do Elementor do site original. Direção de 135 graus, de azul ciano a roxo vívido.</div>
+                            <pre class="gradient-code">background: linear-gradient(135deg, #0693e3 0%, #9b51e0 100%);</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: TIPOGRAFIA (PRESERVADA) -->
+        <section class="ds-typography" id="tipografia">
+            <h2>Tipografia</h2>
+            <p class="section-desc">Diretrizes e escalas tipográficas aplicadas no site, com suporte a renderização real de fontes do Google Fonts.</p>
+
+            <div class="ds-typo-group">
+                <h3>Font Families</h3>
+                
+                <div class="family-card">
+                    <div class="family-card-info">
+                        <div class="family-name">Rubik (Títulos e Display)</div>
+                        <div class="typo-token" onclick="copyToken('--font-display')">var(--font-display)</div>
+                        <div class="color-use" style="margin-top: 8px;">Usada para títulos de seções, cabeçalhos do Elementor e links principais.</div>
+                    </div>
+                    <div class="family-preview" style="font-family: var(--font-display); font-weight: 500;">
+                        The quick brown fox 123
+                    </div>
+                </div>
+
+                <div class="family-card">
+                    <div class="family-card-info">
+                        <div class="family-name">Roboto (Texto do Corpo e Botões)</div>
+                        <div class="typo-token" onclick="copyToken('--font-body')">var(--font-body)</div>
+                        <div class="color-use" style="margin-top: 8px;">Usada para corpo de texto, listas, botões, descrições e tabelas.</div>
+                    </div>
+                    <div class="family-preview" style="font-family: var(--font-body); font-weight: 400;">
+                        The quick brown fox 123
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-typo-group">
+                <h3>Escala Tipográfica</h3>
+                <table class="scale-table">
+                    <thead>
+                        <tr>
+                            <th class="scale-preview-col">Amostra de Texto</th>
+                            <th class="scale-meta-col">Especificação e Tokens</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-display); font-size: var(--text-h1-size); font-weight: var(--weight-bold); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); color: var(--color-secondary-dark); display: block;">
+                                    A Marca Campeã
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-h1-size')">var(--text-h1-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 3.6875rem (59px)</span>
+                                        <span>Weight: Bold (700)</span>
+                                        <span>Line Height: 1.2</span>
+                                    </div>
+                                    <div class="color-use">Título principal da página (Hero). Destaque em Elementor-size-xxl.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-display); font-size: var(--text-h2-size); font-weight: var(--weight-bold); line-height: var(--lh-h2); color: var(--color-secondary-dark); display: block;">
+                                    Especificação Técnica
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-h2-size')">var(--text-h2-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 2.4375rem (39px)</span>
+                                        <span>Weight: Bold (700)</span>
+                                        <span>Line Height: 1.3</span>
+                                    </div>
+                                    <div class="color-use">Títulos de seções primárias (H2). Elementor-size-xl.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-display); font-size: var(--text-h3-size); font-weight: var(--weight-bold); line-height: var(--lh-h3); color: var(--color-secondary-dark); display: block;">
+                                    Champions Fire
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-h3-size')">var(--text-h3-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 1.8125rem (29px)</span>
+                                        <span>Weight: Bold (700)</span>
+                                        <span>Line Height: 1.4</span>
+                                    </div>
+                                    <div class="color-use">Títulos de cards de produtos e cabeçalhos menores (H3). Elementor-size-large.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-display); font-size: var(--text-menu-size); font-weight: var(--weight-normal); line-height: var(--lh-menu); letter-spacing: var(--ls-menu); text-transform: uppercase; color: var(--color-secondary); display: block;">
+                                    PRODUTOS
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-menu-size')">var(--text-menu-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 1.1875rem (19px)</span>
+                                        <span>Weight: Normal (400)</span>
+                                        <span>Line Height: 24px</span>
+                                    </div>
+                                    <div class="color-use">Links de navegação do menu superior.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-body); font-size: var(--text-body-size); font-weight: var(--weight-normal); line-height: var(--lh-body); color: var(--color-secondary); display: block;">
+                                    Com funções EPG (Guia de Programação Eletrônica) Control Parental, TimeShift e DLNA.
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-body-size')">var(--text-body-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 1rem (16px)</span>
+                                        <span>Weight: Normal (400)</span>
+                                        <span>Line Height: 1.6</span>
+                                    </div>
+                                    <div class="color-use">Corpo de texto corrido, parágrafos, listas e células de tabelas.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-body); font-size: var(--text-button-size); font-weight: var(--weight-light); letter-spacing: var(--ls-button); text-transform: uppercase; color: var(--color-primary); display: block;">
+                                    SUPORTE
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-button-size')">var(--text-button-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 0.875rem (14px)</span>
+                                        <span>Weight: Light (300)</span>
+                                        <span>Line Height: 1.3em</span>
+                                    </div>
+                                    <div class="color-use">Texto interno de botões e CTAs com caixa alta.</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-family: var(--font-body); font-size: var(--text-small-size); font-weight: var(--weight-normal); color: var(--color-text-muted); display: block;">
+                                    Copyright© 2023 - Todos os direitos reservados.
+                                </span>
+                            </td>
+                            <td>
+                                <div class="scale-token-details">
+                                    <div class="typo-token" onclick="copyToken('--text-small-size')">var(--text-small-size)</div>
+                                    <div class="typo-spec-row">
+                                        <span>Size: 0.75rem (12px)</span>
+                                        <span>Weight: Normal (400)</span>
+                                    </div>
+                                    <div class="color-use">Legendas pequenas, direitos autorais e rodapé descritivo.</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ds-typo-group">
+                <h3>Estilos Especiais (Micro-Amostras)</h3>
+                <div class="special-grid">
+                    <div class="special-card">
+                        <h4 class="special-title">Botão Primário (CTA)</h4>
+                        <div>
+                            <div class="btn-sample">SUPORTE</div>
+                        </div>
+                        <div class="color-use">
+                            <strong>Estilização:</strong> Fundo <code>var(--color-primary)</code>, texto <code>var(--text-white)</code>, fonte Roboto Light (300), espaçamento de letras 1.53px, cantos arredondados com 28px. Transição suave no hover (fundo transparente, texto e borda laranjas).
+                        </div>
+                    </div>
+
+                    <div class="special-card">
+                        <h4 class="special-title">Item de Menu (Navegação)</h4>
+                        <div>
+                            <a class="link-sample">PRODUTOS</a>
+                        </div>
+                        <div class="color-use">
+                            <strong>Estilização:</strong> Rubik Normal (400), tamanho 19px, caixa alta. Em hover, exibe um underline suave laranja de 2px via transição de escala (escala horizontal vai de 0 a 1).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: ESPAÇAMENTO (PRESERVADA) -->
+        <section class="ds-spacing" id="espacamento">
+            <h2>Espaçamento</h2>
+            <p class="section-desc">Escala e tokens de espaçamento baseados na modularidade de 8px e 5px/10px identificados nas classes do Elementor.</p>
+
+            <div class="ds-spacing-group">
+                <h3>Escala de Spacing</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Extra Extra Small (5px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-xxs')">var(--space-xxs)</div>
+                            <div class="space-use">Micro-ajustes, padding estreito em badges ou contornos mínimos.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-xxs);"></div>
+                            <span class="spacing-pixel-label">5px / 0.3125rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Extra Small (10px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-xs')">var(--space-xs)</div>
+                            <div class="space-use">Gap padrão de colunas Elementor padrão / padding cards.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-xs);"></div>
+                            <span class="spacing-pixel-label">10px / 0.625rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Small (15px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-sm')">var(--space-sm)</div>
+                            <div class="space-use">Paddings verticais em botões padrão e espaçamento entre textos pequenos.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-sm);"></div>
+                            <span class="spacing-pixel-label">15px / 0.9375rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Medium (20px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-md')">var(--space-md)</div>
+                            <div class="space-use">Preenchimentos horizontais de botões, gaps médios de blocos do Gutenberg.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-md);"></div>
+                            <span class="spacing-pixel-label">20px / 1.25rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Large (25px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-lg')">var(--space-lg)</div>
+                            <div class="space-use">Margens internas de cards de produtos e elementos de destaque.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-lg);"></div>
+                            <span class="spacing-pixel-label">25px / 1.5625rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Extra Large (30px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-xl')">var(--space-xl)</div>
+                            <div class="space-use">Paddings maiores de seções e contornos de cartões de especificações técnicos.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-xl);"></div>
+                            <span class="spacing-pixel-label">30px / 1.875rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Double Extra Large (35px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-xxl')">var(--space-xxl)</div>
+                            <div class="space-use">Distância padrão (gap) entre títulos e carrosséis adjacentes.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-xxl);"></div>
+                            <span class="spacing-pixel-label">35px / 2.1875rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Section Spacing (45px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-section')">var(--space-section)</div>
+                            <div class="space-use">Espaçamentos de layout, afastamento de itens do menu e rodapé.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-section);"></div>
+                            <span class="spacing-pixel-label">45px / 2.8125rem</span>
+                        </div>
+                    </div>
+
+                    <div class="spacing-table-row">
+                        <div class="spacing-info-col">
+                            <h4 class="space-name">Large Section Spacing (50px)</h4>
+                            <div class="space-token" onclick="copyToken('--space-section-lg')">var(--space-section-lg)</div>
+                            <div class="space-use">Ritmo vertical principal de afastamento entre seções da landing page.</div>
+                        </div>
+                        <div class="spacing-visual-col">
+                            <div class="spacing-visual-bar" style="width: var(--space-section-lg);"></div>
+                            <span class="spacing-pixel-label">50px / 3.125rem</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-spacing-group">
+                <h3>Exemplo Prático (Simulador de Spacing)</h3>
+                <div class="spacing-demo-container">
+                    <p class="section-desc" style="margin-bottom: 8px;">Selecione o token abaixo para ver a distância física aplicada dinamicamente entre os dois blocos reais:</p>
+                    <div class="spacing-selector-bar">
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-xxs)', '5px', this)">xxs (5px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-xs)', '10px', this)">xs (10px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-sm)', '15px', this)">sm (15px)</button>
+                        <button class="spacing-selector-btn active" onclick="setDemoSpacing('var(--space-md)', '20px', this)">md (20px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-lg)', '25px', this)">lg (25px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-xl)', '30px', this)">xl (30px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-xxl)', '35px', this)">xxl (35px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-section)', '45px', this)">section (45px)</button>
+                        <button class="spacing-selector-btn" onclick="setDemoSpacing('var(--space-section-lg)', '50px', this)">section-lg (50px)</button>
+                    </div>
+
+                    <div class="spacing-demo-box-wrapper">
+                        <div class="demo-box">Bloco Superior A</div>
+                        <div class="demo-gap-indicator" id="demo-gap" style="height: var(--space-md);">20px</div>
+                        <div class="demo-box">Bloco Inferior B</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-spacing-group">
+                <h3>Ritmo Vertical de Seções</h3>
+                <p class="section-desc">Visualização da distância de transição vertical (`var(--space-section-lg)`) aplicada entre as seções primárias da interface para permitir o "respiro" visual do layout.</p>
+                
+                <div class="rhythm-demo">
+                    <div class="rhythm-section">Seção A (Ex: Hero Banner)</div>
+                    <div class="rhythm-gap">var(--space-section-lg) — Ritmo Vertical de Seções (50px)</div>
+                    <div class="rhythm-section">Seção B (Ex: Carrossel de Produtos)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: GRID E LAYOUT (ETAPA 2.4) -->
+        <section class="ds-layout" id="layout">
+            <h2>Grid e Layout</h2>
+            <p class="section-desc">Estrutura de containers, breakpoints responsivos e grid de 12 colunas baseados no Elementor do site Champions original.</p>
+
+            <!-- SUB-BLOCO: TOKENS DE CONTAINERS -->
+            <div class="ds-layout-group">
+                <h3>Largura de Containers</h3>
+                <div class="color-grid" style="margin-bottom: 25px;">
+                    <!-- Container Padrão -->
+                    <div class="color-card">
+                        <div class="color-info">
+                            <h4 class="layout-name">Container Padrão (Default)</h4>
+                            <div class="layout-token" onclick="copyToken('--container-max')">var(--container-max)</div>
+                            <div class="color-use" style="margin-top: 8px;">Largura máxima padrão para o conteúdo central do Elementor. Garante alinhamento visual de todas as seções.</div>
+                            <div class="layout-values">
+                                <div class="color-value-row"><span>LARGURA:</span> <span>1140px</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Container Estreito -->
+                    <div class="color-card">
+                        <div class="color-info">
+                            <h4 class="layout-name">Container Estreito (Narrow)</h4>
+                            <div class="layout-token" onclick="copyToken('--container-narrow')">var(--container-narrow)</div>
+                            <div class="color-use" style="margin-top: 8px;">Largura reduzida para melhor conforto de leitura em páginas de suporte, documentação ou textos longos.</div>
+                            <div class="layout-values">
+                                <div class="color-value-row"><span>LARGURA:</span> <span>800px</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Container Fluido -->
+                    <div class="color-card">
+                        <div class="color-info">
+                            <h4 class="layout-name">Container Fluido (Full Width)</h4>
+                            <div class="layout-token" onclick="copyToken('--container-full')">var(--container-full)</div>
+                            <div class="color-use" style="margin-top: 8px;">Largura total (100%) para seções de destaque com imagem de fundo, cabeçalhos ou rodapés de tela cheia.</div>
+                            <div class="layout-values">
+                                <div class="color-value-row"><span>LARGURA:</span> <span>100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulador de Containers -->
+                <div class="spacing-demo-container">
+                    <p class="section-desc" style="margin-bottom: 8px;">Clique nos botões abaixo para ver as larguras de containers simuladas proporcionalmente:</p>
+                    <div class="spacing-selector-bar">
+                        <button class="spacing-selector-btn active" onclick="setContainerWidth('var(--container-max)', 'Container Padrão (1140px)', this)">Padrão (1140px)</button>
+                        <button class="spacing-selector-btn" onclick="setContainerWidth('var(--container-narrow)', 'Container Estreito (800px)', this)">Estreito (800px)</button>
+                        <button class="spacing-selector-btn" onclick="setContainerWidth('var(--container-full)', 'Container Fluido (100%)', this)">Fluido (100%)</button>
+                    </div>
+                    <div class="container-box-outer">
+                        <div class="container-box-inner" id="demo-container" style="max-width: var(--container-max);">
+                            Container Padrão (1140px)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: GRID DE 12 COLUNAS -->
+            <div class="ds-layout-group">
+                <h3>Grid de 12 Colunas (Composição)</h3>
+                <p class="section-desc" style="margin-bottom: 12px;">Visualização do grid estrutural padrão. O espaçamento lateral (gutter) entre as colunas é controlado por `var(--grid-gutter)` (20px).</p>
+                <div class="grid-visualizer">
+                    <div class="grid-col-visual">1</div>
+                    <div class="grid-col-visual">2</div>
+                    <div class="grid-col-visual">3</div>
+                    <div class="grid-col-visual">4</div>
+                    <div class="grid-col-visual">5</div>
+                    <div class="grid-col-visual">6</div>
+                    <div class="grid-col-visual">7</div>
+                    <div class="grid-col-visual">8</div>
+                    <div class="grid-col-visual">9</div>
+                    <div class="grid-col-visual">10</div>
+                    <div class="grid-col-visual">11</div>
+                    <div class="grid-col-visual">12</div>
+                </div>
+                <div class="layout-values" style="margin-top: 10px;">
+                    <div class="color-value-row" style="max-width: 300px;"><span>Colunas:</span> <span>var(--grid-columns) &rarr; 12</span></div>
+                    <div class="color-value-row" style="max-width: 300px;"><span>Espaçamento (Gutter):</span> <span>var(--grid-gutter) &rarr; 20px</span></div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: PADDING E VIEWPORT (SIMULADOR) -->
+            <div class="ds-layout-group">
+                <h3>Simulador de Padding Lateral e Resolução (Responsividade)</h3>
+                <p class="section-desc">Selecione um dispositivo para simular o comportamento do container principal, visualizando as áreas de padding lateral e a largura útil resultante.</p>
+                
+                <div class="viewport-simulator-container">
+                    <div class="spacing-selector-bar">
+                        <button class="spacing-selector-btn active" onclick="simulateViewport('desktop', this)">Desktop (>= 1440px)</button>
+                        <button class="spacing-selector-btn" onclick="simulateViewport('tablet-l', this)">Tablet Landscape (1024px)</button>
+                        <button class="spacing-selector-btn" onclick="simulateViewport('tablet-p', this)">Tablet Portrait (991px)</button>
+                        <button class="spacing-selector-btn" onclick="simulateViewport('mobile-l', this)">Celular Landscape (767px)</button>
+                        <button class="spacing-selector-btn" onclick="simulateViewport('mobile-p', this)">Celular Portrait (575px)</button>
+                    </div>
+
+                    <div class="viewport-box-outer" id="viewport-sim-box">
+                        <div class="viewport-padding-left" id="viewport-pad-l" style="width: 15%;">15%</div>
+                        <div class="viewport-content-area">
+                            <span id="viewport-device-name">Desktop</span>
+                            <span id="viewport-content-width">Espaço Útil: Max 1140px (Limitado)</span>
+                        </div>
+                        <div class="viewport-padding-right" id="viewport-pad-r" style="width: 15%;">15%</div>
+                    </div>
+                    
+                    <div class="layout-values" style="margin-top: 15px;">
+                        <div class="color-value-row" style="max-width: 450px;"><span>Padding Utilizado:</span> <span id="viewport-padding-token">var(--container-padding-desktop) &rarr; 15%</span></div>
+                        <div class="color-value-row" style="max-width: 450px;"><span>Breakpoint de Ativação:</span> <span id="viewport-breakpoint-token">Telas amplas (>= 1440px)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: BREAKPOINTS -->
+            <div class="ds-layout-group">
+                <h3>Tabela de Breakpoints Responsivos</h3>
+                <table class="breakpoints-table">
+                    <thead>
+                        <tr>
+                            <th>Dispositivo / Breakpoint</th>
+                            <th>Medida</th>
+                            <th>Variável CSS</th>
+                            <th>Comportamento esperado no Layout</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Desktop Largo</strong></td>
+                            <td><span class="breakpoint-tag">1440px</span></td>
+                            <td><span class="typo-token" onclick="copyToken('--breakpoint-desktop')">--breakpoint-desktop</span></td>
+                            <td>Exibe o container alinhado centralmente com preenchimento lateral padrão de 15% (30% total).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tablet Landscape</strong></td>
+                            <td><span class="breakpoint-tag">1024px</span></td>
+                            <td><span class="typo-token" onclick="copyToken('--breakpoint-tablet-l')">--breakpoint-tablet-l</span></td>
+                            <td>Menu principal encolhe levemente. Grids de 4 colunas podem passar para 2 colunas se necessário.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tablet Portrait</strong></td>
+                            <td><span class="breakpoint-tag">991px</span></td>
+                            <td><span class="typo-token" onclick="copyToken('--breakpoint-tablet-p')">--breakpoint-tablet-p</span></td>
+                            <td>O menu superior colapsa para o botão hamburguer. O padding lateral é ajustado para 24px.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Celular Landscape</strong></td>
+                            <td><span class="breakpoint-tag">767px</span></td>
+                            <td><span class="typo-token" onclick="copyToken('--breakpoint-mobile-l')">--breakpoint-mobile-l</span></td>
+                            <td>O layout de colunas paralelas se transforma em blocos 100% verticais (Flex direction: column).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Celular Portrait</strong></td>
+                            <td><span class="breakpoint-tag">575px</span></td>
+                            <td><span class="typo-token" onclick="copyToken('--breakpoint-mobile-p')">--breakpoint-mobile-p</span></td>
+                            <td>Paddings laterais reduzem para 16px para maximizar a área visível do celular. Títulos reduzem o tamanho.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: COMPONENTES VISUAIS (ETAPA 2.5) -->
+        <section class="ds-components" id="componentes">
+            <h2>Componentes Visuais</h2>
+            <p class="section-desc">Padrões de bordas, sombras e elementos de interface (UI) extraídos e organizados para manter a consistência da página.</p>
+
+            <!-- SUB-BLOCO: BORDER RADIUS -->
+            <div class="ds-colors-group">
+                <h3>Border Radius (Bordas Arredondadas)</h3>
+                <p class="section-desc">Definição do grau de arredondamento de cantos para inputs, tabelas, cards e botões.</p>
+                <div class="radius-demo-grid">
+                    <!-- XS -->
+                    <div class="radius-demo-card">
+                        <div class="radius-demo-box" style="border-radius: var(--radius-xs);"></div>
+                        <h4 class="color-name">Extra Small</h4>
+                        <div class="color-token" onclick="copyToken('--radius-xs')">var(--radius-xs)</div>
+                        <span class="spacing-pixel-label">2px</span>
+                        <div class="color-use">Campos de formulários, inputs e seletores dropdown.</div>
+                    </div>
+                    <!-- SM -->
+                    <div class="radius-demo-card">
+                        <div class="radius-demo-box" style="border-radius: var(--radius-sm);"></div>
+                        <h4 class="color-name">Small</h4>
+                        <div class="color-token" onclick="copyToken('--radius-sm')">var(--radius-sm)</div>
+                        <span class="spacing-pixel-label">4px</span>
+                        <div class="color-use">Checkboxes, tooltips, cantos de linhas de tabelas de especificações.</div>
+                    </div>
+                    <!-- MD -->
+                    <div class="radius-demo-card">
+                        <div class="radius-demo-box" style="border-radius: var(--radius-md);"></div>
+                        <h4 class="color-name">Medium</h4>
+                        <div class="color-token" onclick="copyToken('--radius-md')">var(--radius-md)</div>
+                        <span class="spacing-pixel-label">10px</span>
+                        <div class="color-use">Cartões de produtos do showroom, containers secundários do Gutenberg.</div>
+                    </div>
+                    <!-- LG -->
+                    <div class="radius-demo-card">
+                        <div class="radius-demo-box" style="border-radius: var(--radius-lg);"></div>
+                        <h4 class="color-name">Large</h4>
+                        <div class="color-token" onclick="copyToken('--radius-lg')">var(--radius-lg)</div>
+                        <span class="spacing-pixel-label">28px</span>
+                        <div class="color-use">Botões de chamada para ação (CTAs), botões de menu e pílulas maiores.</div>
+                    </div>
+                    <!-- FULL -->
+                    <div class="radius-demo-card">
+                        <div class="radius-demo-box" style="border-radius: var(--radius-full);"></div>
+                        <h4 class="color-name">Full (Circular)</h4>
+                        <div class="color-token" onclick="copyToken('--radius-full')">var(--radius-full)</div>
+                        <span class="spacing-pixel-label">9999px</span>
+                        <div class="color-use">Controles deslizantes de carrosséis, badges circulares de notificação.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: SOMBRAS -->
+            <div class="ds-colors-group">
+                <h3>Sombras (Elevations e Depth)</h3>
+                <p class="section-desc">Níveis de elevação visual utilizados para dar tridimensionalidade e foco a elementos do layout.</p>
+                <div class="shadow-demo-grid">
+                    <!-- None -->
+                    <div class="shadow-demo-card" style="box-shadow: var(--shadow-none);">
+                        <h4 class="color-name">Sem Sombra</h4>
+                        <div class="color-token" onclick="copyToken('--shadow-none')">var(--shadow-none)</div>
+                        <span class="spacing-pixel-label">Sem elevação</span>
+                        <div class="color-use">Tabelas de especificações, botões secundários planos e divisores de seções.</div>
+                    </div>
+                    <!-- Subtle -->
+                    <div class="shadow-demo-card" style="box-shadow: var(--shadow-subtle);">
+                        <h4 class="color-name">Sombra Sutil</h4>
+                        <div class="color-token" onclick="copyToken('--shadow-subtle')">var(--shadow-subtle)</div>
+                        <span class="spacing-pixel-label">0 2px 4px (8% opacidade)</span>
+                        <div class="color-use">Cartões de produtos em estado padrão (repouso) e botões flutuantes secundários.</div>
+                    </div>
+                    <!-- Medium -->
+                    <div class="shadow-demo-card" style="box-shadow: var(--shadow-medium);">
+                        <h4 class="color-name">Sombra Média</h4>
+                        <div class="color-token" onclick="copyToken('--shadow-medium')">var(--shadow-medium)</div>
+                        <span class="spacing-pixel-label">0 4px 15px (12% opacidade)</span>
+                        <div class="color-use">Menu superior fixo (Sticky Header) e cartões de produtos no estado de hover (foco).</div>
+                    </div>
+                    <!-- Elevated -->
+                    <div class="shadow-demo-card" style="box-shadow: var(--shadow-elevated);">
+                        <h4 class="color-name">Sombra Elevada</h4>
+                        <div class="color-token" onclick="copyToken('--shadow-elevated')">var(--shadow-elevated)</div>
+                        <span class="spacing-pixel-label">2px 8px 23px (15% opacidade)</span>
+                        <div class="color-use">Dropdowns de navegação, modais ou menus secundários sobrepostos.</div>
+                    </div>
+                    <!-- Accent -->
+                    <div class="shadow-demo-card" style="box-shadow: var(--shadow-accent);">
+                        <h4 class="color-name">Brilho/Sombra de Marca</h4>
+                        <div class="color-token" onclick="copyToken('--shadow-accent')">var(--shadow-accent)</div>
+                        <span class="spacing-pixel-label">4px 4px 10px (15% laranja)</span>
+                        <div class="color-use">Botões de ação primários ativos ou botões em hover que usam identidade da marca.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: BOTÕES -->
+            <div class="ds-colors-group">
+                <h3>Botões (Ações)</h3>
+                <p class="section-desc">Variantes de botões com transições e comportamentos interativos (passe o mouse para testar os estados de hover).</p>
+                <div class="buttons-demo-flex">
+                    <!-- Primário -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                        <span class="spacing-pixel-label">Botão Primário (Solid)</span>
+                        <button class="btn-sample" style="border-radius: var(--radius-lg); margin-bottom: 0;">Suporte</button>
+                    </div>
+                    <!-- Secundário -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                        <span class="spacing-pixel-label">Botão Secundário (Dark)</span>
+                        <button class="btn-secondary">Voltar ao Topo</button>
+                    </div>
+                    <!-- Ghost -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                        <span class="spacing-pixel-label">Botão de Linha (Ghost)</span>
+                        <button class="btn-ghost">Saiba Mais</button>
+                    </div>
+                    <!-- Swiper Prev -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                        <span class="spacing-pixel-label">Carrossel Ant.</span>
+                        <button class="btn-swiper">&#8592;</button>
+                    </div>
+                    <!-- Swiper Next -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                        <span class="spacing-pixel-label">Carrossel Próx.</span>
+                        <button class="btn-swiper">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: CARDS -->
+            <div class="ds-colors-group">
+                <h3>Cartões e Containers</h3>
+                <p class="section-desc">Estruturas básicas de agrupamento de conteúdo (ex: vitrine de modelos).</p>
+                <div class="cards-demo-grid">
+                    <!-- Card de Produto -->
+                    <div class="product-card-demo">
+                        <div class="product-card-image">
+                            <span class="product-card-badge">Android 14</span>
+                            <div style="font-size: 40px;">📺</div>
+                        </div>
+                        <div class="product-card-info">
+                            <h4 class="product-card-title">Champions Fire</h4>
+                            <p class="product-card-desc">Processador Allwinner H618 (Cortex A53), 2GB RAM, 16GB Armazenamento.</p>
+                            <button class="btn-sample" style="width: 100%; border-radius: var(--radius-lg); text-align: center; margin-top: auto;">Ver Ficha Técnica</button>
+                        </div>
+                    </div>
+
+                    <!-- Card de Detalhes com Tabela -->
+                    <div class="product-card-demo" style="padding: 24px;">
+                        <h4 class="product-card-title" style="margin-bottom: 15px;">Ficha Resumida</h4>
+                        <table class="breakpoints-table" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Marca</strong></td>
+                                    <td>Champions</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Resolução</strong></td>
+                                    <td>6K @ 30fps / 4K @ 60fps</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Garantia</strong></td>
+                                    <td>1 Ano Oficial</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: OUTROS COMPONENTES -->
+            <div class="ds-colors-group">
+                <h3>Outros Componentes (Tags, Inputs e Divisores)</h3>
+                <p class="section-desc">Pequenos elementos recorrentes do WordPress/Elementor que estruturam formulários e seções.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+                    <!-- Badges -->
+                    <div class="radius-demo-card" style="align-items: flex-start; text-align: left;">
+                        <h4 class="special-title" style="width: 100%;">Pílulas e Badges (Status/Tags)</h4>
+                        <p class="section-desc" style="margin-bottom: 10px;">Badges pequenos e caixas altas usados para categorias e chips de características.</p>
+                        <div class="badge-flex">
+                            <span class="badge-pill primary">Champions</span>
+                            <span class="badge-pill secondary">Linux</span>
+                            <span class="badge-pill outline">Dual Tuner</span>
+                        </div>
+                    </div>
+
+                    <!-- Inputs -->
+                    <div class="radius-demo-card" style="align-items: flex-start; text-align: left;">
+                        <h4 class="special-title" style="width: 100%;">Campos de Seleção (Dropdowns)</h4>
+                        <p class="section-desc" style="margin-bottom: 10px;">Seletor de modelos do showroom interativo com bordas sutis e foco na cor laranja.</p>
+                        <div class="form-demo-flex" style="width: 100%; padding: 0; border: none; box-shadow: none;">
+                            <label class="form-label">
+                                SELECIONE O MODELO
+                                <select class="select-input">
+                                    <option>Champions Fire</option>
+                                    <option>Champions Ultimate GX PRO</option>
+                                    <option>Champions Infinity GX PRO</option>
+                                    <option>Champions Play GX PRO</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Divisores -->
+                    <div class="radius-demo-card" style="align-items: flex-start; text-align: left;">
+                        <h4 class="special-title" style="width: 100%;">Divisores de Conteúdo</h4>
+                        <p class="section-desc" style="margin-bottom: 10px;">Linhas separadoras para marcação de limite entre widgets do Elementor.</p>
+                        <div class="divider-demo-wrapper" style="width: 100%; padding: 0; border: none; box-shadow: none;">
+                            <span class="spacing-pixel-label">Divisor Fino Padrão (1px)</span>
+                            <div class="divider-solid"></div>
+                            <span class="spacing-pixel-label">Divisor do Elementor (1.9px Solid)</span>
+                            <div class="divider-thick"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: EFEITOS E TEXTURAS (ETAPA 2.6) -->
+        <section class="ds-effects" id="efeitos">
+            <h2>Efeitos e Texturas</h2>
+            <p class="section-desc">Filtros, opacidades de sobreposição, texturas de ruído orgânico e curvas de transições para interfaces premium (Awwwards style).</p>
+
+            <!-- SUB-BLOCO: OVERLAYS -->
+            <div class="ds-colors-group">
+                <h3>Opacidade de Sobreposição (Overlays)</h3>
+                <p class="section-desc">Utilizados sobre imagens de fundo para garantir contraste legível das informações textuais.</p>
+                <div class="effects-demo-grid">
+                    <!-- Soft -->
+                    <div class="effect-card-demo">
+                        <div class="overlay-preview-container">
+                            <div class="overlay-layer" style="background-color: var(--overlay-dark-soft);">
+                                var(--overlay-dark-soft) (30%)
+                            </div>
+                        </div>
+                        <h4 class="color-name">Sobreposição Suave</h4>
+                        <div class="color-token" onclick="copyToken('--overlay-dark-soft')">var(--overlay-dark-soft)</div>
+                        <div class="color-use">Imagens de banner claras onde o texto já possui boa legibilidade nativa.</div>
+                    </div>
+                    <!-- Medium -->
+                    <div class="effect-card-demo">
+                        <div class="overlay-preview-container">
+                            <div class="overlay-layer" style="background-color: var(--overlay-dark-medium);">
+                                var(--overlay-dark-medium) (60%)
+                            </div>
+                        </div>
+                        <h4 class="color-name">Sobreposição Média</h4>
+                        <div class="color-token" onclick="copyToken('--overlay-dark-medium')">var(--overlay-dark-medium)</div>
+                        <div class="color-use">Padrão do Elementor. Usado na maioria dos blocos de produto sob o texto descritivo.</div>
+                    </div>
+                    <!-- Hard -->
+                    <div class="effect-card-demo">
+                        <div class="overlay-preview-container">
+                            <div class="overlay-layer" style="background-color: var(--overlay-dark-hard);">
+                                var(--overlay-dark-hard) (85%)
+                            </div>
+                        </div>
+                        <h4 class="color-name">Sobreposição Forte</h4>
+                        <div class="color-token" onclick="copyToken('--overlay-dark-hard')">var(--overlay-dark-hard)</div>
+                        <div class="color-use">Cabeçalhos escuros ou banners com imagens complexas com muita variação de contraste.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: GLASSMORPHISM -->
+            <div class="ds-colors-group">
+                <h3>Glassmorphism (Desfoque de Fundo)</h3>
+                <p class="section-desc">Efeito translúcido de vidro fosco criado combinando filtros de desfoque e cores semitransparentes.</p>
+                <div class="effects-demo-grid">
+                    <!-- Light Glass -->
+                    <div class="effect-card-demo">
+                        <div class="glass-preview-container">
+                            <div class="glass-card light">LIGHT GLASSMORPHISM</div>
+                        </div>
+                        <h4 class="color-name">Vidro Claro</h4>
+                        <div class="color-token" onclick="copyToken('--bg-glass-light')">var(--bg-glass-light)</div>
+                        <pre class="gradient-code" style="margin-top: 8px;">backdrop-filter: var(--blur-glass);
+background: var(--bg-glass-light);</pre>
+                    </div>
+                    <!-- Dark Glass -->
+                    <div class="effect-card-demo">
+                        <div class="glass-preview-container">
+                            <div class="glass-card dark">DARK GLASSMORPHISM</div>
+                        </div>
+                        <h4 class="color-name">Vidro Escuro</h4>
+                        <div class="color-token" onclick="copyToken('--bg-glass-dark')">var(--bg-glass-dark)</div>
+                        <pre class="gradient-code" style="margin-top: 8px;">backdrop-filter: var(--blur-glass);
+background: var(--bg-glass-dark);</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: TEXTURAS E NOISE -->
+            <div class="ds-colors-group">
+                <h3>Textura de Ruído Orgânico (Film Grain)</h3>
+                <p class="section-desc">Uma sutil textura de ruído baseada em SVG que quebra a artificialidade dos gradientes digitais, dando uma textura premium ao visual.</p>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+                    <div class="noise-preview-card">
+                        <div class="noise-overlay-layer"></div>
+                        <div class="glass-card dark" style="width: 50%; background-color: rgba(12, 13, 14, 0.4);">
+                            TEXTURA COM RUÍDO ATIVO (2% OPACIDADE)
+                        </div>
+                    </div>
+                    <div class="layout-values" style="margin-top: -10px;">
+                        <div class="color-value-row" style="max-width: 550px;"><span>Variável da Textura:</span> <span class="color-token" onclick="copyToken('--pattern-noise')">var(--pattern-noise)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: FILTROS -->
+            <div class="ds-colors-group">
+                <h3>Filtros de Imagem (Effects)</h3>
+                <p class="section-desc">Filtros dinâmicos CSS aplicados para controle de foco visual nas imagens dos produtos.</p>
+                <div class="effects-demo-grid">
+                    <!-- Dim Filter -->
+                    <div class="effect-card-demo" style="align-items: center; text-align: center;">
+                        <div class="filter-img-box" style="width: 100%;">
+                            <div class="filter-demo-svg" style="filter: var(--filter-image-dim);">
+                                <span style="font-size: 32px;">📱</span>
+                            </div>
+                        </div>
+                        <h4 class="color-name">Filtro Atenuado</h4>
+                        <div class="color-token" onclick="copyToken('--filter-image-dim')">var(--filter-image-dim)</div>
+                        <div class="color-use">Aplicado a cards secundários não selecionados no seletor para diminuir a atenção visual.</div>
+                    </div>
+                    <!-- Active Filter -->
+                    <div class="effect-card-demo" style="align-items: center; text-align: center;">
+                        <div class="filter-img-box" style="width: 100%;">
+                            <div class="filter-demo-svg" style="filter: var(--filter-image-active);">
+                                <span style="font-size: 32px;">📱</span>
+                            </div>
+                        </div>
+                        <h4 class="color-name">Filtro Ativo (Foco)</h4>
+                        <div class="color-token" onclick="copyToken('--filter-image-active')">var(--filter-image-active)</div>
+                        <div class="color-use">Aplicado ao produto ativo selecionado para realçar brilho e vibração de cor.</div>
+                    </div>
+                    <!-- Drop Shadow SVG -->
+                    <div class="effect-card-demo" style="align-items: center; text-align: center;">
+                        <div class="filter-img-box" style="width: 100%;">
+                            <div class="filter-demo-svg" style="background: transparent;">
+                                <span style="font-size: 48px; filter: var(--filter-drop-shadow);">🟠</span>
+                            </div>
+                        </div>
+                        <h4 class="color-name">Sombra Projetada (PNG/SVG)</h4>
+                        <div class="color-token" onclick="copyToken('--filter-drop-shadow')">var(--filter-drop-shadow)</div>
+                        <div class="color-use">Sombra projetada ao redor do formato real da logo, ícones ou recortes de caixas PNG.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-BLOCO: TRANSIÇÕES (SIMULADOR) -->
+            <div class="ds-colors-group">
+                <h3>Curvas de Easing e Transições</h3>
+                <p class="section-desc">Comparador dinâmico de curvas de aceleração. Clique no botão de simulação para ver a diferença física de velocidade e suavidade entre cada token de easing.</p>
+                
+                <div class="easing-demo-container">
+                    <!-- Track 1: Default -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="spacing-pixel-label">1. Easing Padrão (Elementor ease) &rarr; var(--easing-default)</span>
+                        <div class="easing-track">
+                            <div class="easing-ball" id="ball-default" style="left: 5px; transition: left 1.2s var(--easing-default);">1</div>
+                        </div>
+                    </div>
+
+                    <!-- Track 2: In Out -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="spacing-pixel-label">2. Easing In-Out Suave &rarr; var(--easing-in-out)</span>
+                        <div class="easing-track">
+                            <div class="easing-ball" id="ball-in-out" style="left: 5px; transition: left 1.2s var(--easing-in-out);">2</div>
+                        </div>
+                    </div>
+
+                    <!-- Track 3: Luxury (Awwwards Style) -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <span class="spacing-pixel-label">3. Easing Premium Luxury &rarr; var(--easing-luxury) (Elástico)</span>
+                        <div class="easing-track">
+                            <div class="easing-ball" id="ball-luxury" style="left: 5px; transition: left 1.2s var(--easing-luxury);">3</div>
+                        </div>
+                    </div>
+
+                    <div class="easing-control-panel">
+                        <button class="btn-sample" style="border-radius: var(--radius-lg); margin-bottom: 0;" onclick="runEasingDemo()">Simular Transição (Gatilho)</button>
+                        <div class="layout-values" style="margin-top: 0; border: none; padding: 0;">
+                            <div class="color-value-row" style="gap: 15px;">
+                                <span>1. ease-out-quad: <code>cubic-bezier(0.25, 0.46, 0.45, 0.94)</code></span>
+                                <span>2. ease-in-out: <code>cubic-bezier(0.4, 0, 0.2, 1)</code></span>
+                                <span>3. premium-elastic: <code>cubic-bezier(0.16, 1, 0.3, 1)</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast">Token copiado com sucesso!</div>
+
+    <script>
+        function copyToken(tokenName) {
+            navigator.clipboard.writeText(tokenName).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        function setDemoSpacing(token, valText, btn) {
+            const indicator = document.getElementById('demo-gap');
+            indicator.style.height = token;
+            indicator.textContent = valText;
+
+            document.querySelectorAll('.spacing-selector-btn').forEach(b => {
+                if(b.getAttribute('onclick').includes('setDemoSpacing')) {
+                    b.classList.remove('active');
+                }
+            });
+            btn.classList.add('active');
+        }
+
+        function setContainerWidth(widthToken, text, btn) {
+            const container = document.getElementById('demo-container');
+            container.style.maxWidth = widthToken;
+            container.textContent = text;
+
+            document.querySelectorAll('.spacing-selector-btn').forEach(b => {
+                if(b.getAttribute('onclick').includes('setContainerWidth')) {
+                    b.classList.remove('active');
+                }
+            });
+            btn.classList.add('active');
+        }
+
+        function simulateViewport(device, btn) {
+            const simBox = document.getElementById('viewport-sim-box');
+            const padL = document.getElementById('viewport-pad-l');
+            const padR = document.getElementById('viewport-pad-r');
+            const deviceName = document.getElementById('viewport-device-name');
+            const contentWidth = document.getElementById('viewport-content-width');
+            const padToken = document.getElementById('viewport-padding-token');
+            const bpToken = document.getElementById('viewport-breakpoint-token');
+
+            // Reset classes
+            document.querySelectorAll('.spacing-selector-btn').forEach(b => {
+                if(b.getAttribute('onclick').includes('simulateViewport')) {
+                    b.classList.remove('active');
+                }
+            });
+            btn.classList.add('active');
+
+            if (device === 'desktop') {
+                simBox.style.maxWidth = '100%';
+                padL.style.width = '15%';
+                padR.style.width = '15%';
+                padL.textContent = '15%';
+                padR.textContent = '15%';
+                deviceName.textContent = 'Desktop';
+                contentWidth.textContent = 'Espaço Útil: Max 1140px (Limitado)';
+                padToken.innerHTML = 'var(--container-padding-desktop) &rarr; 15% (de cada lado)';
+                bpToken.textContent = 'Telas amplas (>= 1440px)';
+            } else if (device === 'tablet-l') {
+                simBox.style.maxWidth = '85%';
+                padL.style.width = '24px';
+                padR.style.width = '24px';
+                padL.textContent = '24px';
+                padR.textContent = '24px';
+                deviceName.textContent = 'Tablet Landscape';
+                contentWidth.textContent = 'Espaço Útil: ~976px';
+                padToken.innerHTML = 'var(--container-padding-tablet) &rarr; 24px (de cada lado)';
+                bpToken.textContent = 'Telas médias (entre 992px e 1439px)';
+            } else if (device === 'tablet-p') {
+                simBox.style.maxWidth = '70%';
+                padL.style.width = '24px';
+                padR.style.width = '24px';
+                padL.textContent = '24px';
+                padR.textContent = '24px';
+                deviceName.textContent = 'Tablet Portrait';
+                contentWidth.textContent = 'Espaço Útil: ~720px';
+                padToken.innerHTML = 'var(--container-padding-tablet) &rarr; 24px (de cada lado)';
+                bpToken.textContent = 'Telas médias/pequenas (entre 768px e 991px)';
+            } else if (device === 'mobile-l') {
+                simBox.style.maxWidth = '55%';
+                padL.style.width = '16px';
+                padR.style.width = '16px';
+                padL.textContent = '16px';
+                padR.textContent = '16px';
+                deviceName.textContent = 'Celular Landscape';
+                contentWidth.textContent = 'Espaço Útil: ~343px';
+                padToken.innerHTML = 'var(--container-padding-mobile) &rarr; 16px (de cada lado)';
+                bpToken.textContent = 'Telas de smartphones deitados (entre 576px e 767px)';
+            } else if (device === 'mobile-p') {
+                simBox.style.maxWidth = '45%';
+                padL.style.width = '16px';
+                padR.style.width = '16px';
+                padL.textContent = '16px';
+                padR.textContent = '16px';
+                deviceName.textContent = 'Celular Portrait';
+                contentWidth.textContent = 'Espaço Útil: ~288px';
+                padToken.innerHTML = 'var(--container-padding-mobile) &rarr; 16px (de cada lado)';
+                bpToken.textContent = 'Telas estreitas de celular (abaixo de 575px)';
+            }
+        }
+
+        function runEasingDemo() {
+            const ball1 = document.getElementById('ball-default');
+            const ball2 = document.getElementById('ball-in-out');
+            const ball3 = document.getElementById('ball-luxury');
+
+            const isAtEnd = ball1.style.left.includes('calc');
+            const targetLeft = isAtEnd ? '5px' : 'calc(100% - 45px)';
+
+            ball1.style.left = targetLeft;
+            ball2.style.left = targetLeft;
+            ball3.style.left = targetLeft;
+        }
+    </script>
+</body>
+</html>

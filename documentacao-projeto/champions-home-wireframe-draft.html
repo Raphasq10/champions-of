@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions - Showroom Virtual Premium</title>
+    
+    <!-- Google Fonts: Outfit (Títulos) e Inter (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. RESET E DESIGN SYSTEM (DARK TECH)
+           ========================================== */
+        :root {
+            --primary: #F56A25; /* Laranja Oficial Champions */
+            --primary-glow: rgba(245, 106, 37, 0.45);
+            --primary-grad: linear-gradient(135deg, #F56A25 0%, #FF8C00 100%);
+            --dark-deep: #0D0E10; /* Fundo mais escuro */
+            --dark-card: rgba(25, 28, 30, 0.65); /* Glassmorphism card */
+            --dark-card-border: rgba(255, 255, 255, 0.06);
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --font-title: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark-deep);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Botão Premium Laranja (WhatsApp/Suporte) */
+        .btn-premium {
+            background: var(--primary-grad);
+            color: var(--text-light);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 106, 37, 0.6);
+            background: transparent;
+            border-color: var(--primary);
+        }
+
+        /* ==========================================
+           2. CABEÇALHO (HEADER - GLASSMORPHISM)
+           ========================================== */
+        header {
+            background-color: rgba(13, 14, 16, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--dark-card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+            transition: var(--transition-smooth);
+        }
+
+        .logo:hover img {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-family: var(--font-title);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* ==========================================
+           3. SEÇÃO HERO / FAMÍLIA CHAMPIONS (2 COLUNAS)
+           ========================================== */
+        .hero {
+            position: relative;
+            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.94)), url('../wp-content/uploads/2023/06/background-hero-banner-1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 0 100px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        /* Lado Esquerdo: Foto da Família */
+        .hero-left {
+            flex: 0 0 45%;
+        }
+
+        .family-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--dark-card-border);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+        }
+
+        .family-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        .family-image-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        .family-image-wrapper .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 30px rgba(245, 106, 37, 0.35);
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        /* Lado Direito: Textos e Cards */
+        .hero-right {
+            flex: 0 0 55%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 56px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #FFFFFF 30%, #F56A25 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-title);
+            font-size: 26px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        /* Grid dos 4 aparelhos compactos */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .hero-card {
+            background-color: var(--dark-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--dark-card-border);
+            border-radius: 12px;
+            padding: 20px 10px 15px;
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(25, 28, 30, 0.85);
+            border-color: rgba(245, 106, 37, 0.4);
+            box-shadow: 0 12px 30px rgba(245, 106, 37, 0.18);
+        }
+
+        /* Badge Novo */
+        .badge-new {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-grad);
+            color: var(--text-light);
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px var(--primary-glow);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .card-icon {
+            height: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon img {
+            max-height: 100%;
+            width: auto;
+        }
+
+        .card-image {
+            margin: 5px 0 15px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .card-image img {
+            max-height: 100%;
+            width: auto;
+            filter: drop-shadow(0 10px 12px rgba(0,0,0,0.65));
+            transition: var(--transition-smooth);
+        }
+
+        .hero-card:hover .card-image img {
+            transform: scale(1.08) translateY(-3px);
+            filter: drop-shadow(0 15px 18px rgba(245, 106, 37, 0.3));
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-specs {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .card-specs span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .card-system {
+            margin-top: auto;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-system span {
+            color: var(--primary);
+        }
+
+        /* ==========================================
+           4. SEÇÃO DE DIVISÃO (LOJAS DO PARAGUAI)
+           ========================================== */
+        .divider-section {
+            background-color: #121417;
+            padding: 55px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--dark-card-border);
+            border-top: 1px solid var(--dark-card-border);
+            position: relative;
+            background-image: radial-gradient(rgba(245, 106, 37, 0.08) 1px, transparent 1px), url('../wp-content/uploads/2023/06/technology.svg');
+            background-size: 24px 24px, contain;
+            background-repeat: repeat, no-repeat;
+            background-position: center, right center;
+        }
+
+        .divider-title {
+            font-family: var(--font-title);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .divider-title span {
+            color: var(--primary);
+        }
+
+        .divider-subtitle {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* ==========================================
+           5. SEÇÃO DE DETALHES COM SCREENSHOTS (SHOWCASE)
+           ========================================== */
+        .products-showcase {
+            padding: 100px 0;
+            background-color: var(--dark-deep);
+            position: relative;
+        }
+
+        .product-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 140px;
+        }
+
+        .product-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Alternando lados */
+        .product-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Lado de Informações e Produto */
+        .product-info-side {
+            flex: 0 0 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .product-brand-logo {
+            max-height: 48px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-brand-logo img {
+            max-height: 100%;
+            width: auto;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        .product-hero-image {
+            max-height: 200px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .product-hero-image img {
+            max-height: 100%;
+            width: auto;
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.7));
+            transition: var(--transition-smooth);
+        }
+
+        .product-row:hover .product-hero-image img {
+            transform: scale(1.05) translateY(-5px);
+            filter: drop-shadow(0 25px 35px var(--primary-glow));
+        }
+
+        .product-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .feature-item {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .feature-item i {
+            color: var(--primary);
+            font-size: 12px;
+        }
+
+        /* Lado dos Screenshots */
+        .product-screenshots-side {
+            flex: 0 0 65%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .screenshot-card {
+            background-color: var(--dark-card);
+            border: 1px solid var(--dark-card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition-smooth);
+            position: relative;
+            aspect-ratio: 9/16;
+            cursor: pointer;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+
+        .screenshot-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hover Overlay para Título do Screenshot */
+        .screenshot-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10px;
+            background: linear-gradient(to top, rgba(13, 14, 16, 0.95) 0%, rgba(13, 14, 16, 0.4) 70%, rgba(13, 14, 16, 0) 100%);
+            color: var(--text-light);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition-smooth);
+            pointer-events: none;
+        }
+
+        .screenshot-card:hover .screenshot-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .screenshot-overlay p {
+            font-family: var(--font-title);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--primary);
+        }
+
+        /* ==========================================
+           6. SEÇÃO FALE COM NOSSO SUPORTE
+           ========================================== */
+        .support-cta {
+            position: relative;
+            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('../wp-content/uploads/2023/06/pexels-mikhail-nilov-7682340.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 110px 0;
+            text-align: center;
+            border-top: 1px solid var(--dark-card-border);
+            border-bottom: 1px solid var(--dark-card-border);
+        }
+
+        .support-cta-subtitle {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .support-cta-title {
+            font-family: var(--font-title);
+            font-size: 44px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
+        }
+
+        .support-cta-title span {
+            color: var(--text-light);
+            background: var(--primary-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .support-cta .btn-premium {
+            font-size: 16px;
+            padding: 16px 36px;
+            box-shadow: 0 8px 25px rgba(245, 106, 37, 0.45);
+        }
+
+        /* ==========================================
+           7. SEÇÃO ESTATÍSTICAS (STATS GRID - DO WIREFRAME)
+           ========================================== */
+        .stats-section {
+            padding: 90px 0;
+            background-color: #0b0c0e;
+            border-bottom: 1px solid var(--dark-card-border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stats-card {
+            border-radius: 16px;
+            padding: 35px 25px;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .stats-card.blue {
+            background: linear-gradient(135deg, rgba(14, 116, 144, 0.9) 0%, rgba(21, 94, 117, 0.95) 100%), url('../wp-content/uploads/2023/06/background-hero-banner-1.png');
+            background-size: cover;
+            border-color: rgba(14, 116, 144, 0.4);
+        }
+        .stats-card.blue:hover {
+            box-shadow: 0 15px 40px rgba(14, 116, 144, 0.3);
+            border-color: rgba(14, 116, 144, 0.8);
+        }
+
+        .stats-card.green {
+            background: linear-gradient(135deg, rgba(21, 128, 61, 0.9) 0%, rgba(22, 101, 52, 0.95) 100%);
+            border-color: rgba(21, 128, 61, 0.4);
+        }
+        .stats-card.green:hover {
+            box-shadow: 0 15px 40px rgba(21, 128, 61, 0.3);
+            border-color: rgba(21, 128, 61, 0.8);
+        }
+
+        .stats-card.orange {
+            background: linear-gradient(135deg, rgba(194, 65, 12, 0.9) 0%, rgba(154, 52, 18, 0.95) 100%);
+            border-color: rgba(194, 65, 12, 0.4);
+        }
+        .stats-card.orange:hover {
+            box-shadow: 0 15px 40px rgba(194, 65, 12, 0.3);
+            border-color: rgba(194, 65, 12, 0.8);
+        }
+
+        .stats-card.purple {
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.9) 0%, rgba(90, 24, 154, 0.95) 100%), url('../wp-content/uploads/2023/06/pexels-mikhail-nilov-7682340.jpg');
+            background-size: cover;
+            border-color: rgba(109, 40, 217, 0.4);
+        }
+        .stats-card.purple:hover {
+            box-shadow: 0 15px 40px rgba(109, 40, 217, 0.3);
+            border-color: rgba(109, 40, 217, 0.8);
+        }
+
+        .stats-number {
+            font-family: var(--font-title);
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .stats-title {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .stats-desc {
+            font-size: 13px;
+            color: rgba(248, 250, 252, 0.8);
+            line-height: 1.5;
+            margin-top: auto;
+        }
+
+        /* ==========================================
+           8. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+           ========================================== */
+        .partners-section {
+            padding: 80px 0;
+            background-color: var(--dark-deep);
+            text-align: center;
+        }
+
+        .partners-title {
+            font-family: var(--font-title);
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .partners-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Carrossel de Parceiros */
+        .partners-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .partners-carousel {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 30px;
+        }
+
+        .partners-track {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            transition: transform 0.5s ease;
+        }
+
+        .partner-logo-item {
+            flex: 0 0 calc(33.333% - 34px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 75px;
+        }
+
+        .partner-logo-item img {
+            max-height: 100%;
+            max-width: 155px;
+            filter: grayscale(100%) brightness(1.2);
+            opacity: 0.35;
+            transition: var(--transition-smooth);
+        }
+
+        .partner-logo-item img:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.04);
+        }
+
+        /* Botões de Parceiros */
+        .partners-btn {
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .partners-btn:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ==========================================
+           9. RODAPÉ (FOOTER)
+           ========================================== */
+        footer {
+            background-color: #090A0B;
+            color: var(--text-light);
+            padding: 80px 0 35px;
+            text-align: center;
+            border-top: 1px solid var(--dark-card-border);
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-logo img {
+            height: 38px;
+            margin: 0 auto;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-title);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 45px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-title);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-link:hover {
+            color: var(--text-light);
+        }
+
+        .footer-nav .btn-premium {
+            font-size: 13px;
+            padding: 8px 22px;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--dark-card-border);
+            margin: 35px 0;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+           10. RESPONSIVIDADE (MEDIA QUERIES)
+           ========================================== */
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-left, .hero-right {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .hero-title {
+                font-size: 44px;
+            }
+            .hero-subtitle {
+                font-size: 22px;
+            }
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .product-row {
+                flex-direction: column !important;
+                gap: 50px;
+                text-align: center;
+            }
+            .product-info-side, .product-screenshots-side {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .hero-title {
+                font-size: 36px;
+            }
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            .divider-title {
+                font-size: 20px;
+            }
+            .divider-subtitle {
+                font-size: 15px;
+            }
+            .partner-logo-item {
+                flex: 0 0 calc(50% - 25px);
+            }
+            .support-cta-title {
+                font-size: 28px;
+            }
+            .product-screenshots-side {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+       1. CABEÇALHO (HEADER)
+       ========================================== -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="../wp-content/uploads/2023/06/logo-champions-2.png" alt="Logo Champions">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#fire" class="nav-link">Fire</a></li>
+                <li><a href="#ultimate" class="nav-link">Ultimate</a></li>
+                <li><a href="#infinity" class="nav-link">Infinity</a></li>
+                <li><a href="#play" class="nav-link">Play</a></li>
+            </ul>
+
+            <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                <i class="fab fa-whatsapp"></i> SUPORTE
+            </a>
+
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+       2. SEÇÃO HERO / BANNER PRINCIPAL (FAMÍLIA CHAMPIONS - 2 COLUNAS)
+       ========================================== -->
+    <section class="hero">
+        <div class="container hero-container">
+            
+            <!-- Lado Esquerdo: Imagem da Família no Sofá -->
+            <div class="hero-left">
+                <div class="family-image-wrapper">
+                    <img src="../wp-content/uploads/2023/06/family-watching-tv.png" alt="Família Champions assistindo TV">
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+
+            <!-- Lado Direito: Informações e Cards Rápidos -->
+            <div class="hero-right">
+                <h1 class="hero-title">Família Champions</h1>
+                <h2 class="hero-subtitle">A Marca Campeã</h2>
+                <p class="hero-tagline">A melhor programação dentro de sua casa</p>
+                
+                <div class="hero-grid">
+                    <!-- Card 1: FIRE -->
+                    <div class="hero-card">
+                        <span class="badge-new">Novo</span>
+                        <div class="card-icon">
+                            <img src="../wp-content/uploads/2025/10/logo-champions-fire-alta-branca-vertical.png" alt="Fire logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2025/10/champions-fire-frente.png" alt="Champions Fire">
+                        </div>
+                        <h3 class="card-title">Fire</h3>
+                        <p class="card-specs"><span>2/16</span> GB</p>
+                        <p class="card-specs"><span>Stick</span> TV</p>
+                    </div>
+
+                    <!-- Card 2: ULTIMATE -->
+                    <div class="hero-card">
+                        <div class="card-icon">
+                            <img src="../wp-content/uploads/2023/06/icone-ultimate.svg" alt="Ultimate logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2023/06/ultimate-front.png" alt="Champions Ultimate">
+                        </div>
+                        <h3 class="card-title">Ultimate</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </div>
+
+                    <!-- Card 3: INFINITY -->
+                    <div class="hero-card">
+                        <div class="card-icon">
+                            <img src="../wp-content/uploads/2023/06/icone-infinity.svg" alt="Infinity logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2023/06/infinity-left.png" alt="Champions Infinity">
+                        </div>
+                        <h3 class="card-title">Infinity</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </div>
+
+                    <!-- Card 4: PLAY -->
+                    <div class="hero-card">
+                        <div class="card-icon">
+                            <img src="../wp-content/uploads/2023/06/icone-play.svg" alt="Play logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2023/06/play-front.png" alt="Champions Play">
+                        </div>
+                        <h3 class="card-title">Play</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ==========================================
+       3. SEÇÃO DE DIVISÃO (LOJAS PARAGUAI)
+       ========================================== -->
+    <section class="divider-section">
+        <div class="container">
+            <h3 class="divider-title">Disponíveis <span>nas melhores lojas do Paraguai.</span></h3>
+            <h4 class="divider-subtitle">champions-oficial.com</h4>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       4. SEÇÃO DE APRESENTAÇÃO DOS PRODUTOS E SCREENSHOTS
+       ========================================== -->
+    <section class="products-showcase">
+        <div class="container">
+            
+            <!-- Linha 1: CHAMPIONS FIRE (O grande Destaque) -->
+            <div class="product-row" id="fire">
+                <div class="product-info-side">
+                    <div class="product-brand-logo">
+                        <img src="../wp-content/uploads/2025/10/logo-champions-fire-alta-branca-horizontal.png" alt="Champions Fire Logo">
+                    </div>
+                    <div class="product-hero-image">
+                        <img src="../wp-content/uploads/2025/10/champions-fire-frente.png" alt="Champions Fire Frente">
+                    </div>
+                    <div class="product-features-list">
+                        <span class="feature-item"><i class="fas fa-check"></i> 4K Ultra HD</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Controle Bluetooth</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Design Stick Portátil</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Hardware 2GB/16GB</span>
+                    </div>
+                </div>
+                
+                <div class="product-screenshots-side">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2025/10/fire-ui-home.png" alt="Interface Champions Fire Home">
+                        <div class="screenshot-overlay">
+                            <p>Interface Inicial</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2025/10/fire-ui-channels.png" alt="Guia de Canais Champions Fire">
+                        <div class="screenshot-overlay">
+                            <p>Guia de Canais</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2025/10/fire-ui-apps.png" alt="Aplicativos Champions Fire">
+                        <div class="screenshot-overlay">
+                            <p>Aplicativos e Jogos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 2: CHAMPIONS ULTIMATE -->
+            <div class="product-row reverse" id="ultimate">
+                <div class="product-info-side">
+                    <div class="product-brand-logo">
+                        <img src="../wp-content/uploads/2023/06/logo-champions-ultimate.png" alt="Ultimate GX Pro Logo">
+                    </div>
+                    <div class="product-hero-image">
+                        <img src="../wp-content/uploads/2023/06/ultimate-front.png" alt="Ultimate GX Pro Destaque">
+                    </div>
+                    <div class="product-features-list">
+                        <span class="feature-item"><i class="fas fa-check"></i> Estabilidade G-Share</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Conectividade Avançada</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Refrigeração Aprimorada</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Alta Performance</span>
+                    </div>
+                </div>
+                
+                <div class="product-screenshots-side">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_ULTIMATE_01.jpg" alt="Ultimate Interface 1">
+                        <div class="screenshot-overlay">
+                            <p>Canais HD</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_ULTIMATE_02.jpg" alt="Ultimate Interface 2">
+                        <div class="screenshot-overlay">
+                            <p>Filmes & Séries</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_ULTIMATE_03.jpg" alt="Ultimate Interface 3">
+                        <div class="screenshot-overlay">
+                            <p>Guia de Programação</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 3: CHAMPIONS INFINITY -->
+            <div class="product-row" id="infinity">
+                <div class="product-info-side">
+                    <div class="product-brand-logo">
+                        <img src="../wp-content/uploads/2023/06/logo-champions-infinity.png" alt="Infinity GX Pro Logo">
+                    </div>
+                    <div class="product-hero-image">
+                        <img src="../wp-content/uploads/2023/06/infinity-left.png" alt="Infinity GX Pro Destaque">
+                    </div>
+                    <div class="product-features-list">
+                        <span class="feature-item"><i class="fas fa-check"></i> Wi-Fi Integrado 5G</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Painel Frontal Luminoso</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Sistema G-Share Fluido</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Atualizações Via Nuvem</span>
+                    </div>
+                </div>
+                
+                <div class="product-screenshots-side">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/banner-champions-infinity-1.jpg" alt="Infinity Interface 1">
+                        <div class="screenshot-overlay">
+                            <p>Menu Interativo</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/banner-champions-infinity-2.jpg" alt="Infinity Interface 2">
+                        <div class="screenshot-overlay">
+                            <p>Configurações rápidas</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/banner-champions-infinity-3.jpg" alt="Infinity Interface 3">
+                        <div class="screenshot-overlay">
+                            <p>Lista de Favoritos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 4: CHAMPIONS PLAY -->
+            <div class="product-row reverse" id="play">
+                <div class="product-info-side">
+                    <div class="product-brand-logo">
+                        <img src="../wp-content/uploads/2023/06/logo-champions-play.png" alt="Play GX Pro Logo">
+                    </div>
+                    <div class="product-hero-image">
+                        <img src="../wp-content/uploads/2023/06/play-front.png" alt="Play GX Pro Destaque">
+                    </div>
+                    <div class="product-features-list">
+                        <span class="feature-item"><i class="fas fa-check"></i> Sistema Android Nativo</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Catálogo On-Demand</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Streaming Rápido</span>
+                        <span class="feature-item"><i class="fas fa-check"></i> Interface Responsiva</span>
+                    </div>
+                </div>
+                
+                <div class="product-screenshots-side">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_PLAY_01.jpg" alt="Play Interface 1">
+                        <div class="screenshot-overlay">
+                            <p>Catálogo On-Demand</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_PLAY_02.jpg" alt="Play Interface 2">
+                        <div class="screenshot-overlay">
+                            <p>Streaming Ilimitado</p>
+                        </div>
+                    </div>
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-card">
+                        <img src="../wp-content/uploads/2023/06/BANNER_PLAY_03.jpg" alt="Play Interface 3">
+                        <div class="screenshot-overlay">
+                            <p>Fácil Usabilidade</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+       5. SEÇÃO FALE COM NOSSO SUPORTE
+       ========================================== -->
+    <section class="support-cta">
+        <div class="container">
+            <p class="support-cta-subtitle">Precisa de ajuda com seu aparelho Champions?</p>
+            <h2 class="support-cta-title">Fale com nosso <span>Suporte</span></h2>
+            <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                <i class="fab fa-whatsapp"></i> SUPORTE
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       6. SEÇÃO ESTATÍSTICAS (STATS GRID - DO WIREFRAME)
+       ========================================== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <!-- Card 1: Blue (Modelos) -->
+                <div class="stats-card blue">
+                    <h4 class="stats-number">4</h4>
+                    <h5 class="stats-title">Dispositivos</h5>
+                    <p class="stats-desc">Fire, Ultimate, Play e Infinity. Uma linha completa adaptável a cada perfil de usuário e necessidade.</p>
+                </div>
+                <!-- Card 2: Green (Cinema 4K) -->
+                <div class="stats-card green">
+                    <h4 class="stats-number">4K</h4>
+                    <h5 class="stats-title">Ultra HD</h5>
+                    <p class="stats-desc">Resolução de alta fidelidade de som e imagem, garantindo entretenimento imersivo para toda a família.</p>
+                </div>
+                <!-- Card 3: Orange (Estabilidade) -->
+                <div class="stats-card orange">
+                    <h4 class="stats-number">100%</h4>
+                    <h5 class="stats-title">Estável</h5>
+                    <p class="stats-desc">Tecnologia de ponta G-Share integrada, proporcionando navegação rápida, segura e livre de lentidão.</p>
+                </div>
+                <!-- Card 4: Purple (Suporte) -->
+                <div class="stats-card purple">
+                    <h4 class="stats-number"><i class="fab fa-whatsapp"></i></h4>
+                    <h5 class="stats-title">Suporte</h5>
+                    <p class="stats-desc">Equipe técnica pronta e qualificada via WhatsApp para tirar dúvidas e prestar auxílio a qualquer momento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       7. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+       ========================================== -->
+    <section class="partners-section">
+        <div class="container">
+            <h3 class="partners-title">Disponível nas principais lojas do Paraguai</h3>
+            
+            <div class="partners-carousel-wrapper">
+                <button class="partners-btn partners-btn-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="partners-carousel">
+                    <div class="partners-track">
+                        <div class="partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_madrid.png" alt="Madrid Center">
+                        </div>
+                        <div class="partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_open.png" alt="Open Eletrônicos">
+                        </div>
+                        <div class="partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_mega.png" alt="Mega Eletrônicos">
+                        </div>
+                        <div class="partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_nissei.png" alt="Nissei">
+                        </div>
+                    </div>
+                </div>
+                <button class="partners-btn partners-btn-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       8. RODAPÉ (FOOTER)
+       ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../wp-content/uploads/2023/06/logo-champions-2.png" alt="Logo Champions Footer">
+            </div>
+            <p class="footer-tagline">A Marca Campeã</p>
+            
+            <div class="footer-nav">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#fire" class="footer-link">Fire</a>
+                <a href="#ultimate" class="footer-link">Ultimate</a>
+                <a href="#infinity" class="footer-link">Infinity</a>
+                <a href="#play" class="footer-link">Play</a>
+                <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                    <i class="fab fa-whatsapp"></i> SUPORTE
+                </a>
+            </div>
+
+            <div class="footer-divider"></div>
+            <p class="footer-copy">Copyright© 2023 - Todos os direitos reservados a CHAMPIONS</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       9. JAVASCRIPT (LÓGICA DOS CARROSSÉIS)
+       ========================================= -->
+    <script>
+        // Lógica para o Carrossel de Lojas Parceiras (Responsivo e Simples)
+        const partnersTrack = document.querySelector('.partners-track');
+        const partnerItems = Array.from(partnersTrack.children);
+        const partnerNext = document.querySelector('.partners-btn-right');
+        const partnerPrev = document.querySelector('.partners-btn-left');
+        
+        let partnerIndex = 0;
+        
+        const getItemsPerPage = () => {
+            if (window.innerWidth <= 500) return 1;
+            if (window.innerWidth <= 768) return 2;
+            return 3;
+        };
+
+        const updatePartnersCarousel = () => {
+            const itemsPerPage = getItemsPerPage();
+            const maxIndex = partnerItems.length - itemsPerPage;
+            
+            if (partnerIndex > maxIndex) partnerIndex = maxIndex;
+            if (partnerIndex < 0) partnerIndex = 0;
+            
+            const itemWidth = partnerItems[0].getBoundingClientRect().width + 50; // Largura + Gap
+            partnersTrack.style.transform = `translateX(-${partnerIndex * itemWidth}px)`;
+        };
+
+        partnerNext.addEventListener('click', () => {
+            const itemsPerPage = getItemsPerPage();
+            const maxIndex = partnerItems.length - itemsPerPage;
+            if (partnerIndex < maxIndex) {
+                partnerIndex++;
+                updatePartnersCarousel();
+            } else {
+                partnerIndex = 0; // Volta ao início
+                updatePartnersCarousel();
+            }
+        });
+
+        partnerPrev.addEventListener('click', () => {
+            if (partnerIndex > 0) {
+                partnerIndex--;
+                updatePartnersCarousel();
+            } else {
+                const itemsPerPage = getItemsPerPage();
+                partnerIndex = partnerItems.length - itemsPerPage;
+                updatePartnersCarousel();
+            }
+        });
+
+        window.addEventListener('resize', updatePartnersCarousel);
+
+        // Menu Mobile (Hamburguer) Toggle simples
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '70px';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.backgroundColor = 'rgba(13, 14, 16, 0.95)';
+                navMenu.style.padding = '20px';
+                navMenu.style.borderBottom = '1px solid var(--dark-card-border)';
+                navMenu.style.gap = '15px';
+            }
+        });
+
+        // Suporte a Smooth Scroll para os links internos da navegação
+        document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#') && targetId.length > 1) {
+                    e.preventDefault();
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        // Fecha o menu mobile se estiver aberto
+                        if (window.innerWidth <= 768) {
+                            navMenu.style.display = 'none';
+                        }
+                        
+                        const headerOffset = 80;
+                        const elementPosition = targetEl.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions - Wireframe de Alta Fidelidade (Reconstrução Fiel)</title>
+    
+    <style>
+        /* ==========================================
+           0. DESIGN SYSTEM TOKENS & WIREFRAME SYSTEM
+           ========================================== */
+        :root {
+            /* Restrição Monocromática Rígida (Tons de Preto, Branco e Cinza) */
+            --color-black: #000000;
+            --color-dark: #333333;
+            --color-medium: #666666;
+            --color-light: #999999;
+            --color-light-bg: #F3F3F3;
+            --color-white: #FFFFFF;
+            
+            /* Bordas Wireframe */
+            --border-wire: 1px solid var(--color-black);
+            --border-dashed: 1px dashed var(--color-medium);
+            --border-thick: 2px solid var(--color-black);
+            --border-light: 1px solid var(--color-light-bg);
+
+            /* Configurações de Layout & Espaçamento do Design System */
+            --container-max: 1140px;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --easing-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Espaçamentos Reais do Design System */
+            --space-xxs: 0.3125rem;
+            --space-xs: 0.625rem;
+            --space-sm: 0.9375rem;
+            --space-md: 1.25rem;
+            --space-lg: 1.5625rem;
+            --space-xl: 1.875rem;
+            --space-xxl: 2.1875rem;
+            --space-section: 2.8125rem;
+            --space-section-lg: 3.125rem;
+
+            /* Radii do Design System */
+            --radius-xs: 2px;
+            --radius-sm: 4px;
+            --radius-md: 10px;
+            --radius-lg: 28px;
+            --radius-full: 9999px;
+            
+            /* Glassmorphism e Efeitos */
+            --blur-glass: blur(12px) saturate(180%);
+            --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-elevated: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ==========================================
+           1. ESTILOS BASE E RESETS
+           ========================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================
+           2. COMPONENTES & UTILITIES WIREFRAME
+           ========================================== */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Botão Wireframe (Borda preta, fundo transparente, inverte no hover) */
+        .btn-wire {
+            background: transparent;
+            border: var(--border-thick);
+            color: var(--color-black);
+            padding: var(--space-sm) var(--space-xl);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-wire:hover {
+            background-color: var(--color-black);
+            color: var(--color-white);
+        }
+
+        /* Placeholders de Imagem Wireframe */
+        .img-placeholder {
+            background-color: var(--color-light-bg);
+            border: var(--border-dashed);
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: var(--radius-md);
+        }
+
+        /* Animação Bobbing dos Aparelhos (Recriação Fiel ao Efeito Elementor) */
+        @keyframes bob {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .img-bob {
+            animation: bob 4s ease-in-out infinite;
+        }
+
+        /* ==========================================
+           3. CABEÇALHO (HEADER) - GLASSMORPHISM
+           ========================================== */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: var(--blur-glass);
+            -webkit-backdrop-filter: var(--blur-glass);
+            border-bottom: 1px solid var(--color-light-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: var(--space-md) 0;
+            transition: var(--transition-smooth);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-placeholder {
+            width: 160px;
+            height: 40px;
+            border: var(--border-dashed);
+            background-color: var(--color-light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.8px;
+            color: var(--color-medium);
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background-color: var(--color-black);
+            transition: var(--transition-smooth);
+            border-radius: var(--radius-xs);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-black);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-black);
+        }
+
+        /* ==========================================
+           4. SHOWCASE DE PRODUTOS (CASCATA DIRETA)
+           ========================================== */
+        .products-showcase {
+            padding: var(--space-section-lg) 0;
+            background-color: var(--color-white);
+        }
+
+        .product-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xxl);
+            margin-bottom: var(--space-section-lg);
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--color-light-bg);
+        }
+
+        .product-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* Alternação de Colunas para Ritmo Visual */
+        .product-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Coluna Lateral: Branding e Box Principal */
+        .product-info-side {
+            flex: 0 0 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--space-xl);
+        }
+
+        .product-brand-placeholder {
+            width: 210px;
+            height: 50px;
+        }
+
+        .product-hero-image-placeholder {
+            width: 220px;
+            height: 220px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+        }
+
+        .product-row:hover .product-hero-image-placeholder {
+            transform: scale(1.03);
+            border-color: var(--color-black);
+        }
+
+        /* Coluna Central/Direita: Carrossel de Detalhes */
+        .product-carousel-side {
+            flex: 0 0 65%;
+            position: relative;
+            background-color: var(--color-white);
+            border: var(--border-wire);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .product-carousel-side:hover {
+            box-shadow: var(--shadow-medium);
+            border-color: var(--color-dark);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 340px;
+            border-radius: var(--radius-sm);
+            background-color: var(--color-light-bg);
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s var(--easing-luxury);
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+        }
+
+        .carousel-slide-placeholder {
+            width: 95%;
+            height: 95%;
+            border: var(--border-dashed);
+            background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+        }
+
+        .slide-title {
+            font-size: 14px;
+            color: var(--color-black);
+            margin-bottom: var(--space-xs);
+        }
+
+        .slide-desc {
+            font-size: 11px;
+            color: var(--color-medium);
+            font-weight: 500;
+            max-width: 280px;
+        }
+
+        /* Setas do Carrossel */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--color-white);
+            border: var(--border-wire);
+            color: var(--color-black);
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-button:hover {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-button-left { left: var(--space-md); }
+        .carousel-button-right { right: var(--space-md); }
+
+        /* Indicadores (Dots) */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-md);
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-full);
+            background-color: var(--color-light-bg);
+            border: 1px solid var(--color-light);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--color-black);
+            border-color: var(--color-black);
+            transform: scale(1.3);
+        }
+
+        /* ==========================================
+           5. SEÇÃO FALE COM NOSSO SUPORTE
+           ========================================== */
+        .support-cta {
+            background-color: var(--color-white);
+            padding: var(--space-section-lg) 0;
+            text-align: center;
+            border-top: var(--border-wire);
+            border-bottom: var(--border-wire);
+        }
+
+        .support-cta-subtitle {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-medium);
+            letter-spacing: 2px;
+            margin-bottom: var(--space-xs);
+        }
+
+        .support-cta-title {
+            font-size: 44px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: var(--space-xl);
+            letter-spacing: 0.5px;
+            color: var(--color-black);
+        }
+
+        .support-cta-title span {
+            border-bottom: 3px solid var(--color-black);
+        }
+
+        /* ==========================================
+           6. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+           ========================================== */
+        .partners-section {
+            padding: var(--space-section) 0;
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .partners-title {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-black);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            display: inline-block;
+            padding-bottom: var(--space-xs);
+            letter-spacing: 0.5px;
+        }
+
+        .partners-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-black);
+            border-radius: var(--radius-xs);
+        }
+
+        .partners-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .partners-carousel {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 var(--space-xl);
+        }
+
+        .partners-track {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            transition: transform 0.5s var(--easing-luxury);
+        }
+
+        .partner-logo-item {
+            flex: 0 0 calc(33.333% - 34px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 75px;
+        }
+
+        .partner-logo-placeholder {
+            width: 170px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+        }
+
+        .partners-btn {
+            font-size: 18px;
+            color: var(--color-medium);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .partners-btn:hover {
+            color: var(--color-black);
+            transform: scale(1.2);
+        }
+
+        /* ==========================================
+           7. RODAPÉ (FOOTER)
+           ========================================== */
+        footer {
+            background-color: var(--color-light-bg);
+            color: var(--color-black);
+            padding: var(--space-section-lg) 0 var(--space-xl);
+            text-align: center;
+            border-top: var(--border-wire);
+        }
+
+        .footer-logo-placeholder {
+            margin: 0 auto var(--space-xs);
+            width: 160px;
+            height: 40px;
+        }
+
+        .footer-tagline {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-medium);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: var(--color-medium);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-link:hover {
+            color: var(--color-black);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-medium);
+            margin: var(--space-xl) 0;
+            opacity: 0.2;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: var(--color-medium);
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+           8. RESPONSIVIDADE (MEDIA QUERIES)
+           ========================================== */
+        @media (max-width: 1024px) {
+            .product-row {
+                flex-direction: column !important;
+                gap: var(--space-xl);
+                text-align: center;
+            }
+            .product-info-side, .product-carousel-side {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .carousel-container {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .carousel-container {
+                height: 250px;
+            }
+            .partner-logo-item {
+                flex: 0 0 calc(50% - 25px);
+            }
+            .support-cta-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- ==========================================
+       1. CABEÇALHO (HEADER)
+       ========================================== -->
+    <header>
+        <div class="container">
+            <div class="logo-placeholder">[ Logo Champions ]</div>
+            
+            <ul class="nav-menu">
+                <li><a href="#top" class="nav-link active">Home</a></li>
+                <li><a href="#product-fire" class="nav-link">Fire</a></li>
+                <li><a href="#product-play" class="nav-link">Play</a></li>
+                <li><a href="#product-infinity" class="nav-link">Infinity</a></li>
+                <li><a href="#product-ultimate" class="nav-link">Ultimate</a></li>
+            </ul>
+
+            <a href="#support" class="btn-wire" style="padding: 8px 22px; font-size: 13px;">SUPORTE</a>
+
+            <div class="mobile-menu-toggle">
+                &#9776;
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+       2. SHOWCASE DE PRODUTOS (CASCATA DIRETA)
+       ========================================== -->
+    <section class="products-showcase">
+        <div class="container">
+            
+            <!-- Aparelho 1: CHAMPIONS FIRE -->
+            <div class="product-row" id="product-fire">
+                <div class="product-info-side">
+                    <div class="product-brand-placeholder img-placeholder">Logo: Champions Fire</div>
+                    <div class="product-hero-image-placeholder img-placeholder img-bob">
+                        <span>Box: Champions Fire<br>(300x220)</span>
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="carousel-container">
+                        <button class="carousel-button carousel-button-left">&#9664;</button>
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Vista Frontal & Desempenho</div>
+                                    <div class="slide-desc">Aparelho Champions Fire em perspectiva frontal. Allwinner H618 (Cortex A53 – 4 x 1.5 GHz), 2GB RAM / 16GB Armazenamento.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Conexões & Portas Traseiras</div>
+                                    <div class="slide-desc">Painel traseiro detalhando conexões: Saída HDMI 2.1, portas USB 2.0, e slot para TF Card.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Controle Remoto Bluetooth</div>
+                                    <div class="slide-desc">Controle remoto ergonômico com conexão Bluetooth 5.0 e botões de comando de voz.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Conectividade Ultra-Rápida</div>
+                                    <div class="slide-desc">Demostração visual do suporte a Wi-Fi 6 de banda dupla e estabilidade de conexão.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Caixa & Embalagem Oficial</div>
+                                    <div class="slide-desc">Embalagem original do Champions Fire com acessórios (Fonte, HDMI 2.1, Controle).</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-button carousel-button-right">&#9654;</button>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-dot active"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aparelho 2: CHAMPIONS PLAY GX PRO -->
+            <div class="product-row reverse" id="product-play">
+                <div class="product-info-side">
+                    <div class="product-brand-placeholder img-placeholder">Logo: Champions Play</div>
+                    <div class="product-hero-image-placeholder img-placeholder img-bob">
+                        <span>Box: Champions Play<br>(300x220)</span>
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="carousel-container">
+                        <button class="carousel-button carousel-button-left">&#9664;</button>
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Vista Frontal & Display</div>
+                                    <div class="slide-desc">Aparelho em vista frontal. Display numérico em LED, processador GX6628 e sistema baseado em Linux.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Painel Superior de Controle</div>
+                                    <div class="slide-desc">Botões físicos superiores de navegação e liga/desliga integrados ao design do chassi.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Conexões Físicas</div>
+                                    <div class="slide-desc">Painel traseiro com interface: USB, HDMI, porta Ethernet RJ45, A.V, RS232 e entrada para Tuner Dual.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Caixa & Embalagem Play</div>
+                                    <div class="slide-desc">Embalagem oficial do Champions Play GX PRO com todos os acessórios inclusos.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-button carousel-button-right">&#9654;</button>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-dot active"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aparelho 3: CHAMPIONS INFINITY GX PRO -->
+            <div class="product-row" id="product-infinity">
+                <div class="product-info-side">
+                    <div class="product-brand-placeholder img-placeholder">Logo: Champions Infinity</div>
+                    <div class="product-hero-image-placeholder img-placeholder img-bob">
+                        <span>Box: Champions Infinity<br>(300x220)</span>
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="carousel-container">
+                        <button class="carousel-button carousel-button-left">&#9664;</button>
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Painel Frontal Digital</div>
+                                    <div class="slide-desc">Aparelho em vista frontal. Chipset GXPRO, GPU Mali Z, display digital numérico e acabamento premium compacto.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Painel de Interfaces Traseiras</div>
+                                    <div class="slide-desc">Portas de saída: USB, HDMI, Rede LAN rj45, A.V e alimentação bivolt (110/220V).</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Grelhas de Ventilação Lateral</div>
+                                    <div class="slide-desc">Design lateral com aberturas projetadas para máxima dissipação térmica passiva.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Caixa & Embalagem Infinity</div>
+                                    <div class="slide-desc">Caixa original do modelo Champions Infinity GX PRO e acessórios inclusos no kit.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-button carousel-button-right">&#9654;</button>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-dot active"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aparelho 4: CHAMPIONS ULTIMATE GX PRO -->
+            <div class="product-row reverse" id="product-ultimate">
+                <div class="product-info-side">
+                    <div class="product-brand-placeholder img-placeholder">Logo: Champions Ultimate</div>
+                    <div class="product-hero-image-placeholder img-placeholder img-bob">
+                        <span>Box: Champions Ultimate<br>(300x220)</span>
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="carousel-container">
+                        <button class="carousel-button carousel-button-left">&#9664;</button>
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Vista Frontal & Display Alfanumérico</div>
+                                    <div class="slide-desc">Aparelho em vista frontal. Display LED alfanumérico retroiluminado, processador GXPRO e Tuner Dual.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Painel de Botões Superiores</div>
+                                    <div class="slide-desc">Botões táteis superiores para troca de canais, volume e acesso ao menu direto no aparelho.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Painel de Conexões Premium</div>
+                                    <div class="slide-desc">Saídas traseiras: HDMI, Ethernet RJ45, USB de alta velocidade, A.V e conector RS232.</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-slide-placeholder">
+                                    <div class="slide-title">Caixa & Embalagem Ultimate</div>
+                                    <div class="slide-desc">Caixa oficial do Champions Ultimate GX PRO demonstrando dimensões e acessórios.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-button carousel-button-right">&#9654;</button>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-dot active"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                        <button class="carousel-dot"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+       3. SEÇÃO FALE COM NOSSO SUPORTE
+       ========================================== -->
+    <section class="support-cta" id="support">
+        <div class="container">
+            <p class="support-cta-subtitle">Precisa de ajuda com seu aparelho Champions?</p>
+            <h2 class="support-cta-title">Fale com nosso <span>Suporte</span></h2>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn-wire">SUPORTE</a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       4. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+       ========================================== -->
+    <section class="partners-section" id="partners">
+        <div class="container">
+            <h3 class="partners-title">Disponível nas principais lojas do Paraguai</h3>
+            
+            <div class="partners-carousel-wrapper">
+                <button class="partners-btn partners-btn-left">&#9664;</button>
+                <div class="partners-carousel">
+                    <div class="partners-track">
+                        <div class="partner-logo-item">
+                            <div class="partner-logo-placeholder img-placeholder">Madrid Center</div>
+                        </div>
+                        <div class="partner-logo-item">
+                            <div class="partner-logo-placeholder img-placeholder">Open Eletrônicos</div>
+                        </div>
+                        <div class="partner-logo-item">
+                            <div class="partner-logo-placeholder img-placeholder">Mega Eletrônicos</div>
+                        </div>
+                        <div class="partner-logo-item">
+                            <div class="partner-logo-placeholder img-placeholder">Nissei</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="partners-btn partners-btn-right">&#9654;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       5. RODAPÉ (FOOTER)
+       ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo-placeholder img-placeholder">[ Logo Champions ]</div>
+            <p class="footer-tagline">A Marca Campeã</p>
+            
+            <div class="footer-nav">
+                <a href="#top" class="footer-link">Home</a>
+                <a href="#product-fire" class="footer-link">Fire</a>
+                <a href="#product-play" class="footer-link">Play</a>
+                <a href="#product-infinity" class="footer-link">Infinity</a>
+                <a href="#product-ultimate" class="footer-link">Ultimate</a>
+                <a href="#support" class="btn-wire" style="padding: 8px 22px; font-size: 13px;">SUPORTE</a>
+            </div>
+
+            <div class="footer-divider"></div>
+            <p class="footer-copy">Copyright© 2023 - Todos os direitos reservados a CHAMPIONS</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       6. JAVASCRIPT (LÓGICA DOS CARROSSÉIS E LINKS)
+       ========================================== -->
+    <script>
+        // Lógica para os Carrosséis de Produtos (4 carrosséis)
+        document.querySelectorAll('.product-row').forEach(row => {
+            const track = row.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextBtn = row.querySelector('.carousel-button-right');
+            const prevBtn = row.querySelector('.carousel-button-left');
+            const dotsNav = row.querySelector('.carousel-nav');
+            const dots = Array.from(dotsNav.children);
+ 
+            let currentIndex = 0;
+ 
+            const updateCarousel = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                currentIndex = index;
+                
+                // Atualizar dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            };
+ 
+            nextBtn.addEventListener('click', () => {
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= slides.length) nextIndex = 0;
+                updateCarousel(nextIndex);
+            });
+ 
+            prevBtn.addEventListener('click', () => {
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) prevIndex = slides.length - 1;
+                updateCarousel(prevIndex);
+            });
+ 
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    updateCarousel(index);
+                });
+            });
+        });
+ 
+        // Lógica para o Carrossel de Lojas Parceiras
+        const partnersTrack = document.querySelector('.partners-track');
+        const partnerItems = Array.from(partnersTrack.children);
+        const partnerNext = document.querySelector('.partners-btn-right');
+        const partnerPrev = document.querySelector('.partners-btn-left');
+        
+        let partnerIndex = 0;
+        
+        const getItemsPerPage = () => {
+            if (window.innerWidth <= 500) return 1;
+            if (window.innerWidth <= 768) return 2;
+            return 3;
+        };
+ 
+        const updatePartnersCarousel = () => {
+            const itemsPerPage = getItemsPerPage();
+            const maxIndex = partnerItems.length - itemsPerPage;
+            
+            if (partnerIndex > maxIndex) partnerIndex = maxIndex;
+            if (partnerIndex < 0) partnerIndex = 0;
+            
+            const itemWidth = partnerItems[0].getBoundingClientRect().width + 50; // Largura + Gap
+            partnersTrack.style.transform = `translateX(-${partnerIndex * itemWidth}px)`;
+        };
+ 
+        partnerNext.addEventListener('click', () => {
+            const itemsPerPage = getItemsPerPage();
+            const maxIndex = partnerItems.length - itemsPerPage;
+            if (partnerIndex < maxIndex) {
+                partnerIndex++;
+                updatePartnersCarousel();
+            } else {
+                partnerIndex = 0; // Volta ao início
+                updatePartnersCarousel();
+            }
+        });
+ 
+        partnerPrev.addEventListener('click', () => {
+            if (partnerIndex > 0) {
+                partnerIndex--;
+                updatePartnersCarousel();
+            } else {
+                const itemsPerPage = getItemsPerPage();
+                partnerIndex = partnerItems.length - itemsPerPage;
+                updatePartnersCarousel();
+            }
+        });
+ 
+        window.addEventListener('resize', updatePartnersCarousel);
+ 
+        // Menu Mobile (Hamburguer) Toggle simples
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+ 
+        mobileMenuToggle.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '70px';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navMenu.style.padding = '20px';
+                navMenu.style.borderBottom = '1px solid var(--color-black)';
+                navMenu.style.gap = '15px';
+            }
+        });
+
+        // Fechar menu mobile ao clicar em algum link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                }
+            });
+        });
+
+        // Intersection Observer para atualizar o link ativo no menu ao rolar a página
+        const observerSections = document.querySelectorAll('.product-row, #support, #partners');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-30% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        const href = link.getAttribute('href');
+                        
+                        if (href === `#${id}`) {
+                            link.classList.add('active');
+                        } else if (id === 'product-fire' && href === '#top') {
+                            // Se estivermos no topo (primeiro produto), destaca o link Home
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        observerSections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

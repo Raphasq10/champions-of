@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions - Showroom Virtual Premium</title>
+    
+    <!-- Google Fonts: Rubik (Títulos) e Inter (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. RESET E DESIGN SYSTEM (DARK TECH)
+           ========================================== */
+        :root {
+            --primary: #F56A25; /* Laranja Oficial Champions */
+            --primary-glow: rgba(245, 106, 37, 0.45);
+            --primary-grad: linear-gradient(135deg, #F56A25 0%, #FF8C00 100%);
+            --dark-deep: #0D0E10; /* Fundo mais escuro */
+            --dark-card: rgba(25, 28, 30, 0.65); /* Glassmorphism card */
+            --dark-card-border: rgba(255, 255, 255, 0.06);
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --font-title: 'Rubik', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark-deep);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container-fluid-showcase {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Botão Premium Laranja (WhatsApp/Suporte) */
+        .btn-premium {
+            background: var(--primary-grad);
+            color: var(--text-light);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 106, 37, 0.6);
+            background: transparent;
+            border-color: var(--primary);
+        }
+
+        /* ==========================================
+           2. CABEÇALHO (HEADER - GLASSMORPHISM)
+           ========================================== */
+        header {
+            background-color: rgba(13, 14, 16, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--dark-card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+            transition: var(--transition-smooth);
+        }
+
+        .logo:hover img {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-family: var(--font-title);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* ==========================================
+           3. SEÇÃO HERO / FAMÍLIA CHAMPIONS
+           ========================================== */
+        .hero {
+            position: relative;
+            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.94)), url('img/banner-hero-champions-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 0 100px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        /* Lado Esquerdo: Foto da Família */
+        .hero-left {
+            flex: 0 0 45%;
+        }
+
+        .family-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--dark-card-border);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+        }
+
+        .family-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        .family-image-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        .family-image-wrapper .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 30px rgba(245, 106, 37, 0.35);
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        /* Lado Direito: Textos e Cards */
+        .hero-right {
+            flex: 0 0 55%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 56px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #FFFFFF 30%, #F56A25 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+            text-align: left;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-title);
+            font-size: 26px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        /* Grid dos 4 aparelhos compactos */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 0;
+        }
+
+        .hero-card {
+            background-color: var(--dark-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--dark-card-border);
+            border-radius: 12px;
+            padding: 20px 10px 15px;
+            transition: var(--transition-smooth);
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(25, 28, 30, 0.85);
+            border-color: rgba(245, 106, 37, 0.4);
+            box-shadow: 0 12px 30px rgba(245, 106, 37, 0.18);
+        }
+
+        /* Badge Novo */
+        .badge-new {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-grad);
+            color: var(--text-light);
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px var(--primary-glow);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .card-icon {
+            height: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon img {
+            max-height: 100%;
+            width: auto;
+        }
+
+        .card-image {
+            margin: 5px 0 15px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .card-image img {
+            max-height: 100%;
+            width: auto;
+            filter: drop-shadow(0 10px 12px rgba(0,0,0,0.65));
+            transition: var(--transition-smooth);
+        }
+
+        .hero-card:hover .card-image img {
+            transform: scale(1.08) translateY(-3px);
+            filter: drop-shadow(0 15px 18px rgba(245, 106, 37, 0.3));
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-specs {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .card-specs span {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .card-system {
+            margin-top: auto;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-system span {
+            color: var(--primary);
+        }
+
+        /* ==========================================
+           4. SEÇÃO DE DIVISÃO (LOJAS DO PARAGUAI)
+           ========================================== */
+        .divider-section {
+            background-color: #121417;
+            padding: 55px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--dark-card-border);
+            border-top: 1px solid var(--dark-card-border);
+            position: relative;
+            background-image: radial-gradient(rgba(245, 106, 37, 0.08) 1px, transparent 1px), url('../wp-content/uploads/2023/06/technology.svg');
+            background-size: 24px 24px, contain;
+            background-repeat: repeat, no-repeat;
+            background-position: center, right center;
+        }
+
+        .divider-title {
+            font-family: var(--font-title);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .divider-title span {
+            color: var(--primary);
+        }
+
+        .divider-subtitle {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* ==========================================
+           5. SEÇÃO DE CARROSSÉIS DE PRODUTOS (SHOWCASE)
+           ========================================== */
+        .products-showcase {
+            padding: 100px 0;
+            background-color: var(--dark-deep);
+            position: relative;
+        }
+
+        .product-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 120px;
+        }
+
+        .product-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Alternando lados */
+        .product-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Lado Esquerdo/Direito: Info e Logotipo do Produto */
+        .product-info-side {
+            flex: 0 0 337px;
+            width: 337px;
+            height: 287px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between; /* Spread icon and text vertical bounds */
+            z-index: 10;
+        }
+
+        .product-brand-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            width: 100%;
+            height: 109px; /* Fire text logo default height */
+        }
+
+        .product-brand-logo img {
+            width: 337px; /* Matches exact user dimensions width */
+            height: 109px;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+            transition: var(--transition-smooth);
+        }
+
+        #product-infinity .product-brand-logo {
+            height: 81px; /* Infinity text logo height */
+        }
+
+        #product-infinity .product-brand-logo img {
+            width: 337px;
+            height: 81px;
+        }
+
+        .product-hero-image {
+            max-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .product-hero-image img {
+            max-height: 100%;
+            width: auto;
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.7));
+            transition: var(--transition-smooth);
+        }
+
+        .product-row:hover .product-hero-image img {
+            transform: scale(1.05) translateY(-5px);
+            filter: drop-shadow(0 25px 35px var(--primary-glow));
+        }
+
+        /* Lado Direito: Carrossel do Produto */
+        .product-carousel-side {
+            flex: 0 0 auto;
+            position: relative;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            z-index: 5;
+        }
+
+        /* Estilo do Ícone e Brilho na Esquerda */
+        .product-brand-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0;
+            width: 100%;
+            height: 126px; /* Fire icon default height */
+        }
+        
+        .product-brand-icon img {
+            width: 189px; /* Matches layout exactly (189px width) */
+            height: 126px;
+            filter: drop-shadow(0 0 20px rgba(245, 106, 37, 0.65));
+            transition: var(--transition-smooth);
+        }
+
+        #product-infinity .product-brand-icon {
+            height: 120px; /* Infinity icon height */
+        }
+
+        #product-infinity .product-brand-icon img {
+            width: 250px; /* Infinity icon width */
+            height: 120px;
+        }
+
+        .product-brand-icon:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(245, 106, 37, 0.85));
+        }
+
+        
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        
+        /* Swiper Overrides */
+        .swiper {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px;
+            background-color: transparent !important;
+        }
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .swiper-slide img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        /* Estilo da Fileira Estática de Produtos */
+        .product-carousel-static {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: auto;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .product-card-static {
+            flex: 0 0 327px; /* All cards have exact same width */
+            width: 327px;
+            height: 430px;   /* Side cards height is 430px */
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, height 0.4s;
+            transform-origin: center center;
+        }
+
+        .product-card-static.active {
+            height: 529px;   /* Middle card is 529px */
+            box-shadow: 0 20px 45px rgba(245, 106, 37, 0.25);
+            border: 1px solid rgba(245, 106, 37, 0.3);
+        }
+
+        .product-card-static img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .product-card-static:not(.active) img {
+            object-position: center top; /* Align smaller side card images to the top center */
+        }
+
+        .product-card-static:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Responsividade para a fileira estática */
+        @media (max-width: 768px) {
+            .product-carousel-static {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .product-card-static {
+                flex: 1 1 auto;
+                width: 100%;
+                max-width: 320px;
+                height: 200px;
+            }
+            .product-card-static.active {
+                height: 200px;
+            }
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            background-color: rgba(13, 14, 16, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            color: var(--primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            display: none;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: var(--primary);
+            color: var(--text-light); /* Volta a ser branco no tema escuro */
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: scale(1.08);
+        }
+        .swiper-pagination {
+            display: none !important;
+        }
+        
+        .partners-swiper {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 30px;
+        }
+        .partners-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ==========================================
+           6. SEÇÃO FALE COM NOSSO SUPORTE
+           ========================================== */
+        .support-cta {
+            position: relative;
+            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('../wp-content/uploads/2023/06/pexels-mikhail-nilov-7682340.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 110px 0;
+            text-align: center;
+            border-top: 1px solid var(--dark-card-border);
+            border-bottom: 1px solid var(--dark-card-border);
+        }
+
+        .support-cta-subtitle {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .support-cta-title {
+            font-family: var(--font-title);
+            font-size: 44px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
+        }
+
+        .support-cta-title span {
+            color: var(--text-light);
+            background: var(--primary-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .support-cta .btn-premium {
+            font-size: 16px;
+            padding: 16px 36px;
+            box-shadow: 0 8px 25px rgba(245, 106, 37, 0.45);
+        }
+
+        /* ==========================================
+           7. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+           ========================================== */
+        .partners-section {
+            padding: 80px 0;
+            background-color: var(--dark-deep);
+            text-align: center;
+        }
+
+        .partners-title {
+            font-family: var(--font-title);
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .partners-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Carrossel de Parceiros */
+        .partners-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .partners-carousel {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 30px;
+        }
+
+        .partners-track {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            transition: transform 0.5s ease;
+        }
+
+        .partner-logo-item {
+            flex: 0 0 calc(33.333% - 34px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 75px;
+        }
+
+        .partner-logo-item img {
+            max-height: 100%;
+            max-width: 155px;
+            filter: grayscale(100%) brightness(1.2);
+            opacity: 0.35;
+            transition: var(--transition-smooth);
+        }
+
+        .partner-logo-item img:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.04);
+        }
+
+        /* Botões de Parceiros */
+        .partners-btn {
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .partners-btn:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ==========================================
+           8. RODAPÉ (FOOTER)
+           ========================================== */
+        footer {
+            background-color: #090A0B;
+            color: var(--text-light);
+            padding: 80px 0 35px;
+            text-align: center;
+            border-top: 1px solid var(--dark-card-border);
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-logo img {
+            height: 38px;
+            margin: 0 auto;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-title);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 45px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-title);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-link:hover {
+            color: var(--text-light);
+        }
+
+        .footer-nav .btn-premium {
+            font-size: 13px;
+            padding: 8px 22px;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--dark-card-border);
+            margin: 35px 0;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+           9. RESPONSIVIDADE (MEDIA QUERIES)
+           ========================================== */
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-left, .hero-right {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .hero-title {
+                font-size: 44px;
+                text-align: center;
+            }
+            .hero-subtitle {
+                font-size: 22px;
+                text-align: center;
+            }
+            .hero-tagline {
+                text-align: center;
+            }
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .product-row {
+                flex-direction: column !important;
+                gap: 50px;
+                text-align: center;
+            }
+            .product-info-side, .product-carousel-side {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .product-info-side {
+                height: auto;
+                gap: 20px;
+            }
+            .product-brand-icon, .product-brand-logo {
+                height: auto;
+            }
+            .product-brand-logo img, .product-brand-icon img {
+                max-width: 100%;
+                height: auto;
+                width: auto;
+            }
+            .product-carousel-side {
+                padding: 10px 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .hero-title {
+                font-size: 38px;
+            }
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 40px auto 0;
+            }
+            .divider-title {
+                font-size: 20px;
+            }
+            .divider-subtitle {
+                font-size: 15px;
+            }
+            .carousel-container {
+                height: 250px;
+            }
+            .partner-logo-item {
+                flex: 0 0 calc(50% - 25px);
+            }
+            .support-cta-title {
+                font-size: 28px;
+            }
+        }
+    
+        /* ==========================================
+           WOW EFFECTS CSS
+           ========================================== */
+
+
+        /* Custom Cursor */
+        /* Custom Cursor rules removed to restore browser pointer */
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 99998;
+            opacity: 0.035;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Spotlight Glow on Cards */
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(245, 106, 37, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+        .hero-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Fix SplitType Text Wrapping */
+        .line { overflow: hidden; padding-bottom: 5px; }
+        .word { padding-bottom: 5px; }
+
+
+    </style>
+</head>
+<body id="top">
+
+    <!-- ==========================================
+       1. CABEÇALHO (HEADER)
+       ========================================== -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="img/logo-champions-fundo-escuro.png" alt="Logo Champions">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#top" class="nav-link active">Home</a></li>
+                <li><a href="#product-fire" class="nav-link">Fire</a></li>
+                <li><a href="#product-infinity" class="nav-link">Infinity</a></li>
+            </ul>
+
+            <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                <i class="fab fa-whatsapp"></i> SUPORTE
+            </a>
+
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+       2. SEÇÃO HERO / BANNER PRINCIPAL (FAMÍLIA CHAMPIONS - 2 COLUNAS)
+       ========================================== -->
+    <section class="hero">
+        <div class="container hero-container">
+            
+            <!-- Lado Esquerdo: Imagem da Família -->
+            <div class="hero-left">
+                <div class="family-image-wrapper">
+                    <img src="img/family-watching-tv.jpg" alt="Família Champions assistindo TV">
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+
+            <!-- Lado Direito: Textos e Cards de Produtos -->
+            <div class="hero-right">
+                <h1 class="hero-title">Família Champions</h1>
+                <h2 class="hero-subtitle">A Marca Campeã</h2>
+                <p class="hero-tagline">A melhor programação dentro de sua casa</p>
+                
+                <div class="hero-grid">
+                    <!-- Card 1: FIRE -->
+                    <a href="#product-fire" class="hero-card">
+                        <div class="card-glow"></div>
+                        <span class="badge-new">Novo</span>
+                        <div class="card-icon">
+                            <img src="img/icone-champions-fire.png" alt="Fire logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="img/fire/sem fundo/champions-fire-vião-frontal.png" alt="Champions Fire">
+                        </div>
+                        <h3 class="card-title">Fire</h3>
+                        <p class="card-specs"><span>2/16</span> GB</p>
+                        <p class="card-specs"><span>Stick</span> TV</p>
+                    </a>
+
+                    <!-- Card 2: PLAY -->
+                    <div class="hero-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon">
+                            <img src="img/icone-champions-play.png" alt="Play logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2023/06/play-front.png" alt="Champions Play">
+                        </div>
+                        <h3 class="card-title">Play</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </div>
+
+                    <!-- Card 3: INFINITY -->
+                    <a href="#product-infinity" class="hero-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon">
+                            <img src="img/icones-champions-infinity.png" alt="Infinity logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="img/inifinity/sem fundo/infinity-left.png" alt="Champions Infinity">
+                        </div>
+                        <h3 class="card-title">Infinity</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </a>
+
+                    <!-- Card 4: ULTIMATE -->
+                    <div class="hero-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon">
+                            <img src="img/icone-champions-ultimate.png" alt="Ultimate logo">
+                        </div>
+                        <div class="card-image">
+                            <img src="../wp-content/uploads/2023/06/ultimate-front.png" alt="Champions Ultimate">
+                        </div>
+                        <h3 class="card-title">Ultimate</h3>
+                        <p class="card-system"><span>G-Share</span></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ==========================================
+       3. SEÇÃO DE DIVISÃO (LOJAS PARAGUAI)
+       ========================================== -->
+    <section class="divider-section">
+        <div class="container">
+            <h3 class="divider-title">Disponíveis <span>nas melhores lojas do Paraguai.</span></h3>
+            <h4 class="divider-subtitle">champions-oficial.com</h4>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       4. SEÇÃO DE CARROSSÉIS DE PRODUTOS
+       ========================================== -->
+    <section class="products-showcase">
+        <div class="container">
+            
+            <!-- Linha 1: CHAMPIONS FIRE (O grande Destaque) -->
+            <div class="product-row" id="product-fire">
+                <div class="product-info-side">
+                    <div class="product-brand-icon">
+                        <img src="img/icone-champions-fire.png" alt="Champions Fire Icon">
+                    </div>
+                    <div class="product-brand-logo">
+                        <img src="img/logo-champions-fire-fundo-escuro.png" alt="Champions Fire Logo">
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="product-carousel-static">
+                        <div class="product-card-static">
+                            <img src="imagens-originais/Banner-miniatura-tema-filmes.jpg" alt="Interface Filmes">
+                        </div>
+                        <div class="product-card-static active">
+                            <img src="img/fire/champion-fire-espositor.png" alt="Fire Expositor">
+                        </div>
+                        <div class="product-card-static">
+                            <img src="imagens-originais/Banner-miniatura-tema-series.jpg" alt="Interface Séries">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 2: CHAMPIONS INFINITY -->
+            <div class="product-row reverse" id="product-infinity">
+                <div class="product-info-side">
+                    <div class="product-brand-icon">
+                        <img src="img/icones-champions-infinity.png" alt="Champions Infinity Icon">
+                    </div>
+                    <div class="product-brand-logo">
+                        <img src="img/logo-champions-infinity-fundo-escuro.png" alt="Champions Infinity Logo">
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="product-carousel-static">
+                        <div class="product-card-static">
+                            <img src="imagens-originais/banner-champions-infinity-1.jpg" alt="Interface Infinity 1">
+                        </div>
+                        <div class="product-card-static active">
+                            <img src="img/inifinity/champion-infinity -expositor.png" alt="Infinity Expositor">
+                        </div>
+                        <div class="product-card-static">
+                            <img src="imagens-originais/banner-champions-infinity-2.jpg" alt="Interface Infinity 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+       5. SEÇÃO FALE COM NOSSO SUPORTE
+       ========================================== -->
+    <section class="support-cta">
+        <div class="container">
+            <p class="support-cta-subtitle">Precisa de ajuda com seu aparelho Champions?</p>
+            <h2 class="support-cta-title">Fale com nosso <span>Suporte</span></h2>
+            <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                <i class="fab fa-whatsapp"></i> SUPORTE
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       6. SEÇÃO PARCEIROS (ONDE ENCONTRAR)
+       ========================================== -->
+    <section class="partners-section">
+        <div class="container">
+            <h3 class="partners-title">Disponível nas principais lojas do Paraguai</h3>
+            
+            <div class="partners-carousel-wrapper">
+                <div class="swiper-button-prev partners-btn partners-btn-left"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper partners-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_madrid.png" alt="Madrid Center">
+                        </div>
+                        <div class="swiper-slide partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_open.png" alt="Open Eletrônicos">
+                        </div>
+                        <div class="swiper-slide partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_mega.png" alt="Mega Eletrônicos">
+                        </div>
+                        <div class="swiper-slide partner-logo-item">
+                            <img src="../wp-content/uploads/2023/06/logo_nissei.png" alt="Nissei">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next partners-btn partners-btn-right"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       7. RODAPÉ (FOOTER)
+       ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="img/logo-champions-fundo-escuro.png" alt="Logo Champions Footer">
+            </div>
+            <p class="footer-tagline">A Marca Campeã</p>
+            
+            <div class="footer-nav">
+                <a href="#top" class="footer-link">Home</a>
+                <a href="#product-fire" class="footer-link">Fire</a>
+                <a href="#product-infinity" class="footer-link">Infinity</a>
+                <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
+                    <i class="fab fa-whatsapp"></i> SUPORTE
+                </a>
+            </div>
+
+            <div class="footer-divider"></div>
+            <p class="footer-copy">Copyright© 2023 - Todos os direitos reservados a CHAMPIONS</p>
+        </div>
+    </footer>
+
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- SplitType & GSAP -->
+    <script src="https://unpkg.com/split-type"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- ==========================================
+       8. JAVASCRIPT (LÓGICA DOS CARROSSÉIS)
+       ========================================= -->
+    
+    <script>
+        // Swiper para Produtos
+        const productSwipers = document.querySelectorAll('.product-swiper');
+        productSwipers.forEach(container => {
+            const wrapper = container.parentElement;
+            new Swiper(container, {
+                loop: true,
+                grabCursor: true,
+                speed: 600,
+                spaceBetween: 20,
+                pagination: {
+                    el: wrapper.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: container.querySelector('.swiper-button-next'),
+                    prevEl: container.querySelector('.swiper-button-prev'),
+                },
+                effect: 'slide'
+            });
+        });
+
+        // Swiper para Produtos 3D (Desativado temporariamente para fileiras estáticas)
+
+        // Swiper para Parceiros
+        new Swiper('.partners-swiper', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            speed: 800,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.partners-btn.swiper-button-next',
+                prevEl: '.partners-btn.swiper-button-prev',
+            },
+            breakpoints: {
+                320: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 }
+            }
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Efeito de levitação nas imagens dos heróis de cada produto
+        gsap.utils.toArray('.product-hero-image img').forEach(img => {
+            gsap.to(img, {
+                y: -15,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+
+        // 2. Animação de Reveal on Scroll (Fade-up)
+        const revealElements = document.querySelectorAll('.product-row, .support-cta, .partners-section');
+        revealElements.forEach(el => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        
+        // =========================================
+        // EFEITOS WOW AVANÇADOS (Awwwards Style)
+        // =========================================
+        
+        if (typeof gsap !== 'undefined') {
+            // 1. Preloader & SplitText Animation
+            let splitHeroTitle, splitCtaTitle;
+            try {
+                if (typeof SplitType !== 'undefined') {
+                    splitHeroTitle = new SplitType('.hero-title', { types: 'chars' });
+                    splitCtaTitle = new SplitType('.support-cta-title', { types: 'chars' });
+                }
+            } catch (e) {
+                console.error("SplitType failed to load:", e);
+            }
+            
+            const tlEntrance = gsap.timeline();
+            if (splitHeroTitle && splitHeroTitle.chars) {
+                tlEntrance.from(splitHeroTitle.chars, { y: 100, opacity: 0, stagger: 0.03, duration: 1, ease: "back.out(1.7)" });
+            } else {
+                tlEntrance.from('.hero-title', { y: 100, opacity: 0, duration: 1, ease: "back.out(1.7)" });
+            }
+            tlEntrance.from('.hero-subtitle', { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
+                      .from('.hero-card', { y: 50, opacity: 0, stagger: 0.1, duration: 0.8, ease: "power2.out" }, "-=0.6");
+
+            // 2. Custom Cursor Dinâmico desativado temporariamente para cursor padrão do navegador
+
+            // 3. Magnetic Hover (Botões e Logos)
+            const magneticElements = document.querySelectorAll('.btn-premium, .logo img');
+            magneticElements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    gsap.to(el, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+                });
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+                });
+            });
+
+            // 4. Spotlight nas Cards (Iluminação Dinâmica)
+            const cards = document.querySelectorAll('.hero-card');
+            cards.forEach(card => {
+                const glow = card.querySelector('.card-glow');
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    gsap.to(glow, { x: x, y: y, opacity: 1, duration: 0.1 });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(glow, { opacity: 0, duration: 0.5 });
+                });
+            });
+
+            // 5. ScrollTrigger SplitText (Support CTA)
+            if (splitCtaTitle && splitCtaTitle.chars) {
+                gsap.from(splitCtaTitle.chars, {
+                    scrollTrigger: {
+                        trigger: '.support-cta',
+                        start: "top 75%",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    stagger: 0.05,
+                    duration: 0.8,
+                    ease: "back.out(1.5)"
+                });
+            } else {
+                gsap.from('.support-cta-title', {
+                    scrollTrigger: {
+                        trigger: '.support-cta',
+                        start: "top 75%",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "back.out(1.5)"
+                });
+            }
+        }
+        
+        // Efeito WOW Fim.
+
+        // Menu Mobile Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '70px';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.backgroundColor = 'rgba(13, 14, 16, 0.95)';
+                navMenu.style.padding = '20px';
+                navMenu.style.borderBottom = '1px solid var(--dark-card-border)';
+                navMenu.style.gap = '15px';
+            }
+        });
+    </script>
+
+    <!-- Efeito WOW: Noise -->
+    <div class="noise-overlay"></div>
+</body>
+</html>

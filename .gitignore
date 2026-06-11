@@ -1,0 +1,17 @@
+# Ignore WordPress core folders and configuration
+/wp-admin/
+/wp-includes/
+/wp-content/
+/wp-config.php
+/*.php
+/license.txt
+/readme.html
+
+# Ignore huge static page export in new-champions
+/new-champions/Champions – A marca campeã.html
+
+# Ignore OS files and temp files
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp

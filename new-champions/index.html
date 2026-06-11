@@ -65,9 +65,9 @@
 
         .container {
             width: 100%;
-            max-width: 1600px;
+            max-width: 1600px; /* Atualizado conforme mockup 1600px */
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
         .container-fluid-showcase {
@@ -180,144 +180,216 @@
             color: var(--text-light);
         }
 
-        /* ==========================================
-           3. SEÇÃO HERO / FAMÍLIA CHAMPIONS
-           ========================================== */
         .hero {
             position: relative;
-            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.94)), url('img/banner-hero-champions-bg.jpg');
+            width: 100%;
+            max-width: 1920px;
+            height: 1080px;
+            min-height: 1080px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            background-image: linear-gradient(to right, rgba(0,0,0,0) 30%, rgba(15, 15, 15, 0.9) 60%, rgba(15, 15, 15, 1)), 
+                              url('img/banner-hero-BG-V2.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: left top;
             background-repeat: no-repeat;
-            padding: 80px 0 100px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 40px 20px;
         }
 
         .hero-container {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-        }
-
-        /* Lado Esquerdo: Foto da Família */
-        .hero-left {
-            flex: 0 0 45%;
-        }
-
-        .family-image-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--dark-card-border);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.7);
-        }
-
-        .family-image-wrapper img {
             width: 100%;
-            height: auto;
-            border-radius: 20px;
-            transition: var(--transition-smooth);
-            display: block;
-        }
-
-        .family-image-wrapper:hover img {
-            transform: scale(1.02);
-        }
-
-        .family-image-wrapper .glow-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            box-shadow: inset 0 0 30px rgba(245, 106, 37, 0.35);
-            pointer-events: none;
-            border-radius: 20px;
-        }
-
-        /* Lado Direito: Textos e Cards */
-        .hero-right {
-            flex: 0 0 55%;
+            max-width: 1600px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             text-align: left;
+            padding-left: 619px; /* 1600px - 981px (bloco do conteúdo) = 619px */
+            padding-top: 160px; /* Posiciona o conteúdo no terço superior do hero */
         }
 
-        .hero-title {
-            font-family: var(--font-title);
-            font-size: 56px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #FFFFFF 30%, #F56A25 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
-            text-align: left;
+        /* TEXTOS PRINCIPAIS */
+        .hero-text-section {
+            margin-bottom: 60px; /* Espaço generoso entre o bloco de texto e os cards */
         }
 
         .hero-subtitle {
+            color: #ff5a00;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
             font-family: var(--font-title);
-            font-size: 26px;
-            font-weight: 800;
             text-transform: uppercase;
-            color: var(--primary);
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            text-align: left;
+        }
+
+        .hero-main-logo {
+            width: 520px; /* Logo grande como no mockup */
+            max-width: 100%;
+            margin: 0 0 4px 0;
+            display: block;
         }
 
         .hero-tagline {
-            font-family: var(--font-body);
-            font-size: 16px;
-            color: var(--text-muted);
+            color: #ff5a00;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 3px;
             margin-bottom: 35px;
-            font-weight: 500;
+            font-family: var(--font-title);
+            text-transform: uppercase;
         }
 
-        /* Grid dos 4 aparelhos compactos */
-        .hero-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 0;
+        .hero-description {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .hero-description .highlight {
+            color: #ff5a00;
+            font-weight: 700;
+        }
+
+        /* GRID DE CARDS DOS PRODUTOS */
+        .hero-cards-container {
+            display: flex;
+            gap: 15px; /* Gaps calculados: 4x229 + 3x15 = 916+45 = 961px < 981px ✓ */
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 981px;
+            flex-wrap: nowrap;
         }
 
         .hero-card {
-            background-color: var(--dark-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--dark-card-border);
-            border-radius: 12px;
-            padding: 20px 10px 15px;
-            transition: var(--transition-smooth);
+            background: rgba(20, 22, 26, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 22px 12px 18px;
+            width: 229px; /* Exatamente 229px como no mockup */
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            padding: 1px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 16px;
+            padding: 1.5px;
+            background: linear-gradient(135deg, rgba(255,90,0,0.6) 0%, rgba(255,255,255,0.05) 50%, rgba(255,90,0,0.1) 100%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
             pointer-events: none;
         }
 
         .hero-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(25, 28, 30, 0.85);
-            border-color: rgba(245, 106, 37, 0.4);
-            box-shadow: 0 12px 30px rgba(245, 106, 37, 0.18);
+            transform: translateY(-12px);
+            background: rgba(30, 32, 38, 0.85);
+            border-color: transparent;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 90, 0, 0.15);
         }
+
+        .hero-card:hover::before {
+            opacity: 1;
+        }
+
+        .device-img {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            z-index: 2;
+        }
+        
+        .device-img img {
+            max-height: 100%;
+            max-width: 100%;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hero-card:hover .device-img img {
+            transform: scale(1.1) translateY(-8px);
+        }
+
+        .icon-img {
+            height: 55px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+        
+        .icon-img img {
+            max-height: 100%;
+            max-width: 85%;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .hero-card:hover .icon-img img {
+            filter: drop-shadow(0 6px 12px rgba(255,90,0,0.3));
+        }
+
+        .logo-img {
+            height: 30px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .logo-img img {
+            max-height: 100%;
+            max-width: 95%;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover .logo-img img {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVIDADE BÁSICA */
+        @media (max-width: 1200px) {
+            .hero-container { padding-left: 0; }
+            .hero { 
+                background-image: linear-gradient(to top, rgba(15,15,15,1) 40%, rgba(15,15,15,0.7)), url('img/banner-hero-champions-bg.jpg'); 
+                justify-content: center; 
+            }
+        }
+
+        .card-icon img {
+            max-height: 100%;
+            max-width: 90%;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
 
         /* Badge Novo */
         .badge-new {
@@ -335,40 +407,6 @@
             box-shadow: 0 4px 10px var(--primary-glow);
             letter-spacing: 0.5px;
             border: 1px solid rgba(255,255,255,0.25);
-        }
-
-        .card-icon {
-            height: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-icon img {
-            max-height: 100%;
-            width: auto;
-        }
-
-        .card-image {
-            margin: 5px 0 15px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-        }
-
-        .card-image img {
-            max-height: 100%;
-            width: auto;
-            filter: drop-shadow(0 10px 12px rgba(0,0,0,0.65));
-            transition: var(--transition-smooth);
-        }
-
-        .hero-card:hover .card-image img {
-            transform: scale(1.08) translateY(-3px);
-            filter: drop-shadow(0 15px 18px rgba(245, 106, 37, 0.3));
         }
 
         .card-title {
@@ -922,22 +960,27 @@
            9. RESPONSIVIDADE (MEDIA QUERIES)
            ========================================== */
         @media (max-width: 1024px) {
+            .hero {
+                background-position: center left;
+                background-image: linear-gradient(to top, rgba(13, 14, 16, 1) 0%, rgba(13, 14, 16, 0.7) 50%, rgba(13, 14, 16, 0.3) 100%), url('img/banner-hero-champions-bg.jpg');
+            }
             .hero-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 40px;
+                justify-content: center;
             }
-            .hero-left, .hero-right {
+            .hero-right {
                 flex: 0 0 100%;
                 width: 100%;
+                margin-top: 150px;
+                align-items: center;
             }
-            .hero-title {
-                font-size: 44px;
-                text-align: center;
+            .hero-main-logo {
+                width: 320px;
             }
-            .hero-subtitle {
-                font-size: 22px;
-                text-align: center;
+            .hero-familia, .hero-marca {
+                font-size: 20px;
             }
             .hero-tagline {
                 text-align: center;
@@ -981,16 +1024,23 @@
             .mobile-menu-toggle {
                 display: block;
             }
-            .hero-title {
-                font-size: 38px;
+            .hero-right {
+                margin-top: 80px;
             }
-            .hero-subtitle {
+            .hero-main-logo {
+                width: 280px;
+            }
+            .hero-familia, .hero-marca {
+                font-size: 16px;
+            }
+            .hero-tagline {
                 font-size: 16px;
             }
             .hero-grid {
-                grid-template-columns: 1fr;
-                max-width: 320px;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
                 margin: 40px auto 0;
+                gap: 10px;
             }
             .divider-title {
                 font-size: 20px;
@@ -1084,94 +1134,77 @@
     </header>
 
     <!-- ==========================================
-       2. SEÇÃO HERO / BANNER PRINCIPAL (FAMÍLIA CHAMPIONS - 2 COLUNAS)
+       2. SEÇÃO HERO / BANNER PRINCIPAL
        ========================================== -->
-    <section class="hero">
-        <div class="container hero-container">
+    <section class="hero" id="home">
+        <div class="hero-container">
             
-            <!-- Lado Esquerdo: Imagem da Família -->
-            <div class="hero-left">
-                <div class="family-image-wrapper">
-                    <img src="img/family-watching-tv.jpg" alt="Família Champions assistindo TV">
-                    <div class="glow-effect"></div>
-                </div>
+            <div class="hero-text-section">
+                <h3 class="hero-subtitle">FAMÍLIA</h3>
+                <img src="img/logo-champions-fundo-escuro.png" alt="Champions Logo" class="hero-main-logo">
+                <h2 class="hero-tagline">A MARCA CAMPEÃ</h2>
+                <p class="hero-description">
+                    A MELHOR PROGRAMAÇÃO <span class="highlight">DENTRO DA SUA CASA</span>
+                </p>
             </div>
-
-            <!-- Lado Direito: Textos e Cards de Produtos -->
-            <div class="hero-right">
-                <h1 class="hero-title">Família Champions</h1>
-                <h2 class="hero-subtitle">A Marca Campeã</h2>
-                <p class="hero-tagline">A melhor programação dentro de sua casa</p>
                 
-                <div class="hero-grid">
-                    <!-- Card 1: FIRE -->
-                    <a href="#product-fire" class="hero-card">
-                        <div class="card-glow"></div>
-                        <span class="badge-new">Novo</span>
-                        <div class="card-icon">
-                            <img src="img/icone-champions-fire.png" alt="Fire logo">
-                        </div>
-                        <div class="card-image">
-                            <img src="img/fire/sem fundo/champions-fire-vião-frontal.png" alt="Champions Fire">
-                        </div>
-                        <h3 class="card-title">Fire</h3>
-                        <p class="card-specs"><span>2/16</span> GB</p>
-                        <p class="card-specs"><span>Stick</span> TV</p>
-                    </a>
-
-                    <!-- Card 2: PLAY -->
-                    <div class="hero-card">
-                        <div class="card-glow"></div>
-                        <div class="card-icon">
-                            <img src="img/icone-champions-play.png" alt="Play logo">
-                        </div>
-                        <div class="card-image">
-                            <img src="../wp-content/uploads/2023/06/play-front.png" alt="Champions Play">
-                        </div>
-                        <h3 class="card-title">Play</h3>
-                        <p class="card-system"><span>G-Share</span></p>
+            <div class="hero-cards-container">
+                <!-- Card 1: FIRE -->
+                <a href="#product-fire" class="hero-card">
+                    <div class="device-img">
+                        <img src="img/fire/sem fundo/champions-fire-vião-frontal.png" alt="Champions Fire">
                     </div>
-
-                    <!-- Card 3: INFINITY -->
-                    <a href="#product-infinity" class="hero-card">
-                        <div class="card-glow"></div>
-                        <div class="card-icon">
-                            <img src="img/icones-champions-infinity.png" alt="Infinity logo">
-                        </div>
-                        <div class="card-image">
-                            <img src="img/inifinity/sem fundo/infinity-left.png" alt="Champions Infinity">
-                        </div>
-                        <h3 class="card-title">Infinity</h3>
-                        <p class="card-system"><span>G-Share</span></p>
-                    </a>
-
-                    <!-- Card 4: ULTIMATE -->
-                    <div class="hero-card">
-                        <div class="card-glow"></div>
-                        <div class="card-icon">
-                            <img src="img/icone-champions-ultimate.png" alt="Ultimate logo">
-                        </div>
-                        <div class="card-image">
-                            <img src="../wp-content/uploads/2023/06/ultimate-front.png" alt="Champions Ultimate">
-                        </div>
-                        <h3 class="card-title">Ultimate</h3>
-                        <p class="card-system"><span>G-Share</span></p>
+                    <div class="icon-img">
+                        <img src="img/icone-champions-fire.png" alt="Ícone Fire">
                     </div>
-                </div>
+                    <div class="logo-img">
+                        <img src="img/logo-champions-fire-fundo-escuro.png" alt="Champions Fire Logo">
+                    </div>
+                </a>
+
+                <!-- Card 2: ULTIMATE -->
+                <a href="#product-ultimate" class="hero-card">
+                    <div class="device-img">
+                        <img src="img/ultimate/sem fundo/champions-ultimade-gx-pro-2.png" alt="Champions Ultimate">
+                    </div>
+                    <div class="icon-img">
+                        <img src="img/icone-champions-ultimate.png" alt="Ícone Ultimate">
+                    </div>
+                    <div class="logo-img">
+                        <img src="img/logo-champions-ultomate-fundo-escuro.png" alt="Champions Ultimate Logo">
+                    </div>
+                </a>
+
+                <!-- Card 3: INFINITY -->
+                <a href="#product-infinity" class="hero-card">
+                    <div class="device-img">
+                        <img src="img/inifinity/sem fundo/infinity-right.png" alt="Champions Infinity">
+                    </div>
+                    <div class="icon-img">
+                        <img src="img/icones-champions-infinity.png" alt="Ícone Infinity">
+                    </div>
+                    <div class="logo-img">
+                        <img src="img/logo-champions-infinity-fundo-escuro.png" alt="Champions Infinity Logo">
+                    </div>
+                </a>
+
+                <!-- Card 4: PLAY -->
+                <a href="#product-play" class="hero-card">
+                    <div class="device-img">
+                        <img src="img/play/sem fundo/champions play gxpro 1.1.png" alt="Champions Play">
+                    </div>
+                    <div class="icon-img">
+                        <img src="img/icone-champions-play.png" alt="Ícone Play">
+                    </div>
+                    <div class="logo-img">
+                        <img src="img/logo-champions-play-fundo-escuro.png" alt="Champions Play Logo">
+                    </div>
+                </a>
             </div>
             
         </div>
     </section>
 
-    <!-- ==========================================
-       3. SEÇÃO DE DIVISÃO (LOJAS PARAGUAI)
-       ========================================== -->
-    <section class="divider-section">
-        <div class="container">
-            <h3 class="divider-title">Disponíveis <span>nas melhores lojas do Paraguai.</span></h3>
-            <h4 class="divider-subtitle">champions-oficial.com</h4>
-        </div>
-    </section>
 
     <!-- ==========================================
        4. SEÇÃO DE CARROSSÉIS DE PRODUTOS
@@ -1395,10 +1428,9 @@
         
         if (typeof gsap !== 'undefined') {
             // 1. Preloader & SplitText Animation
-            let splitHeroTitle, splitCtaTitle;
+            let splitCtaTitle;
             try {
                 if (typeof SplitType !== 'undefined') {
-                    splitHeroTitle = new SplitType('.hero-title', { types: 'chars' });
                     splitCtaTitle = new SplitType('.support-cta-title', { types: 'chars' });
                 }
             } catch (e) {
@@ -1406,13 +1438,11 @@
             }
             
             const tlEntrance = gsap.timeline();
-            if (splitHeroTitle && splitHeroTitle.chars) {
-                tlEntrance.from(splitHeroTitle.chars, { y: 100, opacity: 0, stagger: 0.03, duration: 1, ease: "back.out(1.7)" });
-            } else {
-                tlEntrance.from('.hero-title', { y: 100, opacity: 0, duration: 1, ease: "back.out(1.7)" });
-            }
-            tlEntrance.from('.hero-subtitle', { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
-                      .from('.hero-card', { y: 50, opacity: 0, stagger: 0.1, duration: 0.8, ease: "power2.out" }, "-=0.6");
+            
+            tlEntrance.from('.hero-familia', { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" })
+                      .from('.hero-main-logo', { scale: 0.8, opacity: 0, duration: 1, ease: "elastic.out(1, 0.5)" }, "-=0.5")
+                      .from('.hero-marca', { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.7")
+                      .from('.hero-tagline', { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5");
 
             // 2. Custom Cursor Dinâmico desativado temporariamente para cursor padrão do navegador
 

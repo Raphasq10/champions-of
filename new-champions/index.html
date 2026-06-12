@@ -913,65 +913,78 @@
             border-radius: 2px;
         }
 
-        /* Carrossel de Parceiros */
-        .partners-carousel-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 1000px;
+        /* Mosaico de Parceiros */
+        .partners-mosaic {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: 180px 180px; /* Reduzido de 250px para diminuir a altura dos cards */
+            gap: 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .partners-carousel {
-            overflow: hidden;
-            width: 100%;
-            margin: 0 30px;
-        }
-
-        .partners-track {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            transition: transform 0.5s ease;
-        }
-
-        .partner-logo-item {
-            flex: 0 0 calc(33.333% - 34px);
+        .mosaic-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 75px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
-        .partner-logo-item img {
-            max-height: 100%;
-            max-width: 155px;
-            filter: grayscale(100%) brightness(1.2);
-            opacity: 0.35;
-            transition: var(--transition-smooth);
+        .mosaic-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 90, 0, 0.3);
         }
 
-        .partner-logo-item img:hover {
-            filter: grayscale(0%) brightness(1);
-            opacity: 1;
-            transform: scale(1.04);
+        .mosaic-open {
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, rgba(255, 90, 0, 0.05) 0%, rgba(20, 22, 26, 0.5) 100%);
         }
 
-        /* Botões de Parceiros */
-        .partners-btn {
-            font-size: 18px;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            background: none;
-            border: none;
-            padding: 10px;
+        .mosaic-column-right {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3; /* Faz a coluna ocupar as duas linhas de altura */
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
         }
 
-        .partners-btn:hover {
-            color: var(--primary);
-            transform: scale(1.2);
+        .mosaic-item img {
+            max-width: 60%;
+            max-height: 50%;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.5);
+            transition: all 0.4s ease;
+        }
+
+        .mosaic-open img {
+            max-width: 50%;
+            max-height: 40%;
+        }
+
+        .mosaic-item:hover img {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 992px) {
+            .partners-mosaic {
+                grid-template-columns: 1fr;
+                grid-template-rows: 300px;
+            }
+            .mosaic-open {
+                grid-row: 1 / 2;
+            }
+            .mosaic-column-right {
+                grid-template-rows: 200px 200px;
+            }
         }
 
         /* ==========================================
@@ -1378,25 +1391,18 @@
         <div class="container">
             <h3 class="partners-title">Disponível nas principais lojas do Paraguai</h3>
             
-            <div class="partners-carousel-wrapper">
-                <div class="swiper-button-prev partners-btn partners-btn-left"><i class="fas fa-chevron-left"></i></div>
-                <div class="swiper partners-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide partner-logo-item">
-                            <img src="../wp-content/uploads/2023/06/logo_madrid.png" alt="Madrid Center">
-                        </div>
-                        <div class="swiper-slide partner-logo-item">
-                            <img src="../wp-content/uploads/2023/06/logo_open.png" alt="Open Eletrônicos">
-                        </div>
-                        <div class="swiper-slide partner-logo-item">
-                            <img src="../wp-content/uploads/2023/06/logo_mega.png" alt="Mega Eletrônicos">
-                        </div>
-                        <div class="swiper-slide partner-logo-item">
-                            <img src="../wp-content/uploads/2023/06/logo_nissei.png" alt="Nissei">
-                        </div>
-                    </div>
+            <div class="partners-mosaic">
+                <a href="#" class="mosaic-item mosaic-open">
+                    <img src="img/logos lojas revendedoras/logo-open-branco.png" alt="Open Eletrônicos">
+                </a>
+                <div class="mosaic-column-right">
+                    <a href="#" class="mosaic-item mosaic-madrid">
+                        <img src="img/logos lojas revendedoras/madri-center-logo-branco.png" alt="Madrid Center">
+                    </a>
+                    <a href="#" class="mosaic-item mosaic-mega">
+                        <img src="img/logos lojas revendedoras/logo-mega.png" alt="Mega Eletrônicos">
+                    </a>
                 </div>
-                <div class="swiper-button-next partners-btn partners-btn-right"><i class="fas fa-chevron-right"></i></div>
             </div>
         </div>
     </section>
@@ -1462,26 +1468,7 @@
 
         // Swiper para Produtos 3D (Desativado temporariamente para fileiras estáticas)
 
-        // Swiper para Parceiros
-        new Swiper('.partners-swiper', {
-            loop: true,
-            grabCursor: true,
-            spaceBetween: 30,
-            speed: 800,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '.partners-btn.swiper-button-next',
-                prevEl: '.partners-btn.swiper-button-prev',
-            },
-            breakpoints: {
-                320: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 }
-            }
-        });
+        // Mosaico de Parceiros agora utiliza CSS Grid estático em vez de Swiper
 
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);

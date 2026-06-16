@@ -1,14 +1,5 @@
-# Ignore WordPress core folders and configuration
-/wp-admin/
-/wp-includes/
-/wp-content/
-/wp-config.php
-/*.php
-/license.txt
-/readme.html
-
-# Ignore huge static page export in new-champions
-/new-champions/Champions – A marca campeã.html
+# Ignore huge static page export
+/Champions – A marca campeã.html
 
 # Ignore OS files and temp files
 .DS_Store
@@ -16,9 +7,11 @@ Thumbs.db
 *.bak
 *.tmp
 
-# Ignorar backups grandes (acima do limite de 100MB do GitHub)
+# Ignorar backups grandes (acima do limite do GitHub)
 documentacao-projeto/_backup/*.sql
+documentacao-projeto/_backup/*.zip
 *.sql
+*.zip
 
-# Ignorar pasta de imagens originais (imagens usadas já foram copiadas para /img)
-new-champions/imagens-originais/
+# Ignorar pasta de imagens originais
+/imagens-originais/

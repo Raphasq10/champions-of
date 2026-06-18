@@ -199,7 +199,7 @@
             background-image: 
                 linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
                 linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)), 
-                url('img/banner-hero-bg-v3.jpg');
+                url('img/banner-hero-bg-v4.png');
             background-size: cover;
             background-position: left top;
             background-repeat: no-repeat;
@@ -606,7 +606,7 @@
             border-bottom: 1px solid var(--dark-card-border);
             border-top: 1px solid var(--dark-card-border);
             position: relative;
-            background-image: radial-gradient(rgba(245, 106, 37, 0.08) 1px, transparent 1px), url('../wp-content/uploads/2023/06/technology.svg');
+            background-image: radial-gradient(rgba(245, 106, 37, 0.08) 1px, transparent 1px), url('img/technology.svg');
             background-size: 24px 24px, contain;
             background-repeat: repeat, no-repeat;
             background-position: center, right center;
@@ -899,7 +899,7 @@
            ========================================== */
         .support-cta {
             position: relative;
-            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('../wp-content/uploads/2023/06/pexels-mikhail-nilov-7682340.jpg');
+            background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('img/atendentes-suporte-champions.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Efeito Parallax */
@@ -1069,7 +1069,7 @@
            8. RODAPÉ (FOOTER)
            ========================================== */
         footer {
-            background-color: #090A0B;
+            background-color: #323334;
             color: var(--text-light);
             padding: 80px 0 35px;
             text-align: center;
@@ -1087,11 +1087,11 @@
 
         .footer-tagline {
             font-family: var(--font-title);
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-muted);
+            color: #FFFFFF;
             margin-bottom: 45px;
         }
 
@@ -1110,12 +1110,12 @@
             text-transform: uppercase;
             font-size: 13px;
             letter-spacing: 0.5px;
-            color: var(--text-muted);
+            color: #FFFFFF;
             transition: var(--transition-smooth);
         }
 
         .footer-link:hover {
-            color: var(--text-light);
+            color: var(--primary);
         }
 
         .footer-nav .btn-premium {
@@ -1247,15 +1247,7 @@
         /* Custom Cursor */
         /* Custom Cursor rules removed to restore browser pointer */
 
-        /* Noise Overlay */
-        .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 99998;
-            opacity: 0.035;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-        }
+
 
         /* Spotlight Glow on Cards */
         .hero-card {
@@ -1495,7 +1487,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="img/logo-champions-fundo-claro.png" alt="Logo Champions Footer">
+                <img src="img/logo-champions-fundo-escuro2.png" alt="Logo Champions Footer">
             </div>
             <p class="footer-tagline">A Marca Campeã</p>
             
@@ -1686,7 +1678,6 @@
         });
     </script>
 
-    <!-- Efeito WOW: Noise -->
-    <div class="noise-overlay"></div>
+
 </body>
 </html>

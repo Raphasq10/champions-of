@@ -356,10 +356,10 @@
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         /* Ajuste fino por modelo (escala relativa, sem quebrar alinhamento) */
-        .card-fire    .device-img img { max-width: 82%; }
-        .card-ultimate .device-img img { max-width: 100%; }
-        .card-infinity .device-img img { max-width: 100%; }
-        .card-play     .device-img img { max-width: 100%; }
+        .card-fire     .device-img img { max-width: 82%; }
+        .card-ultimate .device-img img { max-width: 82%; }
+        .card-infinity .device-img img { max-width: 82%; }
+        .card-play     .device-img img { max-width: 82%; }
 
         .hero-card:hover .device-img img {
             transform: scale(1.1) translateY(-8px);
@@ -384,6 +384,11 @@
             object-fit: contain;
             filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
             transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        /* Ajuste específico para equilibrar o peso visual do ícone Infinity */
+        .card-infinity .icon-img img {
+            max-width: 55%;
+            max-height: 75%;
         }
 
         /* ---- área fixa para a logo escrita ---- */

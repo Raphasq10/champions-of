@@ -325,9 +325,9 @@
 
         .hero-card:hover {
             transform: translateY(-12px);
-            background: rgba(30, 32, 38, 0.85);
+            background: rgba(244, 245, 247, 0.95);
             border-color: transparent;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 90, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 0 30px rgba(255, 90, 0, 0.2);
         }
 
         .hero-card:hover::before {
@@ -426,13 +426,11 @@
             .hero {
                 background-image:
                     linear-gradient(to top,
-                        rgba(8, 10, 18, 0.95)  0%,
-                        rgba(8, 10, 18, 0.80)  35%,
-                        rgba(8, 10, 18, 0.15)  65%,
-                        transparent           100%),
-                    url('img/banner-hero-bg-v4-mb.png?v=3') !important;
-                background-color:    #080a12 !important;
-                background-position: center top !important;
+                        rgba(248, 250, 252, 0.95) 0%,
+                        rgba(248, 250, 252, 0.3) 100%),
+                    url('img/banner-hero-bg-v4.png') !important;
+                background-color:    #F8FAFC !important;
+                background-position: left center !important;
                 background-size:     cover !important;
                 background-repeat:   no-repeat !important;
                 background-attachment: scroll !important;
@@ -463,10 +461,7 @@
                 width: 220px;
             }
 
-            /* --- Textos em branco (fundo escuro) --- */
-            .hero-subtitle    { color: #FFFFFF !important; }
-            .hero-tagline     { color: #FFFFFF !important; }
-            .hero-description { color: rgba(255,255,255,0.80) !important; }
+            /* Textos mantêm a cor padrão (laranja/escuro) no tablet com fundo claro */
 
             .hero-text-section {
                 align-items:   center;
@@ -487,58 +482,70 @@
             /* Cada card ocupa metade da linha (2 colunas) */
             .hero-card {
                 width:     calc(50% - 6px) !important;
-                max-width: 200px !important;
-                height:    270px !important;
-                padding:   16px 10px 12px !important;
+                max-width: 230px !important;
+                height:    310px !important;
+                padding:   18px 12px 14px !important;
                 flex-shrink: 1 !important;
                 background: rgba(255,255,255,0.93) !important;
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
             }
             .badge-new { top: 10px; right: 10px; font-size: 8px; padding: 2px 7px; }
-            .icon-img   { height: 48px;  margin-bottom: 8px; }
-            .device-img { height: 105px;  margin-bottom: 8px; }
-            .device-img img { width: 125px; height: auto; }
-            .logo-img   { height: 32px; }
+            .icon-img   { height: 50px;  margin-bottom: 8px; }
+            .device-img { height: 120px;  margin-bottom: 8px; }
+            .device-img img { width: 145px; height: auto; }
+            .logo-img   { height: 34px; }
         }
 
         /* --- MOBILE (768px) — cards um pouco menores --- */
         @media (max-width: 768px) {
-            .hero-main-logo { width: 200px; }
-            .hero-subtitle  { font-size: 1.8rem !important; }
-            .hero-tagline   { font-size: 1.3rem !important; }
+            .hero {
+                background-image:
+                    linear-gradient(to top,
+                        rgba(248, 250, 252, 0.95) 0%,
+                        rgba(248, 250, 252, 0.3) 100%),
+                    url('img/banner-hero-bg-mb-v4.png') !important;
+                background-color:    #F8FAFC !important;
+                background-position: left center !important;
+            }
+            .hero-main-logo { width: 200px !important; }
+            
+            /* Textos mantêm a cor padrão (laranja/escuro) no mobile com fundo claro */
+            .hero-subtitle    { font-size: 1.8rem !important; }
+            .hero-tagline     { font-size: 1.3rem !important; }
             .hero-description { font-size: 0.82rem !important; }
-            .hero-text-section { margin-bottom: 18px; }
+            
+            .hero-text-section { margin-bottom: 18px !important; }
 
             .hero-card {
-                width:    calc(50% - 6px);
-                max-width: 175px;
-                height:    250px;
-                padding:   12px 8px 10px;
+                width:    calc(50% - 6px) !important;
+                max-width: 195px !important;
+                height:    285px !important;
+                padding:   14px 10px 10px !important;
             }
-            .badge-new { top: 8px; right: 8px; font-size: 7.5px; padding: 2px 6px; }
-            .icon-img   { height: 42px; }
-            .device-img { height: 95px; }
-            .device-img img { width: 115px; height: auto; }
-            .logo-img   { height: 28px; }
+            .badge-new { top: 8px !important; right: 8px !important; font-size: 7.5px !important; padding: 2px 6px !important; }
+            .icon-img   { height: 46px !important; }
+            .device-img { height: 105px !important; }
+            .device-img img { width: 130px !important; height: auto !important; }
+            .logo-img   { height: 30px !important; }
         }
 
         /* --- MOBILE PEQUENO (480px) --- */
         @media (max-width: 480px) {
-            .hero { padding: 0 12px 40px; }
-            .hero-main-logo { width: 180px; }
+            .hero { padding: 0 12px 40px !important; }
+            .hero-main-logo { width: 180px !important; }
 
             .hero-card {
-                width:    calc(50% - 5px);
-                max-width: 155px;
-                height:    230px;
-                padding:   10px 7px 8px;
+                width:    calc(50% - 5px) !important;
+                max-width: 175px !important;
+                height:    260px !important;
+                padding:   12px 10px 10px !important;
             }
-            .badge-new { top: 6px; right: 6px; font-size: 7px; padding: 1.5px 5px; }
-            .icon-img   { height: 38px; }
-            .device-img { height: 85px; }
-            .device-img img { width: 100px; height: auto; }
-            .logo-img   { height: 24px; }
+            .badge-new { top: 6px !important; right: 6px !important; font-size: 7px !important; padding: 1.5px 5px !important; }
+            .icon-img   { height: 40px !important; }
+            .device-img { height: 95px !important; }
+            .device-img img { width: 115px !important; height: auto !important; }
+            .logo-img   { height: 26px !important; }
         }
 
         .card-icon img {
@@ -1329,10 +1336,7 @@
             <div class="hero-text-section">
                 <h3 class="hero-subtitle">FAMÍLIA</h3>
                 <!-- Logo troca para branca no mobile (fundo escuro) -->
-                <picture>
-                    <source media="(max-width: 1200px)" srcset="img/logo-champions-fundo-escuro.png">
-                    <img src="img/logo-champions-fundo-claro.png" alt="Champions Logo" class="hero-main-logo">
-                </picture>
+                <img src="img/logo-champions-fundo-claro.png" alt="Champions Logo" class="hero-main-logo">
                 <h2 class="hero-tagline">A MARCA CAMPEÃ</h2>
             </div>
             
@@ -1438,7 +1442,7 @@
                         <img src="img/icones-champions-infinity.png" alt="Champions Infinity Icon">
                     </div>
                     <div class="product-brand-logo">
-                        <img src="img/Logos aparelhos Champions/Logo champions infinity black.png" alt="Champions Infinity Logo">
+                        <img src="img/logo-champions-infinity-fundo-claro.png" alt="Champions Infinity Logo">
                     </div>
                 </div>
                 

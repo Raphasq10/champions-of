@@ -201,12 +201,12 @@ header .container {
     align-items: flex-start;
     text-align: left;
     padding-left: 619px; /* 1600px - 981px (bloco do conteúdo) = 619px */
-    padding-top: 100px; /* Reduzido de 160px para caber na tela do navegador */
+    padding-top: 150px; /* Aumentado para empurrar os cards mais para baixo no desktop */
 }
 
 /* TEXTOS PRINCIPAIS */
 .hero-text-section {
-    margin-bottom: 20px; /* Reduzido de 50px */
+    margin-bottom: 40px; /* Aumentado para afastar do logo e empurrar os cards */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -219,16 +219,16 @@ header .container {
     font-size: 60pt;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 0;
-    line-height: 0.9;
+    margin-bottom: 5px; /* Pequeno espaçamento seguro */
+    line-height: 1.1; /* Line-height seguro para evitar qualquer sobreposição */
     font-family: var(--font-title);
     text-transform: uppercase;
 }
 
 .hero-main-logo {
-    width: 620px; /* Logo grande como no mockup - Aumentado de 520px */
+    width: 620px; /* Logo grande como no mockup */
     max-width: 100%;
-    margin: -15px auto -20px auto; /* Margens negativas para aproximar textos */
+    margin: 0 auto; /* Removido margens negativas agressivas para evitar sobreposição */
     display: block;
 }
 
@@ -237,9 +237,9 @@ header .container {
     font-size: 42pt;
     font-weight: 600;
     letter-spacing: 3px;
-    margin-top: 0;
-    margin-bottom: 10px; /* Reduzido de 35px */
-    line-height: 0.9;
+    margin-top: 5px; /* Pequeno espaçamento seguro */
+    margin-bottom: 15px; /* Aumentado para ajudar no espaçamento vertical */
+    line-height: 1.1; /* Line-height seguro para evitar qualquer sobreposição */
     font-family: var(--font-title);
     text-transform: uppercase;
 }
@@ -252,7 +252,7 @@ header .container {
     text-transform: uppercase;
     text-align: center; /* Centralizado */
     width: 100%;
-    margin-bottom: 15px; /* Reduzido de 25px */
+    margin-bottom: 30px; /* Aumentado de 15px para empurrar os cards mais para baixo */
     opacity: 0.9;
 }
 
@@ -409,7 +409,7 @@ header .container {
     }
     .hero-main-logo {
         width: 460px;
-        margin: -10px auto -15px auto;
+        margin: 0 auto;
     }
     .hero-tagline {
         font-size: 32pt;
@@ -458,7 +458,7 @@ header .container {
     }
     .hero-main-logo {
         width: 400px;
-        margin: -8px auto -12px auto;
+        margin: 0 auto;
     }
     .hero-tagline {
         font-size: 26pt;
@@ -507,7 +507,7 @@ header .container {
     }
     .hero-main-logo {
         width: 340px;
-        margin: -6px auto -10px auto;
+        margin: 0 auto;
     }
     .hero-tagline {
         font-size: 22pt;
@@ -580,7 +580,7 @@ header .container {
 
     /* --- Logo principal --- */
     .hero-main-logo {
-        margin: -5px auto -8px auto;
+        margin: 0 auto 10px auto;
         width: 300px;
     }
 
@@ -639,12 +639,12 @@ header .container {
     }
     .hero-main-logo { 
         width: 260px !important; 
-        margin: -4px auto -8px auto !important;
+        margin: 0 auto 10px auto !important;
     }
     
     /* Textos mantêm a cor padrão (laranja/escuro) no mobile com fundo claro */
-    .hero-subtitle    { font-size: 1.8rem !important; line-height: 0.9 !important; }
-    .hero-tagline     { font-size: 1.3rem !important; line-height: 0.9 !important; }
+    .hero-subtitle    { font-size: 1.8rem !important; line-height: 1.1 !important; }
+    .hero-tagline     { font-size: 1.3rem !important; line-height: 1.1 !important; }
     .hero-description { font-size: 0.82rem !important; }
     
     .hero-text-section { margin-bottom: 18px !important; }
@@ -668,7 +668,7 @@ header .container {
     .hero { padding: 0 12px 40px !important; }
     .hero-main-logo { 
         width: 220px !important; 
-        margin: -3px auto -6px auto !important;
+        margin: 0 auto 8px auto !important;
     }
 
     .hero-card {

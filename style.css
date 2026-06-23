@@ -633,7 +633,7 @@ header .container {
     .hero-container {
         margin-left:  auto;
         margin-right: auto; /* Centraliza no mobile */
-        padding-top: 420px;
+        padding-top: 55vh !important;
     }
     .hero-main-logo { 
         width: 320px !important; 
@@ -666,7 +666,7 @@ header .container {
 @media (max-width: 480px) {
     .hero { padding: 0 12px 40px !important; }
     .hero-container {
-        padding-top: 260px !important;
+        padding-top: 50vh !important;
     }
     .hero-main-logo { 
         width: 240px !important; 

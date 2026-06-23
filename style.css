@@ -624,7 +624,7 @@ header .container {
 /* --- MOBILE (1150px) — layout centralizado e fundo mobile --- */
 @media (max-width: 1150px) {
     .hero {
-        background-image: linear-gradient(to bottom, rgba(248,250,252,0) 0px, rgba(248,250,252,0) 425px, rgba(248, 250, 252, 0.95) 480px, #F8FAFC 680px, #F8FAFC 100%), url('img/banner-hero-bg-mb-v4.png') !important;
+        background-image: linear-gradient(to bottom, rgba(248,250,252,0) 0px, rgba(248,250,252,0) 280px, rgba(248,250,252,0.5) 420px, rgba(248, 250, 252, 0.95) 560px, #F8FAFC 780px, #F8FAFC 100%), url('img/banner-hero-bg-mb-v4.png') !important;
         background-color:    #F8FAFC !important;
         background-position: center center, left -140px !important;
         align-items:         center !important; /* Centraliza no mobile */
@@ -633,7 +633,7 @@ header .container {
     .hero-container {
         margin-left:  auto;
         margin-right: auto; /* Centraliza no mobile */
-        padding-top: 425px !important;
+        padding-top: 450px !important;
     }
     .hero-main-logo { 
         width: 320px !important; 
@@ -662,6 +662,12 @@ header .container {
     .logo-img   { height: 34px !important; }
 }
 
+@media (min-width: 800px) and (max-width: 1150px) {
+    .hero-container {
+        padding-top: 580px !important; /* Empurra mais para baixo no tablet onde os rostos são maiores */
+    }
+}
+
 /* --- MOBILE PEQUENO (480px) --- */
 @media (max-width: 480px) {
     .hero {
@@ -669,7 +675,7 @@ header .container {
         background-position: center center, left -80px !important;
     }
     .hero-container {
-        padding-top: 425px !important;
+        padding-top: 400px !important;
     }
     .hero-main-logo { 
         width: 240px !important; 

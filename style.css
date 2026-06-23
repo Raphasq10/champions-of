@@ -624,22 +624,21 @@ header .container {
 /* --- MOBILE (1150px) — layout centralizado e fundo mobile --- */
 @media (max-width: 1150px) {
     .hero {
-        background-image:
-            linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
-            linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
-            url('img/banner-hero-bg-mb-v4.png') !important;
+        background-image: linear-gradient(to bottom, rgba(248,250,252,0) 0%, rgba(248, 250, 252, 0.85) 45%, #F8FAFC 75%, #F8FAFC 100%), url('img/banner-hero-bg-mb-v4.png') !important;
         background-color:    #F8FAFC !important;
-        background-position: center center, center center, center center !important;
+        background-position: center center, center top !important;
         align-items:         center !important; /* Centraliza no mobile */
         padding:             0 16px 60px !important; /* Reseta padding */
     }
     .hero-container {
         margin-left:  auto;
         margin-right: auto; /* Centraliza no mobile */
+        padding-top: 420px;
     }
     .hero-main-logo { 
-        width: 260px !important; 
+        width: 320px !important; 
         margin: 0 auto 10px auto !important;
+        line-height: 1.1 !important;
     }
     
     /* Textos mantêm a cor padrão (laranja/escuro) no mobile com fundo claro */
@@ -650,39 +649,42 @@ header .container {
     .hero-text-section { margin-bottom: 18px !important; }
 
     .hero-card {
-        width:    calc(50% - 6px) !important;
-        max-width: 195px !important;
-        height:    285px !important;
-        padding:   14px 10px 10px !important;
+        width:    calc(50% - 10px) !important;
+        max-width: 240px !important;
+        height:    320px !important;
+        padding:   18px 12px 14px !important;
     }
     .badge-container { height: 18px !important; margin-bottom: 4px !important; }
     .badge-new { font-size: 7.5px !important; padding: 2px 6px !important; }
-    .icon-img   { height: 46px !important; }
-    .device-img { height: 105px !important; }
-    .device-img img { width: 130px !important; height: auto !important; }
-    .logo-img   { height: 30px !important; }
+    .icon-img   { height: 52px !important; }
+    .device-img { height: 120px !important; }
+    .device-img img { width: 145px !important; height: auto !important; }
+    .logo-img   { height: 34px !important; }
 }
 
 /* --- MOBILE PEQUENO (480px) --- */
 @media (max-width: 480px) {
     .hero { padding: 0 12px 40px !important; }
+    .hero-container {
+        padding-top: 260px !important;
+    }
     .hero-main-logo { 
-        width: 220px !important; 
+        width: 240px !important; 
         margin: 0 auto 8px auto !important;
     }
 
     .hero-card {
-        width:    calc(50% - 5px) !important;
-        max-width: 175px !important;
-        height:    260px !important;
-        padding:   12px 10px 10px !important;
+        width:    calc(50% - 8px) !important;
+        max-width: 185px !important;
+        height:    275px !important;
+        padding:   14px 10px 10px !important;
     }
     .badge-container { height: 16px !important; margin-bottom: 4px !important; }
     .badge-new { font-size: 7px !important; padding: 1.5px 5px !important; }
-    .icon-img   { height: 40px !important; }
-    .device-img { height: 95px !important; }
-    .device-img img { width: 115px !important; height: auto !important; }
-    .logo-img   { height: 26px !important; }
+    .icon-img   { height: 44px !important; }
+    .device-img { height: 100px !important; }
+    .device-img img { width: 125px !important; height: auto !important; }
+    .logo-img   { height: 28px !important; }
 }
 
 .card-icon img {

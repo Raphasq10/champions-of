@@ -425,9 +425,8 @@
             /* --- Fundo: imagem em cima, escurecimento no fundo para os textos --- */
             .hero {
                 background-image:
-                    linear-gradient(to top,
-                        rgba(248, 250, 252, 0.95) 0%,
-                        rgba(248, 250, 252, 0.3) 100%),
+                    linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
+                    linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
                     url('img/banner-hero-bg-v4.png') !important;
                 background-color:    #F8FAFC !important;
                 background-position: left center !important;
@@ -490,7 +489,8 @@
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
             }
-            .badge-new { top: 10px; right: 10px; font-size: 8px; padding: 2px 7px; }
+            .badge-container { height: 20px !important; margin-bottom: 4px !important; }
+            .badge-new { font-size: 8px !important; padding: 2px 8px !important; }
             .icon-img   { height: 50px;  margin-bottom: 8px; }
             .device-img { height: 120px;  margin-bottom: 8px; }
             .device-img img { width: 145px; height: auto; }
@@ -501,9 +501,8 @@
         @media (max-width: 768px) {
             .hero {
                 background-image:
-                    linear-gradient(to top,
-                        rgba(248, 250, 252, 0.95) 0%,
-                        rgba(248, 250, 252, 0.3) 100%),
+                    linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
+                    linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
                     url('img/banner-hero-bg-mb-v4.png') !important;
                 background-color:    #F8FAFC !important;
                 background-position: left center !important;
@@ -523,7 +522,8 @@
                 height:    285px !important;
                 padding:   14px 10px 10px !important;
             }
-            .badge-new { top: 8px !important; right: 8px !important; font-size: 7.5px !important; padding: 2px 6px !important; }
+            .badge-container { height: 18px !important; margin-bottom: 4px !important; }
+            .badge-new { font-size: 7.5px !important; padding: 2px 6px !important; }
             .icon-img   { height: 46px !important; }
             .device-img { height: 105px !important; }
             .device-img img { width: 130px !important; height: auto !important; }
@@ -541,7 +541,8 @@
                 height:    260px !important;
                 padding:   12px 10px 10px !important;
             }
-            .badge-new { top: 6px !important; right: 6px !important; font-size: 7px !important; padding: 1.5px 5px !important; }
+            .badge-container { height: 16px !important; margin-bottom: 4px !important; }
+            .badge-new { font-size: 7px !important; padding: 1.5px 5px !important; }
             .icon-img   { height: 40px !important; }
             .device-img { height: 95px !important; }
             .device-img img { width: 115px !important; height: auto !important; }
@@ -565,7 +566,7 @@
             margin-bottom: 8px;
             flex-shrink: 0;
         }
-        .badge-new-static {
+        .badge-new, .badge-new-static {
             background: var(--primary-grad);
             color: var(--text-light);
             font-size: 9px;
@@ -1347,12 +1348,14 @@
             <div class="hero-cards-container">
                 <!-- Card 1: FIRE -->
                 <a href="#product-fire" class="hero-card card-fire">
-                    <div class="badge-new">Novo</div>
                     <div class="icon-img">
                         <img src="img/icone-champions-fire.png" alt="Ícone Fire">
                     </div>
                     <div class="device-img">
                         <img src="img/fire/sem fundo/champions-fire-lateral-direita.png" alt="Champions Fire">
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-new">Novo</span>
                     </div>
                     <div class="logo-img">
                         <img src="img/logo-champions-fire-fundo-claro.png" alt="Champions Fire Logo">
@@ -1367,6 +1370,7 @@
                     <div class="device-img">
                         <img src="img/ultimate/sem fundo/champions-ultimade-gx-lateral-direita.png" alt="Champions Ultimate">
                     </div>
+                    <div class="badge-container"></div>
                     <div class="logo-img">
                         <img src="img/logo-champions-ultomate-fundo-claro.png" alt="Champions Ultimate Logo">
                     </div>
@@ -1380,6 +1384,7 @@
                     <div class="device-img">
                         <img src="img/inifinity/sem fundo/champions-infinity-gx-lateral-direita.png" alt="Champions Infinity">
                     </div>
+                    <div class="badge-container"></div>
                     <div class="logo-img">
                         <img src="img/logo-champions-infinity-fundo-claro.png" alt="Champions Infinity Logo">
                     </div>
@@ -1393,6 +1398,7 @@
                     <div class="device-img">
                         <img src="img/play/sem fundo/champions-play-gx-lateral-direita.png" alt="Champions Play">
                     </div>
+                    <div class="badge-container"></div>
                     <div class="logo-img">
                         <img src="img/logo-champions-play-fundo-claro.png" alt="Champions Play Logo">
                     </div>

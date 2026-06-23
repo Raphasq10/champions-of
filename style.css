@@ -219,15 +219,16 @@ header .container {
     font-size: 60pt;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 0;
+    line-height: 0.9;
     font-family: var(--font-title);
     text-transform: uppercase;
 }
 
 .hero-main-logo {
-    width: 520px; /* Logo grande como no mockup */
+    width: 620px; /* Logo grande como no mockup - Aumentado de 520px */
     max-width: 100%;
-    margin: 0 0 4px 0;
+    margin: -15px auto -20px auto; /* Margens negativas para aproximar textos */
     display: block;
 }
 
@@ -236,7 +237,9 @@ header .container {
     font-size: 42pt;
     font-weight: 600;
     letter-spacing: 3px;
+    margin-top: 0;
     margin-bottom: 10px; /* Reduzido de 35px */
+    line-height: 0.9;
     font-family: var(--font-title);
     text-transform: uppercase;
 }
@@ -405,7 +408,8 @@ header .container {
         font-size: 45pt;
     }
     .hero-main-logo {
-        width: 380px;
+        width: 460px;
+        margin: -10px auto -15px auto;
     }
     .hero-tagline {
         font-size: 32pt;
@@ -453,7 +457,8 @@ header .container {
         font-size: 38pt;
     }
     .hero-main-logo {
-        width: 320px;
+        width: 400px;
+        margin: -8px auto -12px auto;
     }
     .hero-tagline {
         font-size: 26pt;
@@ -501,7 +506,8 @@ header .container {
         font-size: 32pt;
     }
     .hero-main-logo {
-        width: 280px;
+        width: 340px;
+        margin: -6px auto -10px auto;
     }
     .hero-tagline {
         font-size: 22pt;
@@ -545,7 +551,7 @@ header .container {
             linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
             url('img/banner-hero-bg-v4.png') !important;
         background-color:    #F8FAFC !important;
-        background-position: -150px center !important;
+        background-position: center center, center center, -150px center !important; /* Corrige corte à direita */
         background-size:     cover !important;
         background-repeat:   no-repeat !important;
         background-attachment: scroll !important;
@@ -574,8 +580,8 @@ header .container {
 
     /* --- Logo principal --- */
     .hero-main-logo {
-        margin: 0 auto 14px auto;
-        width: 220px;
+        margin: -5px auto -8px auto;
+        width: 300px;
     }
 
     /* Textos mantêm a cor padrão (laranja/escuro) no tablet com fundo claro */
@@ -615,15 +621,15 @@ header .container {
     .logo-img   { height: 34px; }
 }
 
-/* --- MOBILE (768px) — cards um pouco menores --- */
-@media (max-width: 768px) {
+/* --- MOBILE (1150px) — layout centralizado e fundo mobile --- */
+@media (max-width: 1150px) {
     .hero {
         background-image:
             linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
             linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
             url('img/banner-hero-bg-mb-v4.png') !important;
         background-color:    #F8FAFC !important;
-        background-position: left center !important;
+        background-position: center center, center center, center center !important;
         align-items:         center !important; /* Centraliza no mobile */
         padding:             0 16px 60px !important; /* Reseta padding */
     }
@@ -631,11 +637,14 @@ header .container {
         margin-left:  auto;
         margin-right: auto; /* Centraliza no mobile */
     }
-    .hero-main-logo { width: 200px !important; }
+    .hero-main-logo { 
+        width: 260px !important; 
+        margin: -4px auto -8px auto !important;
+    }
     
     /* Textos mantêm a cor padrão (laranja/escuro) no mobile com fundo claro */
-    .hero-subtitle    { font-size: 1.8rem !important; }
-    .hero-tagline     { font-size: 1.3rem !important; }
+    .hero-subtitle    { font-size: 1.8rem !important; line-height: 0.9 !important; }
+    .hero-tagline     { font-size: 1.3rem !important; line-height: 0.9 !important; }
     .hero-description { font-size: 0.82rem !important; }
     
     .hero-text-section { margin-bottom: 18px !important; }
@@ -657,7 +666,10 @@ header .container {
 /* --- MOBILE PEQUENO (480px) --- */
 @media (max-width: 480px) {
     .hero { padding: 0 12px 40px !important; }
-    .hero-main-logo { width: 180px !important; }
+    .hero-main-logo { 
+        width: 220px !important; 
+        margin: -3px auto -6px auto !important;
+    }
 
     .hero-card {
         width:    calc(50% - 5px) !important;

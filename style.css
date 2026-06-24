@@ -664,10 +664,10 @@ header .container {
 
 @media (min-width: 800px) and (max-width: 1150px) {
     .hero {
-        background-position: center center, left -420px !important;
+        background-position: center center, left -380px !important;
     }
     .hero-container {
-        padding-top: 520px !important;
+        padding-top: 560px !important;
     }
 }
 

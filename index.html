@@ -39,7 +39,9 @@
             <ul class="nav-menu">
                 <li><a href="#top" class="nav-link active">Home</a></li>
                 <li><a href="#product-fire" class="nav-link">Fire</a></li>
+                <li><a href="#product-ultimate" class="nav-link">Ultimate</a></li>
                 <li><a href="#product-infinity" class="nav-link">Infinity</a></li>
+                <li><a href="#product-play" class="nav-link">Play</a></li>
             </ul>
 
             <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
@@ -146,27 +148,53 @@
                         <img src="img/icone-champions-fire.png" alt="Champions Fire Icon">
                     </div>
                     <div class="product-brand-logo">
-                        <img src="img/logo-champions-fire-fundo-escuro.png" alt="Champions Fire Logo" style="filter: invert(1) hue-rotate(180deg) brightness(0.8);">
+                        <img src="img/logo-champions-fire-fundo-claro.png" alt="Champions Fire Logo">
                     </div>
                 </div>
                 
                 <div class="product-carousel-side">
                     <div class="product-carousel-static">
                         <div class="product-card-static">
-                            <img src="img/Banner-miniatura-tema-filmes.jpg" alt="Interface Filmes">
+                            <img src="img/fire/fire-controle.png" alt="Champions Fire Controle">
                         </div>
                         <div class="product-card-static active">
-                            <img src="img/fire/champion-fire-espositor.png" alt="Fire Expositor">
+                            <img src="img/fire/fire-isometrico-direita.png" alt="Champions Fire Vista Isométrica">
                         </div>
                         <div class="product-card-static">
-                            <img src="img/Banner-miniatura-tema-series.jpg" alt="Interface Séries">
+                            <img src="img/fire/champion-fire-espositor.png" alt="Champions Fire Expositor">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Linha 2: CHAMPIONS INFINITY -->
-            <div class="product-row reverse" id="product-infinity">
+            <!-- Linha 2: CHAMPIONS ULTIMATE -->
+            <div class="product-row reverse" id="product-ultimate">
+                <div class="product-info-side">
+                    <div class="product-brand-icon">
+                        <img src="img/icone-champions-ultimate.png" alt="Champions Ultimate Icon">
+                    </div>
+                    <div class="product-brand-logo">
+                        <img src="img/logo-champions-ultomate-fundo-claro.png" alt="Champions Ultimate Logo">
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="product-carousel-static">
+                        <div class="product-card-static">
+                            <img src="img/ultimate/Champions-ultimate- Carrossel-extra.png" alt="Champions Ultimate Carrossel Extra">
+                        </div>
+                        <div class="product-card-static active">
+                            <img src="img/ultimate/ultimate-isometrico-direita.png" alt="Champions Ultimate Vista Isométrica">
+                        </div>
+                        <div class="product-card-static">
+                            <img src="img/ultimate/champion-ultomate-expositor.png" alt="Champions Ultimate Expositor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 3: CHAMPIONS INFINITY -->
+            <div class="product-row" id="product-infinity">
                 <div class="product-info-side">
                     <div class="product-brand-icon">
                         <img src="img/icones-champions-infinity.png" alt="Champions Infinity Icon">
@@ -186,6 +214,32 @@
                         </div>
                         <div class="product-card-static">
                             <img src="img/inifinity/infinity-traseira-reto.png" alt="Champions Infinity Painel Traseiro">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 4: CHAMPIONS PLAY -->
+            <div class="product-row reverse" id="product-play">
+                <div class="product-info-side">
+                    <div class="product-brand-icon">
+                        <img src="img/icone-champions-play.png" alt="Champions Play Icon">
+                    </div>
+                    <div class="product-brand-logo">
+                        <img src="img/logo-champions-play-fundo-claro.png" alt="Champions Play Logo">
+                    </div>
+                </div>
+                
+                <div class="product-carousel-side">
+                    <div class="product-carousel-static">
+                        <div class="product-card-static">
+                            <img src="img/play/Champions Play - Carrossel-extra.png" alt="Champions Play Carrossel Extra">
+                        </div>
+                        <div class="product-card-static active">
+                            <img src="img/play/play-isometrico-direita.png" alt="Champions Play Vista Isométrica">
+                        </div>
+                        <div class="product-card-static">
+                            <img src="img/play/champion-play-expositor.png" alt="Champions Play Expositor">
                         </div>
                     </div>
                 </div>
@@ -243,7 +297,9 @@
             <div class="footer-nav">
                 <a href="#top" class="footer-link">Home</a>
                 <a href="#product-fire" class="footer-link">Fire</a>
+                <a href="#product-ultimate" class="footer-link">Ultimate</a>
                 <a href="#product-infinity" class="footer-link">Infinity</a>
+                <a href="#product-play" class="footer-link">Play</a>
                 <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
                     <i class="fab fa-whatsapp"></i> SUPORTE
                 </a>
@@ -404,6 +460,106 @@
         }
         
         // Efeito WOW Fim.
+
+        // =========================================
+        // CARROSSEL ROTATÓRIO AUTOMÁTICO DA VITRINE
+        // =========================================
+        function setupRotatingCarousel(containerSelector, images) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+
+            let leftIndex = 1;
+            let intervalId = null;
+
+            function rotateRight() {
+                const cards = container.querySelectorAll('.product-card-static');
+                if (cards.length < 3) return;
+                const rightCard = cards[2];
+                const centerCard = cards[1];
+                const leftCard = cards[0];
+
+                // Calcula o próximo índice para a imagem que entra à esquerda
+                leftIndex = (leftIndex - 1 + images.length) % images.length;
+                const newImageUrl = images[leftIndex];
+
+                // Cria o card que entra pela esquerda
+                const enteringCard = document.createElement('div');
+                enteringCard.className = 'product-card-static entering';
+                enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
+                
+                // Insere no início (esquerda) e marca o último card para saída
+                container.insertBefore(enteringCard, leftCard);
+                rightCard.classList.add('exiting');
+                
+                // Atualiza a classe ativa (o da esquerda vira meio/ativo, o do meio vira direita/inativo)
+                centerCard.classList.remove('active');
+                leftCard.classList.add('active');
+
+                // Força reflow para o navegador registrar a animação inicial
+                enteringCard.offsetHeight;
+
+                // Ativa a transição CSS
+                enteringCard.classList.remove('entering');
+                rightCard.classList.add('animate-exit');
+
+                // Remove o card antigo após a transição terminar (650ms)
+                setTimeout(() => {
+                    rightCard.remove();
+                }, 650);
+            }
+
+            function startAutoPlay() {
+                if (!intervalId) {
+                    intervalId = setInterval(rotateRight, 4000);
+                }
+            }
+
+            function stopAutoPlay() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+            }
+
+            // Inicia a rotação automática
+            startAutoPlay();
+
+            // Pausa ao passar o mouse e retoma ao sair
+            container.addEventListener('mouseenter', stopAutoPlay);
+            container.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        // Inicializa para o Champions Fire (4 imagens)
+        setupRotatingCarousel('#product-fire .product-carousel-static', [
+            'img/fire/fire-controle.png',
+            'img/fire/fire-isometrico-direita.png',
+            'img/fire/champion-fire-espositor.png',
+            'img/fire/fire-traseira-reto.png'
+        ]);
+
+        // Inicializa para o Champions Ultimate (4 imagens)
+        setupRotatingCarousel('#product-ultimate .product-carousel-static', [
+            'img/ultimate/Champions-ultimate- Carrossel-extra.png',
+            'img/ultimate/ultimate-isometrico-direita.png',
+            'img/ultimate/champion-ultomate-expositor.png',
+            'img/ultimate/ultimate-traseira-reto.png'
+        ]);
+
+        // Inicializa para o Champions Infinity (4 imagens)
+        setupRotatingCarousel('#product-infinity .product-carousel-static', [
+            'img/inifinity/infinity-controle.png',
+            'img/inifinity/infinity-isometrico-direita.png',
+            'img/inifinity/infinity -expositor.png',
+            'img/inifinity/infinity-traseira-reto.png'
+        ]);
+
+        // Inicializa para o Champions Play (4 imagens)
+        setupRotatingCarousel('#product-play .product-carousel-static', [
+            'img/play/Champions Play - Carrossel-extra.png',
+            'img/play/play-isometrico-direita.png',
+            'img/play/champion-play-expositor.png',
+            'img/play/play-traseira-reto.png'
+        ]);
 
         // Menu Mobile Toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');

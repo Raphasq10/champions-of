@@ -468,7 +468,18 @@
             const container = document.querySelector(containerSelector);
             if (!container) return;
 
-            let leftIndex = 1;
+            let leftIndex = 0;
+            const initialCards = container.querySelectorAll('.product-card-static');
+            if (initialCards.length > 0) {
+                const firstImg = initialCards[0].querySelector('img');
+                if (firstImg) {
+                    const src = firstImg.getAttribute('src');
+                    const idx = images.indexOf(src);
+                    if (idx !== -1) {
+                        leftIndex = idx;
+                    }
+                }
+            }
             let intervalId = null;
 
             function rotateRight() {

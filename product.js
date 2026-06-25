@@ -678,6 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(index) {
         currentImgIndex = index;
         lightboxImg.src = imagesList[currentImgIndex];
+        lightboxImg.style.width = '';
         lightboxImg.classList.remove('zoomed');
         lightboxWrapper.classList.remove('has-zoomed');
         lightboxWrapper.scrollLeft = 0;
@@ -692,6 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.classList.remove('active');
         setTimeout(() => {
             lightbox.style.display = 'none';
+            lightboxImg.style.width = '';
             lightboxImg.classList.remove('zoomed');
             lightboxWrapper.classList.remove('has-zoomed');
         }, 300);
@@ -702,6 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.style.opacity = '0';
         setTimeout(() => {
             lightboxImg.src = imagesList[currentImgIndex];
+            lightboxImg.style.width = '';
             lightboxImg.classList.remove('zoomed');
             lightboxWrapper.classList.remove('has-zoomed');
             lightboxWrapper.scrollLeft = 0;
@@ -730,12 +733,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Alternar Zoom ao clicar na imagem
+    // Alternar Zoom ao clicar na imagem (Centraliza no ponto do clique e limita zoom a 1.5x)
     lightboxImg.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isZoomed = lightboxImg.classList.toggle('zoomed');
-        lightboxWrapper.classList.toggle('has-zoomed', isZoomed);
+        
+        if (lightboxDragDistance > 10) {
+            lightboxDragDistance = 0;
+            return;
+        }
+
+        const isZoomed = lightboxImg.classList.contains('zoomed');
+        const containerRect = lightboxWrapper.getBoundingClientRect();
+        
         if (!isZoomed) {
+            const rect = lightboxImg.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width;
+            const relY = (e.clientY - rect.top) / rect.height;
+            
+            const targetWidth = rect.width * 1.5;
+            lightboxImg.style.width = `${targetWidth}px`;
+            lightboxImg.classList.add('zoomed');
+            lightboxWrapper.classList.add('has-zoomed');
+            
+            const finalWidth = rect.width * 1.5;
+            const finalHeight = rect.height * 1.5;
+            const targetScrollLeft = (relX * finalWidth) - (e.clientX - containerRect.left);
+            const targetScrollTop = (relY * finalHeight) - (e.clientY - containerRect.top);
+            
+            lightboxWrapper.scrollLeft = targetScrollLeft;
+            lightboxWrapper.scrollTop = targetScrollTop;
+        } else {
+            lightboxImg.style.width = '';
+            lightboxImg.classList.remove('zoomed');
+            lightboxWrapper.classList.remove('has-zoomed');
             lightboxWrapper.scrollLeft = 0;
             lightboxWrapper.scrollTop = 0;
         }
@@ -744,6 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Arrastar para scrollar a imagem quando estiver em Zoom (Grab to Pan)
     let isDown = false;
     let startX, startY, scrollLeft, scrollTop;
+    let lightboxDragDistance = 0;
 
     lightboxWrapper.addEventListener('mousedown', (e) => {
         if (!lightboxImg.classList.contains('zoomed')) return;
@@ -753,6 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startY = e.pageY - lightboxWrapper.offsetTop;
         scrollLeft = lightboxWrapper.scrollLeft;
         scrollTop = lightboxWrapper.scrollTop;
+        lightboxDragDistance = 0;
     });
 
     lightboxWrapper.addEventListener('mouseleave', () => {
@@ -774,6 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const walkY = (y - startY) * 1.5;
         lightboxWrapper.scrollLeft = scrollLeft - walkX;
         lightboxWrapper.scrollTop = scrollTop - walkY;
+        lightboxDragDistance += Math.abs(walkX) + Math.abs(walkY);
     });
 
     // Fechar com ESC e navegar com setas do teclado

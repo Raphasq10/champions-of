@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             // Imagens do carrossel deslizante
             carousel: [
-                "img/fire/fire-controle.png",
                 "img/fire/fire-isometrico-direita.png",
                 "img/fire/champion-fire-espositor.png",
-                "img/fire/fire-traseira-reto.png",
-                "img/Banner-miniatura-tema-filmes.jpg"
+                "img/fire/fire-caixa.png",
+                "img/fire/fire-controle.png",
+                "img/fire/fire-descricao-entradas.png",
+                "img/fire/fire-traseira-reto.png"
             ],
             // 4 cards de destaques
             highlights: [

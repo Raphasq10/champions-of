@@ -581,3 +581,147 @@
         padding: 12px 15px;
     }
 }
+
+/* ==========================================
+   6. CARROSSEL NAV BUTTON OVERRIDES
+   ========================================== */
+.product-swiper-container .swiper-button-next::after {
+    content: 'next' !important;
+    display: block !important;
+    font-family: 'swiper-icons' !important;
+    font-size: 20px !important;
+    color: var(--primary) !important;
+}
+
+.product-swiper-container .swiper-button-prev::after {
+    content: 'prev' !important;
+    display: block !important;
+    font-family: 'swiper-icons' !important;
+    font-size: 20px !important;
+    color: var(--primary) !important;
+}
+
+.product-swiper-container .swiper-button-next:hover::after,
+.product-swiper-container .swiper-button-prev:hover::after {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================
+   7. LIGHTBOX PREMIUM (MODAL GALLERY WITH ZOOM)
+   ========================================== */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 11, 14, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content-wrapper {
+    max-width: 85%;
+    max-height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+    border-radius: 12px;
+    scrollbar-width: none;
+}
+
+.lightbox-content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.lightbox-content-wrapper.grabbing {
+    cursor: grabbing;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    cursor: zoom-in;
+    user-select: none;
+}
+
+.lightbox-img.zoomed {
+    transform: scale(2);
+    cursor: zoom-out;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #F8FAFC;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 100000;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F8FAFC;
+    font-size: 36px;
+    padding: 15px;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 100000;
+}
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Ajustes em telas menores para o modal */
+@media (max-width: 768px) {
+    .lightbox-prev {
+        left: 10px;
+    }
+    .lightbox-next {
+        right: 10px;
+    }
+    .lightbox-close {
+        top: 20px;
+        right: 20px;
+        font-size: 32px;
+    }
+}

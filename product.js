@@ -452,6 +452,150 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================
+    // 6. LIGHTBOX GALERIA PREMIUM COM ZOOM E NAVEGAÇÃO
+    // ==========================================
+    const lightboxHTML = `
+        <div id="product-lightbox" class="lightbox-overlay">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-prev">&#10094;</div>
+            <div class="lightbox-next">&#10095;</div>
+            <div class="lightbox-content-wrapper">
+                <img class="lightbox-img" src="" alt="Zoomed view">
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+
+    const lightbox = document.getElementById('product-lightbox');
+    const lightboxImg = lightbox.querySelector('.lightbox-img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+    const lightboxNext = lightbox.querySelector('.lightbox-next');
+    const lightboxWrapper = lightbox.querySelector('.lightbox-content-wrapper');
+
+    let currentImgIndex = 0;
+    const imagesList = data.carousel; // Imagens do carrossel deslizante
+
+    function openLightbox(index) {
+        currentImgIndex = index;
+        lightboxImg.src = imagesList[currentImgIndex];
+        lightboxImg.classList.remove('zoomed');
+        lightboxWrapper.scrollLeft = 0;
+        lightboxWrapper.scrollTop = 0;
+        lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            lightboxImg.classList.remove('zoomed');
+        }, 300);
+    }
+
+    function navigateLightbox(dir) {
+        currentImgIndex = (currentImgIndex + dir + imagesList.length) % imagesList.length;
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            lightboxImg.src = imagesList[currentImgIndex];
+            lightboxImg.classList.remove('zoomed');
+            lightboxWrapper.scrollLeft = 0;
+            lightboxWrapper.scrollTop = 0;
+            lightboxImg.style.opacity = '1';
+        }, 150);
+    }
+
+    // Clique nas imagens do Swiper para abrir o Lightbox
+    swiperWrapper.addEventListener('click', (e) => {
+        const clickedImg = e.target.closest('.swiper-slide img');
+        if (clickedImg) {
+            const src = clickedImg.getAttribute('src');
+            const index = imagesList.indexOf(src);
+            if (index !== -1) {
+                openLightbox(index);
+            }
+        }
+    });
+
+    // Fechar e Navegar
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateLightbox(-1);
+    });
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateLightbox(1);
+    });
+
+    // Fechar ao clicar fora da imagem
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxWrapper) {
+            closeLightbox();
+        }
+    });
+
+    // Alternar Zoom ao clicar na imagem
+    lightboxImg.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxImg.classList.toggle('zoomed');
+        if (!lightboxImg.classList.contains('zoomed')) {
+            lightboxWrapper.scrollLeft = 0;
+            lightboxWrapper.scrollTop = 0;
+        }
+    });
+
+    // Arrastar para scrollar a imagem quando estiver em Zoom (Grab to Pan)
+    let isDown = false;
+    let startX, startY, scrollLeft, scrollTop;
+
+    lightboxWrapper.addEventListener('mousedown', (e) => {
+        if (!lightboxImg.classList.contains('zoomed')) return;
+        isDown = true;
+        lightboxWrapper.classList.add('grabbing');
+        startX = e.pageX - lightboxWrapper.offsetLeft;
+        startY = e.pageY - lightboxWrapper.offsetTop;
+        scrollLeft = lightboxWrapper.scrollLeft;
+        scrollTop = lightboxWrapper.scrollTop;
+    });
+
+    lightboxWrapper.addEventListener('mouseleave', () => {
+        isDown = false;
+        lightboxWrapper.classList.remove('grabbing');
+    });
+
+    lightboxWrapper.addEventListener('mouseup', () => {
+        isDown = false;
+        lightboxWrapper.classList.remove('grabbing');
+    });
+
+    lightboxWrapper.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - lightboxWrapper.offsetLeft;
+        const y = e.pageY - lightboxWrapper.offsetTop;
+        const walkX = (x - startX) * 1.5;
+        const walkY = (y - startY) * 1.5;
+        lightboxWrapper.scrollLeft = scrollLeft - walkX;
+        lightboxWrapper.scrollTop = scrollTop - walkY;
+    });
+
+    // Fechar com ESC e navegar com setas do teclado
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            navigateLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateLightbox(1);
+        }
+    });
+
     // Recalcula as posições do ScrollTrigger após todas as inicializações de animações
     if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.refresh();

@@ -358,17 +358,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 650);
             } else {
                 // Roda para a direita (imagem anterior entra pela esquerda, igual ao index)
+                const cards = carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)');
+                const leftCard = cards[0];
+                const centerCard = cards[1];
+                const rightCard = cards[2];
+
                 const nextLeftIdx = (activeIndex - 2 + images.length) % images.length;
 
                 const enteringCard = document.createElement('div');
                 enteringCard.className = 'product-card-static entering';
                 enteringCard.innerHTML = `<img src="${images[nextLeftIdx]}" alt="${data.name} Detalhe">`;
                 carouselContainer.insertBefore(enteringCard, carouselContainer.firstChild);
-
-                const cards = carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)');
-                const leftCard = cards[0];
-                const centerCard = cards[1];
-                const rightCard = cards[2];
 
                 rightCard.classList.add('exiting');
                 centerCard.classList.remove('active');
@@ -478,35 +478,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Cliques no carrossel (Ativar Lightbox ou Mudar Foco do Slide)
-        carouselContainer.addEventListener('click', (e) => {
-            // Ignora cliques se o usuário arrastou significativamente
-            if (dragDistance > 15) return;
+        if (wrapper) {
+            // Cliques no carrossel (Ativar Lightbox ou Mudar Foco do Slide)
+            wrapper.addEventListener('click', (e) => {
+                // Ignora cliques se o usuário arrastou significativamente
+                if (dragDistance > 15) return;
 
-            const clickedCard = e.target.closest('.product-card-static');
-            if (!clickedCard) return;
+                // Encontra o card fisicamente sob a coordenada do clique
+                const element = document.elementFromPoint(e.clientX, e.clientY);
+                const clickedCard = element ? element.closest('.product-card-static') : null;
+                if (!clickedCard) return;
 
-            if (clickedCard.classList.contains('active')) {
-                // Abre o Lightbox da imagem ativa
-                const img = clickedCard.querySelector('img');
-                if (img) {
-                    const src = img.getAttribute('src');
-                    const index = imagesList.indexOf(src);
-                    if (index !== -1) {
-                        openLightbox(index);
+                if (clickedCard.classList.contains('active')) {
+                    // Abre o Lightbox da imagem ativa
+                    const img = clickedCard.querySelector('img');
+                    if (img) {
+                        const src = img.getAttribute('src');
+                        const index = imagesList.indexOf(src);
+                        if (index !== -1) {
+                            openLightbox(index);
+                        }
+                    }
+                } else {
+                    // Clique em card lateral -> Rotaciona para trazê-lo ao centro
+                    const cards = Array.from(carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)'));
+                    const clickedIndex = cards.indexOf(clickedCard);
+                    if (clickedIndex === 0) {
+                        rotate('prev');
+                    } else if (clickedIndex === 2) {
+                        rotate('next');
                     }
                 }
-            } else {
-                // Clique em card lateral -> Rotaciona para trazê-lo ao centro
-                const cards = Array.from(carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)'));
-                const clickedIndex = cards.indexOf(clickedCard);
-                if (clickedIndex === 0) {
-                    rotate('prev');
-                } else if (clickedIndex === 2) {
-                    rotate('next');
-                }
-            }
-        });
+            });
+        }
     }
 
     // Cards de Destaque (Highlights)

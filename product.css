@@ -640,8 +640,10 @@
 }
 
 .lightbox-content-wrapper {
-    max-width: 85%;
-    max-height: 85%;
+    width: 90vw;
+    height: 90vh;
+    max-width: 90vw;
+    max-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -662,14 +664,24 @@
 .lightbox-img {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, max-width 0.3s ease, max-height 0.3s ease, width 0.3s ease;
     cursor: zoom-in;
     user-select: none;
+    display: block;
+}
+
+.lightbox-content-wrapper.has-zoomed {
+    display: block;
 }
 
 .lightbox-img.zoomed {
-    transform: scale(2);
+    max-width: none;
+    max-height: none;
+    width: 200%;
+    height: auto;
     cursor: zoom-out;
 }
 

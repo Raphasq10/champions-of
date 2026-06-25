@@ -17,8 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -123,16 +122,18 @@
                 <p class="section-subtitle">Explore a anatomia física e os ângulos do aparelho</p>
             </div>
             
-            <div class="product-swiper-container">
-                <div class="swiper product-swiper">
-                    <div class="swiper-wrapper" id="swiper-wrapper-dynamic">
+            <div class="product-carousel-container">
+                <button class="carousel-btn prev-btn" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="product-carousel-wrapper">
+                    <div class="product-carousel-static" id="carousel-static-dynamic">
                         <!-- Injetado dinamicamente pelo JS -->
                     </div>
-                    <!-- Paginação e Botões de Navegação -->
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
                 </div>
+                <button class="carousel-btn next-btn" aria-label="Próximo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -226,8 +227,7 @@
         </div>
     </footer>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

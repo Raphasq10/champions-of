@@ -284,15 +284,229 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('collage-img-remote-tag').src = data.collage.remote;
     document.getElementById('collage-img-rear-tag').src = data.collage.rear;
 
-    // Slider / Swiper Wrapper
-    const swiperWrapper = document.getElementById('swiper-wrapper-dynamic');
-    swiperWrapper.innerHTML = '';
-    data.carousel.forEach(imgSrc => {
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        slide.innerHTML = `<img src="${imgSrc}" alt="${data.name} Detalhe">`;
-        swiperWrapper.appendChild(slide);
-    });
+    // Slider / Carousel Wrapper
+    const carouselContainer = document.getElementById('carousel-static-dynamic');
+    if (carouselContainer) {
+        carouselContainer.innerHTML = '';
+        
+        const images = data.carousel;
+        let activeIndex = 1; // Começa com o índice 1 ativo no meio
+        let isTransitioning = false;
+
+        // Renderiza os 3 cards estáticos iniciais
+        function renderInitialCards() {
+            carouselContainer.innerHTML = '';
+            
+            const leftIdx = (activeIndex - 1 + images.length) % images.length;
+            const centerIdx = activeIndex;
+            const rightIdx = (activeIndex + 1) % images.length;
+
+            // Card Esquerdo
+            const leftCard = document.createElement('div');
+            leftCard.className = 'product-card-static';
+            leftCard.innerHTML = `<img src="${images[leftIdx]}" alt="${data.name} Detalhe">`;
+            carouselContainer.appendChild(leftCard);
+
+            // Card Central (Ativo)
+            const centerCard = document.createElement('div');
+            centerCard.className = 'product-card-static active';
+            centerCard.innerHTML = `<img src="${images[centerIdx]}" alt="${data.name} Detalhe">`;
+            carouselContainer.appendChild(centerCard);
+
+            // Card Direito
+            const rightCard = document.createElement('div');
+            rightCard.className = 'product-card-static';
+            rightCard.innerHTML = `<img src="${images[rightIdx]}" alt="${data.name} Detalhe">`;
+            carouselContainer.appendChild(rightCard);
+        }
+        renderInitialCards();
+
+        // Rotação bidirecional do carrossel
+        function rotate(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            if (direction === 'next') {
+                // Roda para a esquerda (próxima imagem entra pela direita)
+                const nextRightIdx = (activeIndex + 2) % images.length;
+                
+                const enteringCard = document.createElement('div');
+                enteringCard.className = 'product-card-static entering-right';
+                enteringCard.innerHTML = `<img src="${images[nextRightIdx]}" alt="${data.name} Detalhe">`;
+                carouselContainer.appendChild(enteringCard);
+
+                const cards = carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)');
+                const leftCard = cards[0];
+                const centerCard = cards[1];
+                const rightCard = cards[2];
+
+                leftCard.classList.add('exiting-left');
+                centerCard.classList.remove('active');
+                rightCard.classList.add('active');
+
+                // Força reflow
+                enteringCard.offsetHeight;
+
+                enteringCard.classList.remove('entering-right');
+                leftCard.classList.add('animate-exit-left');
+
+                activeIndex = (activeIndex + 1) % images.length;
+
+                setTimeout(() => {
+                    leftCard.remove();
+                }, 650);
+            } else {
+                // Roda para a direita (imagem anterior entra pela esquerda, igual ao index)
+                const nextLeftIdx = (activeIndex - 2 + images.length) % images.length;
+
+                const enteringCard = document.createElement('div');
+                enteringCard.className = 'product-card-static entering';
+                enteringCard.innerHTML = `<img src="${images[nextLeftIdx]}" alt="${data.name} Detalhe">`;
+                carouselContainer.insertBefore(enteringCard, carouselContainer.firstChild);
+
+                const cards = carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)');
+                const leftCard = cards[0];
+                const centerCard = cards[1];
+                const rightCard = cards[2];
+
+                rightCard.classList.add('exiting');
+                centerCard.classList.remove('active');
+                leftCard.classList.add('active');
+
+                // Força reflow
+                enteringCard.offsetHeight;
+
+                enteringCard.classList.remove('entering');
+                rightCard.classList.add('animate-exit');
+
+                activeIndex = (activeIndex - 1 + images.length) % images.length;
+
+                setTimeout(() => {
+                    rightCard.remove();
+                }, 650);
+            }
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 650);
+        }
+
+        // Configuração dos botões de navegação física (setas)
+        const prevBtn = document.querySelector('.carousel-btn.prev-btn');
+        const nextBtn = document.querySelector('.carousel-btn.next-btn');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                rotate('prev');
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                rotate('next');
+            });
+        }
+
+        // Rotação automática (Autoplay de 4s, igual ao index)
+        let autoplayInterval = null;
+        function startAutoplay() {
+            if (!autoplayInterval) {
+                autoplayInterval = setInterval(() => {
+                    rotate('next');
+                }, 4000);
+            }
+        }
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        startAutoplay();
+
+        const containerEl = document.querySelector('.product-carousel-container');
+        if (containerEl) {
+            containerEl.addEventListener('mouseenter', stopAutoplay);
+            containerEl.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // Arraste lateral (Drag-to-Swipe com Pointer Events)
+        let startX = 0;
+        let hasMoved = false;
+        let isDragging = false;
+        const swipeThreshold = 50;
+
+        const wrapper = document.querySelector('.product-carousel-wrapper');
+        if (wrapper) {
+            wrapper.addEventListener('pointerdown', (e) => {
+                if (e.button !== 0) return;
+                startX = e.clientX;
+                isDragging = true;
+                hasMoved = false;
+                wrapper.style.cursor = 'grabbing';
+                wrapper.setPointerCapture(e.pointerId);
+            });
+
+            wrapper.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                if (Math.abs(e.clientX - startX) > 10) {
+                    hasMoved = true;
+                }
+            });
+
+            wrapper.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                wrapper.style.cursor = 'grab';
+                wrapper.releasePointerCapture(e.pointerId);
+
+                const diffX = e.clientX - startX;
+                if (Math.abs(diffX) > swipeThreshold) {
+                    if (diffX > 0) {
+                        rotate('prev');
+                    } else {
+                        rotate('next');
+                    }
+                }
+            });
+
+            wrapper.addEventListener('pointercancel', () => {
+                isDragging = false;
+                wrapper.style.cursor = 'grab';
+            });
+        }
+
+        // Cliques no carrossel (Ativar Lightbox ou Mudar Foco do Slide)
+        carouselContainer.addEventListener('click', (e) => {
+            if (hasMoved) return; // Ignora se foi arrastado
+
+            const clickedCard = e.target.closest('.product-card-static');
+            if (!clickedCard) return;
+
+            if (clickedCard.classList.contains('active')) {
+                // Abre o Lightbox da imagem activa
+                const img = clickedCard.querySelector('img');
+                if (img) {
+                    const src = img.getAttribute('src');
+                    const index = imagesList.indexOf(src);
+                    if (index !== -1) {
+                        openLightbox(index);
+                    }
+                }
+            } else {
+                // Clique em card lateral -> Rotaciona para trazê-lo ao centro
+                const cards = Array.from(carouselContainer.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)'));
+                const clickedIndex = cards.indexOf(clickedCard);
+                if (clickedIndex === 0) {
+                    rotate('prev');
+                } else if (clickedIndex === 2) {
+                    rotate('next');
+                }
+            }
+        });
+    }
 
     // Cards de Destaque (Highlights)
     const highlightsGrid = document.getElementById('highlights-grid-dynamic');
@@ -325,28 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // ==========================================
-    // 4. INICIALIZAÇÃO DO CARROSSEL (SWIPER)
-    // ==========================================
-    new Swiper('.product-swiper', {
-        loop: true,
-        grabCursor: true,
-        speed: 600,
-        spaceBetween: 30,
-        autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        effect: 'slide'
-    });
+
 
     // ==========================================
     // 5. ANIMAÇÕES GSAP (PREMIUM REVEAL & PARALLAX)
@@ -509,17 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
-    // Clique nas imagens do Swiper para abrir o Lightbox
-    swiperWrapper.addEventListener('click', (e) => {
-        const clickedImg = e.target.closest('.swiper-slide img');
-        if (clickedImg) {
-            const src = clickedImg.getAttribute('src');
-            const index = imagesList.indexOf(src);
-            if (index !== -1) {
-                openLightbox(index);
-            }
-        }
-    });
+
 
     // Fechar e Navegar
     lightboxClose.addEventListener('click', closeLightbox);

@@ -679,6 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentImgIndex = index;
         lightboxImg.src = imagesList[currentImgIndex];
         lightboxImg.classList.remove('zoomed');
+        lightboxWrapper.classList.remove('has-zoomed');
         lightboxWrapper.scrollLeft = 0;
         lightboxWrapper.scrollTop = 0;
         lightbox.style.display = 'flex';
@@ -692,6 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             lightbox.style.display = 'none';
             lightboxImg.classList.remove('zoomed');
+            lightboxWrapper.classList.remove('has-zoomed');
         }, 300);
     }
 
@@ -701,6 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             lightboxImg.src = imagesList[currentImgIndex];
             lightboxImg.classList.remove('zoomed');
+            lightboxWrapper.classList.remove('has-zoomed');
             lightboxWrapper.scrollLeft = 0;
             lightboxWrapper.scrollTop = 0;
             lightboxImg.style.opacity = '1';
@@ -730,8 +733,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Alternar Zoom ao clicar na imagem
     lightboxImg.addEventListener('click', (e) => {
         e.stopPropagation();
-        lightboxImg.classList.toggle('zoomed');
-        if (!lightboxImg.classList.contains('zoomed')) {
+        const isZoomed = lightboxImg.classList.toggle('zoomed');
+        lightboxWrapper.classList.toggle('has-zoomed', isZoomed);
+        if (!isZoomed) {
             lightboxWrapper.scrollLeft = 0;
             lightboxWrapper.scrollTop = 0;
         }

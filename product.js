@@ -435,26 +435,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Arraste lateral (Drag-to-Swipe com Pointer Events)
         let startX = 0;
-        let hasMoved = false;
         let isDragging = false;
+        let dragDistance = 0;
         const swipeThreshold = 50;
 
         const wrapper = document.querySelector('.product-carousel-wrapper');
         if (wrapper) {
+            // Previne o comportamento padrão do navegador de arrastar a imagem como "fantasma"
+            wrapper.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+
             wrapper.addEventListener('pointerdown', (e) => {
                 if (e.button !== 0) return;
                 startX = e.clientX;
                 isDragging = true;
-                hasMoved = false;
+                dragDistance = 0;
                 wrapper.style.cursor = 'grabbing';
                 wrapper.setPointerCapture(e.pointerId);
-            });
-
-            wrapper.addEventListener('pointermove', (e) => {
-                if (!isDragging) return;
-                if (Math.abs(e.clientX - startX) > 10) {
-                    hasMoved = true;
-                }
             });
 
             wrapper.addEventListener('pointerup', (e) => {
@@ -463,8 +461,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 wrapper.style.cursor = 'grab';
                 wrapper.releasePointerCapture(e.pointerId);
 
+                dragDistance = Math.abs(e.clientX - startX);
                 const diffX = e.clientX - startX;
-                if (Math.abs(diffX) > swipeThreshold) {
+                if (dragDistance > swipeThreshold) {
                     if (diffX > 0) {
                         rotate('prev');
                     } else {
@@ -481,7 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cliques no carrossel (Ativar Lightbox ou Mudar Foco do Slide)
         carouselContainer.addEventListener('click', (e) => {
-            if (hasMoved) return; // Ignora se foi arrastado
+            // Ignora cliques se o usuário arrastou significativamente
+            if (dragDistance > 15) return;
 
             const clickedCard = e.target.closest('.product-card-static');
             if (!clickedCard) return;

@@ -265,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#product-${activeProductKey}`) {
+        const href = link.getAttribute('href');
+        if (href && href.includes(`p=${activeProductKey}`)) {
             link.classList.add('active');
         }
     });
@@ -274,7 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('collage-brand-icon').src = data.icon;
     document.getElementById('collage-brand-logo').src = data.logo;
     document.getElementById('collage-slogan-text').innerText = data.slogan;
-    document.getElementById('collage-year-text').innerText = data.year;
+    const yearEl = document.getElementById('collage-year-text');
+    if (yearEl) {
+        yearEl.innerText = data.year;
+    }
     document.getElementById('collage-signature-title').innerText = data.name;
     document.getElementById('collage-signature-serif').innerText = data.os;
 

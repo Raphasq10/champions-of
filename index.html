@@ -37,11 +37,11 @@
             </a>
             
             <ul class="nav-menu">
-                <li><a href="#top" class="nav-link active">Home</a></li>
-                <li><a href="#product-fire" class="nav-link">Fire</a></li>
-                <li><a href="#product-ultimate" class="nav-link">Ultimate</a></li>
-                <li><a href="#product-infinity" class="nav-link">Infinity</a></li>
-                <li><a href="#product-play" class="nav-link">Play</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="product.html?p=fire" class="nav-link">Fire</a></li>
+                <li><a href="product.html?p=ultimate" class="nav-link">Ultimate</a></li>
+                <li><a href="product.html?p=infinity" class="nav-link">Infinity</a></li>
+                <li><a href="product.html?p=play" class="nav-link">Play</a></li>
             </ul>
 
             <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
@@ -73,7 +73,7 @@
                 
             <div class="hero-cards-container">
                 <!-- Card 1: FIRE -->
-                <a href="product.html?p=fire" class="hero-card card-fire">
+                <a href="#product-fire" class="hero-card card-fire">
                     <div class="icon-img">
                         <img src="img/icone-champions-fire.png" alt="Ícone Fire">
                     </div>
@@ -89,7 +89,7 @@
                 </a>
 
                 <!-- Card 2: ULTIMATE -->
-                <a href="product.html?p=ultimate" class="hero-card card-ultimate">
+                <a href="#product-ultimate" class="hero-card card-ultimate">
                     <div class="icon-img">
                         <img src="img/icone-champions-ultimate.png" alt="Ícone Ultimate">
                     </div>
@@ -103,7 +103,7 @@
                 </a>
 
                 <!-- Card 3: INFINITY -->
-                <a href="product.html?p=infinity" class="hero-card card-infinity">
+                <a href="#product-infinity" class="hero-card card-infinity">
                     <div class="icon-img">
                         <img src="img/icones-champions-infinity.png" alt="Ícone Infinity">
                     </div>
@@ -117,7 +117,7 @@
                 </a>
 
                 <!-- Card 4: PLAY -->
-                <a href="product.html?p=play" class="hero-card card-play">
+                <a href="#product-play" class="hero-card card-play">
                     <div class="icon-img">
                         <img src="img/icone-champions-play.png" alt="Ícone Play">
                     </div>
@@ -304,11 +304,11 @@
             <p class="footer-tagline">A Marca Campeã</p>
             
             <div class="footer-nav">
-                <a href="#top" class="footer-link">Home</a>
-                <a href="#product-fire" class="footer-link">Fire</a>
-                <a href="#product-ultimate" class="footer-link">Ultimate</a>
-                <a href="#product-infinity" class="footer-link">Infinity</a>
-                <a href="#product-play" class="footer-link">Play</a>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="product.html?p=fire" class="footer-link">Fire</a>
+                <a href="product.html?p=ultimate" class="footer-link">Ultimate</a>
+                <a href="product.html?p=infinity" class="footer-link">Infinity</a>
+                <a href="product.html?p=play" class="footer-link">Play</a>
                 <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
                     <i class="fab fa-whatsapp"></i> SUPORTE
                 </a>
@@ -586,19 +586,16 @@
         const navMenu = document.querySelector('.nav-menu');
 
         mobileMenuToggle.addEventListener('click', () => {
-            if (navMenu.style.display === 'flex') {
-                navMenu.style.display = 'none';
-            } else {
-                navMenu.style.display = 'flex';
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '70px';
-                navMenu.style.left = '0';
-                navMenu.style.width = '100%';
-                navMenu.style.backgroundColor = 'rgba(13, 14, 16, 0.95)';
-                navMenu.style.padding = '20px';
-                navMenu.style.borderBottom = '1px solid var(--dark-card-border)';
-                navMenu.style.gap = '15px';
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon) {
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     </script>

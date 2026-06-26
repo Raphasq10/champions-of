@@ -637,6 +637,8 @@
     max-width: 90vw;
     max-height: 90vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: auto;
     position: relative;
     border-radius: 12px;
@@ -666,6 +668,8 @@
 
 .lightbox-content-wrapper.has-zoomed {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lightbox-img.zoomed {

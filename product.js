@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: "img/icone-champions-fire.png",
             slogan: "Do Cinema aos Campeonatos: Definição Absoluta e Emoção Intensa",
             year: "2025",
-            os: "Android 14.0",
+            os: "Android 14",
             desc: "O Champions Fire foi projetado para elevar sua experiência de entretenimento a um patamar profissional. Equipado com conexões ultrarrápidas de última geração e processamento de ponta, é o dispositivo ideal para quem busca performance extrema, seja assistindo a campeonatos ao vivo ou desfrutando de sessões de cinema em casa.",
             // 5 imagens para a colagem
             collage: {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Vídeo / Codecs": "H.265 6K @ 30fps, H.265 4K @ 60fps, H.264 4K @ 30fps, H.264 1080p @ 60fps",
                 "Memória RAM": "2GB",
                 "Armazenamento": "16GB",
-                "Sistema Operacional": "Android 14.0",
+                "Sistema Operacional": "Android 14",
                 "Portas de Conexão": "TF Card, USB 2.0, HDMI 2.1",
                 "Conectividade": "Bluetooth 5.0, Wi-Fi 6 (Dual Band 2.4/5GHz)",
                 "Áudio": "2x DAC @ 95dB, SNR 3kHz–192kHz, Line Out, I2S, PCM, TDM"
@@ -279,7 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearEl) {
         yearEl.innerText = data.year;
     }
-    document.getElementById('collage-signature-title').innerText = data.name;
+    const sigLogo = document.getElementById('collage-signature-logo');
+    if (sigLogo) {
+        sigLogo.src = data.logo;
+    }
     document.getElementById('collage-signature-serif').innerText = data.os;
 
     // Imagens da Colagem do Hero

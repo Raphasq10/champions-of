@@ -196,14 +196,13 @@
     letter-spacing: 1px;
 }
 
-.collage-signature .serif-title {
-    font-family: var(--font-title);
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #1E293B;
-    line-height: 1.2;
+.collage-signature .signature-logo {
+    max-width: 140px;
+    height: auto;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    filter: none;
+    display: block;
 }
 
 /* ==========================================
@@ -465,8 +464,8 @@
         font-size: 34px;
     }
     
-    .collage-signature .serif-title {
-        font-size: 20px;
+    .collage-signature .signature-logo {
+        max-width: 110px;
     }
 
     .highlights-grid {

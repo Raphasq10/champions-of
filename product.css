@@ -26,7 +26,7 @@
     grid-auto-rows: 90px;
     gap: 24px;
     position: relative;
-    max-width: 1300px;
+    max-width: 1450px;
     margin: 0 auto;
 }
 
@@ -72,7 +72,7 @@
 
 /* Bloco 1: Bloco de Texto Escuro (Top-Left) - Convertido para Glassmorphism Claro */
 .collage-text-dark {
-    grid-column: 2 / 5;
+    grid-column: 1 / 5;
     grid-row: 1 / 5;
     background: rgba(255, 255, 255, 0.75);
     color: #475569;
@@ -109,14 +109,14 @@
 
 /* Bloco 2: Imagem Isométrica Principal (Top-Right) */
 .collage-img-main {
-    grid-column: 5 / 11;
+    grid-column: 5 / 13;
     grid-row: 1 / 6;
     z-index: 2;
 }
 
 /* Bloco 3: Quadro Horizontal de Portas (Middle-Left) */
 .collage-img-inputs {
-    grid-column: 2 / 5;
+    grid-column: 1 / 5;
     grid-row: 5 / 8;
     z-index: 4;
 }
@@ -127,28 +127,28 @@
 
 /* Bloco 4: Aparelho no Expositor (Center-Middle) */
 .collage-img-expositor {
-    grid-column: 5 / 8;
+    grid-column: 5 / 9;
     grid-row: 6 / 10;
     z-index: 3;
 }
 
 /* Bloco 5: Controle Remoto por Voz (Middle-Right) */
 .collage-img-remote {
-    grid-column: 8 / 11;
+    grid-column: 9 / 13;
     grid-row: 6 / 10;
     z-index: 2;
 }
 
 /* Bloco 6: Vista Traseira / Linhas e Conexões (Bottom-Left) */
 .collage-img-rear {
-    grid-column: 2 / 5;
+    grid-column: 1 / 5;
     grid-row: 8 / 12;
     z-index: 4;
 }
 
 /* Bloco 7: Bloco com Ano/Detalhe (Bottom-Center) */
 .collage-text-year {
-    grid-column: 5 / 7;
+    grid-column: 5 / 8;
     grid-row: 10 / 12;
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -175,7 +175,7 @@
 
 /* Bloco 8: Tipografia Elegante (Bottom-Right) */
 .collage-signature {
-    grid-column: 7 / 11;
+    grid-column: 8 / 13;
     grid-row: 10 / 12;
     display: flex;
     flex-direction: column;

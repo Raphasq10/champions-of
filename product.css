@@ -178,10 +178,16 @@
 .collage-signature {
     grid-column: 8 / 13;
     grid-row: 10 / 12;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 20px;
+    padding: 20px 30px;
     z-index: 3;
 }
 
@@ -464,6 +470,11 @@
         font-size: 34px;
     }
     
+    .collage-signature {
+        padding: 15px 20px;
+        border-radius: 12px;
+    }
+
     .collage-signature .signature-logo {
         max-width: 110px;
     }

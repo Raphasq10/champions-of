@@ -454,19 +454,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             wrapper.addEventListener('pointerdown', (e) => {
-                if (e.button !== 0) return;
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+                stopAutoplay();
                 startX = e.clientX;
                 isDragging = true;
                 dragDistance = 0;
                 wrapper.style.cursor = 'grabbing';
-                wrapper.setPointerCapture(e.pointerId);
+                try {
+                    wrapper.setPointerCapture(e.pointerId);
+                } catch (err) {}
             });
 
             wrapper.addEventListener('pointerup', (e) => {
                 if (!isDragging) return;
                 isDragging = false;
                 wrapper.style.cursor = 'grab';
-                wrapper.releasePointerCapture(e.pointerId);
+                try {
+                    wrapper.releasePointerCapture(e.pointerId);
+                } catch (err) {}
 
                 dragDistance = Math.abs(e.clientX - startX);
                 const diffX = e.clientX - startX;
@@ -477,11 +482,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         rotate('next');
                     }
                 }
+                startAutoplay();
             });
 
-            wrapper.addEventListener('pointercancel', () => {
+            wrapper.addEventListener('pointercancel', (e) => {
+                if (!isDragging) return;
                 isDragging = false;
                 wrapper.style.cursor = 'grab';
+                try {
+                    wrapper.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+                startAutoplay();
             });
         }
 

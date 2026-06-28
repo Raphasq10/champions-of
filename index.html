@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Link para Folha de Estilos Externa -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.6">
 </head>
 <body id="top">
 
@@ -477,55 +477,80 @@
             const container = document.querySelector(containerSelector);
             if (!container) return;
 
-            let leftIndex = 0;
-            const initialCards = container.querySelectorAll('.product-card-static');
-            if (initialCards.length > 0) {
-                const firstImg = initialCards[0].querySelector('img');
-                if (firstImg) {
-                    const src = firstImg.getAttribute('src');
-                    const idx = images.indexOf(src);
-                    if (idx !== -1) {
-                        leftIndex = idx;
-                    }
-                }
-            }
+            let activeIndex = 1; // O card inicial ativo está no índice 1 (do meio)
+            let isTransitioning = false;
             let intervalId = null;
 
-            function rotateRight() {
-                const cards = container.querySelectorAll('.product-card-static');
-                if (cards.length < 3) return;
-                const rightCard = cards[2];
-                const centerCard = cards[1];
+            function rotate(direction) {
+                if (isTransitioning) return;
+                isTransitioning = true;
+
+                const cards = container.querySelectorAll('.product-card-static:not(.exiting-left):not(.exiting)');
+                if (cards.length < 3) {
+                    isTransitioning = false;
+                    return;
+                }
                 const leftCard = cards[0];
+                const centerCard = cards[1];
+                const rightCard = cards[2];
 
-                // Calcula o próximo índice para a imagem que entra à esquerda
-                leftIndex = (leftIndex - 1 + images.length) % images.length;
-                const newImageUrl = images[leftIndex];
+                if (direction === 'next') {
+                    // Roda para a esquerda (próxima imagem entra pela direita)
+                    const nextRightIdx = (activeIndex + 2) % images.length;
+                    const newImageUrl = images[nextRightIdx];
 
-                // Cria o card que entra pela esquerda
-                const enteringCard = document.createElement('div');
-                enteringCard.className = 'product-card-static entering';
-                enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
-                
-                // Insere no início (esquerda) e marca o último card para saída
-                container.insertBefore(enteringCard, leftCard);
-                rightCard.classList.add('exiting');
-                
-                // Atualiza a classe ativa (o da esquerda vira meio/ativo, o do meio vira direita/inativo)
-                centerCard.classList.remove('active');
-                leftCard.classList.add('active');
+                    const enteringCard = document.createElement('div');
+                    enteringCard.className = 'product-card-static entering-right';
+                    enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
+                    container.appendChild(enteringCard);
 
-                // Força reflow para o navegador registrar a animação inicial
-                enteringCard.offsetHeight;
+                    leftCard.classList.add('exiting-left');
+                    centerCard.classList.remove('active');
+                    rightCard.classList.add('active');
 
-                // Ativa a transição CSS
-                enteringCard.classList.remove('entering');
-                rightCard.classList.add('animate-exit');
+                    enteringCard.offsetHeight; // force reflow
 
-                // Remove o card antigo após a transição terminar (650ms)
+                    enteringCard.classList.remove('entering-right');
+                    leftCard.classList.add('animate-exit-left');
+
+                    activeIndex = (activeIndex + 1) % images.length;
+
+                    setTimeout(() => {
+                        leftCard.remove();
+                    }, 650);
+                } else {
+                    // Roda para a direita (imagem anterior entra pela esquerda)
+                    const nextLeftIdx = (activeIndex - 2 + images.length) % images.length;
+                    const newImageUrl = images[nextLeftIdx];
+
+                    const enteringCard = document.createElement('div');
+                    enteringCard.className = 'product-card-static entering';
+                    enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
+                    container.insertBefore(enteringCard, container.firstChild);
+
+                    rightCard.classList.add('exiting');
+                    centerCard.classList.remove('active');
+                    leftCard.classList.add('active');
+
+                    enteringCard.offsetHeight; // force reflow
+
+                    enteringCard.classList.remove('entering');
+                    rightCard.classList.add('animate-exit');
+
+                    activeIndex = (activeIndex - 1 + images.length) % images.length;
+
+                    setTimeout(() => {
+                        rightCard.remove();
+                    }, 650);
+                }
+
                 setTimeout(() => {
-                    rightCard.remove();
+                    isTransitioning = false;
                 }, 650);
+            }
+
+            function rotateRight() {
+                rotate('prev'); // Autoplay original: imagem entra pela esquerda
             }
 
             function startAutoPlay() {
@@ -547,6 +572,58 @@
             // Pausa ao passar o mouse e retoma ao sair
             container.addEventListener('mouseenter', stopAutoPlay);
             container.addEventListener('mouseleave', startAutoPlay);
+
+            // Arraste lateral (Drag-to-Swipe com Pointer Events)
+            let startX = 0;
+            let isDragging = false;
+            let dragDistance = 0;
+            const swipeThreshold = 50;
+
+            container.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+
+            container.addEventListener('pointerdown', (e) => {
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+                stopAutoPlay();
+                startX = e.clientX;
+                isDragging = true;
+                dragDistance = 0;
+                container.style.cursor = 'grabbing';
+                try {
+                    container.setPointerCapture(e.pointerId);
+                } catch (err) {}
+            });
+
+            container.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                container.style.cursor = 'grab';
+                try {
+                    container.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+
+                dragDistance = Math.abs(e.clientX - startX);
+                const diffX = e.clientX - startX;
+                if (dragDistance > swipeThreshold) {
+                    if (diffX > 0) {
+                        rotate('prev');
+                    } else {
+                        rotate('next');
+                    }
+                }
+                startAutoPlay();
+            });
+
+            container.addEventListener('pointercancel', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                container.style.cursor = 'grab';
+                try {
+                    container.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+                startAutoPlay();
+            });
         }
 
         // Inicializa para o Champions Fire (4 imagens)

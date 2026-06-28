@@ -1023,6 +1023,7 @@ header .container {
     margin: 0;
     padding: 10px 0;
     min-height: 550px; /* Evita que o contêiner encolha durante a transição dos cards (previne layout shift) */
+    touch-action: pan-y;
 }
 
 .product-card-static {
@@ -1079,6 +1080,26 @@ header .container {
     flex: 0 0 0 !important;
     opacity: 0 !important;
     margin-left: -20px !important;
+}
+
+/* Bidirectional transitions for the rotating carousel */
+.product-card-static.entering-right {
+    width: 0 !important;
+    flex: 0 0 0 !important;
+    opacity: 0 !important;
+    margin-left: -20px !important;
+    pointer-events: none;
+}
+
+.product-card-static.exiting-left {
+    pointer-events: none;
+}
+
+.product-card-static.exiting-left.animate-exit-left {
+    width: 0 !important;
+    flex: 0 0 0 !important;
+    opacity: 0 !important;
+    margin-right: -20px !important;
 }
 
 /* Redução dos cards da vitrine para telas intermediárias */

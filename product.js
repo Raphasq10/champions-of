@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
             collage: {
                 main: "img/ultimate/ultimate-isometrico-direita.png",
                 inputs: "img/Banner-miniatura-tema-series.jpg",
-                expositor: "img/ultimate/champion-ultomate-expositor.png",
+                expositor: "img/ultimate/champions-ultimate-expositor.png",
                 remote: "img/ultimate/Champions-ultimate- Carrossel-extra.png",
                 rear: "img/ultimate/ultimate-traseira-reto.png"
             },
             carousel: [
                 "img/ultimate/ultimate-isometrico-direita.png",
-                "img/ultimate/champion-ultomate-expositor.png",
+                "img/ultimate/champions-ultimate-expositor.png",
                 "img/ultimate/champion-ultomate-entradas.png",
                 "img/ultimate/champions-ultimate-caixa.jpg"
             ],

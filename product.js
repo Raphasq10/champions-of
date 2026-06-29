@@ -153,38 +153,43 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             highlights: [
                 {
-                    title: "DESIGN COMPACTO",
-                    text: "Com apenas 29mm de espessura e acabamento elegante, o Infinity integra-se perfeitamente a qualquer painel de TV.",
-                    icon: "fas fa-compress"
+                    title: "INSTALAÇÃO E CONFIGURAÇÃO SIMPLES",
+                    text: "Com um design compacto e um display numérico retroiluminado por LED, a instalação e a configuração do Receptor Champions INFINITY GXPRO são rápidas e fáceis. Comece a desfrutar do seu entretenimento favorito em pouco tempo.",
+                    icon: "fas fa-sliders"
                 },
                 {
-                    title: "DISPLAY DIGITAL LED",
-                    text: "Display numérico frontal retroiluminado por LED para visualização de status e canais de forma simplificada.",
-                    icon: "fas fa-square-nfi"
+                    title: "RECURSOS AVANÇADOS E INTERFACE AMIGÁVEL",
+                    text: "Explore um mundo de recursos e aplicativos com o sistema baseado em Linux do Receptor Champions INFINITY GXPRO. Sua interface amigável torna a navegação intuitiva e oferece uma experiência agradável ao usuário.",
+                    icon: "fas fa-hand-pointer"
                 },
                 {
-                    title: "ESTABILIDADE EXTRA",
-                    text: "Sintonizadores duplos robustos com busca cega para garantir sinal contínuo em todas as situações.",
-                    icon: "fas fa-signal"
+                    title: "EXPERIÊNCIA DE ENTRETENIMENTO",
+                    text: "Desfrute do melhor entretenimento com o Receptor Champions INFINITY GXPRO. Com sua qualidade de som e imagem impecáveis, você terá uma experiência imersiva em todos os seus programas favoritos.",
+                    icon: "fas fa-tv"
                 },
                 {
-                    title: "TECNOLOGIA DE COMPARTILHAMENTO",
-                    text: "Transmita a tela de dispositivos móveis para a sua TV de forma simples com o AirPlay e DLNA integrados.",
-                    icon: "fas fa-mobile-screen-button"
+                    title: "VERSATILIDADE DE CONEXÕES",
+                    text: "Conecte-se facilmente a outros dispositivos e expanda suas opções de entretenimento. Com suporte a USB, HDMI, Porta Ethernet, A.V e RS232, o Receptor Champions INFINITY GXPRO oferece várias opções de conectividade.",
+                    icon: "fas fa-share-nodes"
                 }
             ],
             specs: {
-                "Processador / Chipset": "GX6628 / GXPRO",
-                "Gráficos": "Mali GPU Z",
-                "Resolução Máxima": "Full HD 1080p",
-                "Codecs de Vídeo": "SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC",
-                "Sintonizador (Tuner)": "Dual Tuner (IKS/SKS)",
-                "Rede": "Wi-Fi Integrado (2.4GHz) / Ethernet LAN RJ45",
-                "Display Frontal": "Numérico Retroiluminado por LED",
-                "Interface / Portas": "USB, HDMI, Porta Ethernet, A.V, RS232",
-                "Recursos de Software": "EPG, Control Parental, TimeShift, Timer, Teletexto, AirPlay, DLNA",
-                "Alimentação": "Bivolt Automático 110/220V ~ 50/60Hz",
-                "Dimensões": "134mm * 103mm * 29mm"
+                "Processador": "GX6628",
+                "Chipset": "GXPRO",
+                "Gráfico": "Mali GPU Z",
+                "Resolução": "Full HD 1080p",
+                "Codec": "H.264",
+                "Tuner": "Dual",
+                "Busca de Canais": "Automática, cega",
+                "Rede": "Wi-Fi 2.4 GHz - LAN RJ45",
+                "Áudio": "Acc",
+                "Interface": "USB - HDMI - Porta Ethernet - A.V - RS232",
+                "Display": "Numérico Retroiluminado por LED",
+                "Sistema": "Baseado em Linux",
+                "Voltagem": "Bivolt 110/220 ~ 50/60 Hz",
+                "Dimensões": "134 * 103 * 29 mm",
+                "Acessórios": "Fonte de alimentação, cabo HDMI, controle remoto",
+                "Informações Adicionais": "Com funções EPG (Guia de Programação Eletrônica), Control Parental, TimeShift, Timer, Teletexto. Permite compartilhar conteúdo através do recurso AirPlay e DLNA. Codecs suportados: SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC."
             }
         },
         play: {

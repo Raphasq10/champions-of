@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Champions Ultimate",
             logo: "img/logo-champions-ultomate-fundo-claro.png",
             icon: "img/icone-champions-ultimate.png",
-            slogan: "desfrute de desempenho excepcional e recursos avançados em sua TV",
+            slogan: "Desfrute de desempenho excepcional e recursos avançados em sua TV",
             year: "2023",
             os: "Linux System",
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
@@ -279,6 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Logo / Ícone / Slogans do Hero Collage
+    const collageGrid = document.querySelector('.collage-grid');
+    if (collageGrid) {
+        collageGrid.className = 'collage-grid';
+        collageGrid.classList.add(`product-${activeProductKey}`);
+    }
+
     document.getElementById('collage-brand-icon').src = data.icon;
     document.getElementById('collage-brand-logo').src = data.logo;
     document.getElementById('collage-slogan-text').innerText = data.slogan;

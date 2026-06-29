@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Champions Play",
             logo: "img/logo-champions-play-fundo-claro.png",
             icon: "img/icone-champions-play.png",
-            slogan: "descubra uma nova dimensão de diversão com o Champions Play GX PRO",
+            slogan: "Descubra uma nova dimensão de diversão com o Champions Play GX PRO",
             year: "2023",
             os: "Linux System",
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
@@ -205,49 +205,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 inputs: "img/Banner-miniatura-tema-series.jpg",
                 expositor: "img/play/champion-play-expositor.png",
                 remote: "img/play/Champions Play - Carrossel-extra.png",
-                rear: "img/play/play-isometrico-direita.png" // Fallback
+                rear: "img/play/play-traseira-reto.png"
             },
             carousel: [
-                "img/play/Champions Play - Carrossel-extra.png",
                 "img/play/play-isometrico-direita.png",
-                "img/play/champion-play-expositor.png",
-                "img/Banner-miniatura-tema-series.jpg"
+                "img/play/champions-play-caixa.png",
+                "img/play/champions-play-botoes.png",
+                "img/play/champions-play-entradas.png",
+                "img/play/Champions Play - Carrossel-extra.png",
+                "img/play/champion-play-expositor.png"
             ],
             highlights: [
                 {
-                    title: "MICRO DIMENSÕES",
-                    text: "O menor receptor da marca: apenas 26.5mm de altura. Perfeito para espaços integrados e instalações discretas.",
-                    icon: "fas fa-expand-arrows-alt"
+                    title: "DESIGN COMPACTO",
+                    text: "O Champions Play GXPRO apresenta um design elegante e compacto, perfeitamente adequado para qualquer ambiente. Sua forma compacta, com dimensões de 120 * 103 * 26.5mm, permite uma instalação discreta e fácil integração com a sua configuração de entretenimento.",
+                    icon: "fas fa-pen-nib"
                 },
                 {
-                    title: "LINUX OTIMIZADO",
-                    text: "Firmware customizado de resposta rápida com sistema de menus dinâmicos e fluidos.",
-                    icon: "fas fa-gears"
+                    title: "QUALIDADE DE SOM E IMAGEM",
+                    text: "Desfrute de uma experiência imersiva com som e imagem de alta qualidade. Com suporte a resolução Full HD 1080p e codec H.264, o Champions Play GXPRO oferece uma reprodução de vídeo nítida e detalhada, permitindo que você aproveite seus programas favoritos com clareza e realismo.",
+                    icon: "fas fa-tv"
                 },
                 {
-                    title: "CONEXÃO DUAL",
-                    text: "Compatível com conexões Wi-Fi 2.4GHz de alta estabilidade e entrada Ethernet para cabos de rede convencionais.",
-                    icon: "fas fa-network-wired"
-                },
-                {
-                    title: "MULTIMÍDIA AVANÇADA",
-                    text: "Sistemas AirPlay e DLNA integrados, permitindo espelhamento rápido de fotos, vídeos e áudio diretamente da tela do celular.",
+                    title: "EXPERIÊNCIA DE ENTRETENIMENTO",
+                    text: "Desfrute do melhor entretenimento com o Receptor Champions PLAY GXPRO. Com sua qualidade de som e imagem impecáveis, você terá uma experiência imersiva em todos os seus programas favoritos.",
                     icon: "fas fa-circle-play"
+                },
+                {
+                    title: "VERSATILIDADE DE CONEXÕES",
+                    text: "Conecte-se facilmente a outros dispositivos e expanda suas opções de entretenimento. Com suporte a USB, HDMI, Porta Ethernet, A.V e RS232, o Receptor Champions PLAY GXPRO oferece várias opções de conectividade.",
+                    icon: "fas fa-share-nodes"
                 }
             ],
             specs: {
-                "Processador / Chipset": "GX6628 / GXPRO",
-                "Gráficos": "Mali GPU Z",
-                "Resolução Máxima": "Full HD 1080p",
-                "Codecs de Vídeo": "SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC",
-                "Sintonizador (Tuner)": "Dual Tuner (IKS/SKS)",
-                "Rede": "Wi-Fi Integrado (2.4GHz) / Ethernet LAN RJ45",
-                "Display Frontal": "Numérico Retroiluminado por LED",
-                "Interface / Portas": "USB, HDMI, Porta Ethernet, A.V, RS232",
-                "Recursos de Software": "EPG, Control Parental, TimeShift, Timer, Teletexto, AirPlay, DLNA",
-                "Alimentação": "Bivolt Automático 110/220V ~ 50/60Hz",
-                "Dimensões": "120mm * 103mm * 26.5mm",
-                "Acessórios inclusos": "Fonte de alimentação, cabo HDMI, controle Remoto"
+                "Processador": "GX6628",
+                "Chipset": "GXPRO",
+                "Gráfico": "Mali GPU Z",
+                "Resolução": "Full HD 1080p",
+                "Codec": "H.264",
+                "Tuner": "Dual",
+                "Busca de Canais": "Automática, cega",
+                "Rede": "Wi-Fi 2.4 GHz - LAN RJ45",
+                "Áudio": "Acc",
+                "Interface": "USB - HDMI - Porta Ethernet - A.V - RS232",
+                "Display": "Numérico Retroiluminado por LED",
+                "Sistema": "Baseado em Linux",
+                "Voltagem": "Bivolt 110/220 ~ 50/60 Hz",
+                "Dimensões": "120 * 103 * 26.5 mm",
+                "Acessórios": "Fonte de alimentação, cabo HDMI, controle remoto",
+                "Informações Adicionais": "Com funções EPG (Guia de Programação Eletrônica), Control Parental, TimeShift, Timer, Teletexto. Permite compartilhar conteúdo através do recurso AirPlay e DLNA. Codecs suportados: SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC."
             }
         }
     };

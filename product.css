@@ -127,12 +127,14 @@
 }
 
 .product-ultimate .collage-img-expositor img,
-.product-infinity .collage-img-expositor img {
+.product-infinity .collage-img-expositor img,
+.product-play .collage-img-expositor img {
     object-position: center 75%;
 }
 
 .product-ultimate .collage-img-remote img,
-.product-infinity .collage-img-remote img {
+.product-infinity .collage-img-remote img,
+.product-play .collage-img-remote img {
     object-position: center 75%;
 }
 

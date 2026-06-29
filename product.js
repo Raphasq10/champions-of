@@ -74,51 +74,58 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware e sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate-isometrico-direita.png",
-                inputs: "img/Banner-miniatura-tema-series.jpg",
+                inputs: "img/ultimate/champion-ultomate-entradas.png",
                 expositor: "img/ultimate/champion-ultomate-expositor.png",
                 remote: "img/ultimate/Champions-ultimate- Carrossel-extra.png",
-                rear: "img/ultimate/ultimate-isometrico-direita.png" // Fallback
+                rear: "img/ultimate/ultimate-traseira-reto.png"
             },
             carousel: [
-                "img/ultimate/Champions-ultimate- Carrossel-extra.png",
                 "img/ultimate/ultimate-isometrico-direita.png",
                 "img/ultimate/champion-ultomate-expositor.png",
-                "img/Banner-miniatura-tema-series.jpg"
+                "img/ultimate/champion-ultomate-entradas.png",
+                "img/ultimate/champions-ultimate-caixa.jpg"
             ],
             highlights: [
                 {
-                    title: "SINTONIZADOR DUAL",
-                    text: "Com suporte a Tuner Duplo e busca de canais automática/cega, desfrute de estabilidade máxima sem depender exclusivamente de internet.",
-                    icon: "fas fa-satellite-dish"
+                    title: "VERSATILIDADE DE CONEXÕES",
+                    text: "Conecte o Receptor Champions Ultimate GXPRO à sua rede doméstica via Wi-Fi 2.4GHz ou porta Ethernet. Além disso, aproveite as várias opções de conexão, como USB, HDMI, porta Ethernet, A.V e RS232, para expandir suas possibilidades de entretenimento.",
+                    icon: "fas fa-sliders"
                 },
                 {
-                    title: "SISTEMA LINUX ESTÁVEL",
-                    text: "Um sistema leve, veloz e otimizado que liga instantaneamente e responde aos comandos sem engasgos.",
-                    icon: "fab fa-linux"
+                    title: "NAVEGAÇÃO INTUITIVA E CONFORTÁVEL",
+                    text: "Com sua interface amigável e controle remoto ergonômico, o Receptor Champions Ultimate GXPRO oferece uma navegação suave e rápida. O display Alpha Numérico retroiluminado por LED permite visualizar facilmente as informações importantes.",
+                    icon: "fas fa-hand-pointer"
                 },
                 {
-                    title: "RESOLUÇÃO FULL HD",
-                    text: "Transmissão limpa e nítida em resolução Full HD 1080p com suporte a múltiplos decodificadores e codecs SD/HD.",
-                    icon: "fas fa-photo-film"
+                    title: "IMAGENS NÍTIDAS E VIBRANTES",
+                    text: "Desfrute de imagens de alta qualidade em Full HD 1080p com o Receptor Champions Ultimate GXPRO. Com seu poderoso processador e codec avançado, você terá uma experiência visual excepcional.",
+                    icon: "fas fa-image"
                 },
                 {
-                    title: "RECURSOS EXTRAS",
-                    text: "Inclui EPG completo (Guia de Programação), Controle Parental, TimeShift, Timer, e compartilhamento via AirPlay e DLNA.",
-                    icon: "fas fa-layer-group"
+                    title: "SINTONIZE UMA AMPLA VARIEDADE DE CANAIS",
+                    text: "Com o sistema duplo de tuners, o Receptor Champions Ultimate GXPRO oferece uma variedade de opções de sintonização. Acesse uma ampla gama de canais para atender a todos os seus interesses de entretenimento.",
+                    icon: "fas fa-tv"
                 }
             ],
             specs: {
-                "Processador / Chipset": "GX6628 / GXPRO",
-                "Gráficos": "Mali GPU Z",
-                "Resolução Máxima": "Full HD 1080p",
-                "Codecs de Vídeo": "SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC",
-                "Sintonizador (Tuner)": "Dual Tuner (IKS/SKS)",
-                "Rede": "Wi-Fi Integrado (2.4GHz) / Ethernet LAN RJ45",
-                "Display Frontal": "Alpha Numérico Retroiluminado por LED",
-                "Interface / Portas": "USB, HDMI, Porta Ethernet, A.V, RS232",
-                "Recursos de Software": "EPG, Control Parental, TimeShift, Timer, Teletexto, AirPlay, DLNA",
-                "Alimentação": "Bivolt Automático 110/220V ~ 50/60Hz",
-                "Dimensões": "150mm * 110mm * 33mm"
+                "Processador": "GX6628",
+                "Chipset": "GXPRO",
+                "Gráfico": "Mali GPU Z",
+                "Resolução": "Full HD 1080p",
+                "Codec": "H.264",
+                "Tuner": "Dual",
+                "Busca de Canais": "Automática, cega",
+                "Rede": "Wi-Fi 2.4 GHz - LAN RJ45",
+                "Áudio": "Acc",
+                "Interface": "USB - HDMI - Porta Ethernet - A.V - RS232",
+                "Display": "Alpha Numérico Retroiluminado por LED",
+                "Sistema": "Baseado em Linux",
+                "Voltagem": "Bivolt 110/220 ~ 50/60 Hz",
+                "Dimensões": "150 * 110 * 33 mm",
+                "Acessórios": "Fonte de alimentação, cabo HDMI, controle remoto",
+                "Recursos": "Funções EPG (Guia de Programação Eletrônica), Controle Parental, TimeShift, Timer, Teletexto",
+                "Conectividade": "Permite compartilhar conteúdo através do recurso AirPlay e DLNA",
+                "Codecs Suportados": "SD MPEG2, HD MPEG4, H.264/265, AVC SD/HD, SCPC, MPC"
             }
         },
         infinity: {

@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: "desfrute de desempenho excepcional e recursos avançados em sua TV",
             year: "2023",
             os: "Linux System",
-            desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware e sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
+            desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate-isometrico-direita.png",
                 inputs: "img/ultimate/champion-ultomate-entradas.png",

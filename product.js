@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate-isometrico-direita.png",
-                inputs: "img/ultimate/champion-ultomate-entradas.png",
+                inputs: "img/Banner-miniatura-tema-series.jpg",
                 expositor: "img/ultimate/champion-ultomate-expositor.png",
                 remote: "img/ultimate/Champions-ultimate- Carrossel-extra.png",
                 rear: "img/ultimate/ultimate-traseira-reto.png"

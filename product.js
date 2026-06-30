@@ -5,28 +5,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const productsData = {
         fire: {
             name: "Champions Fire",
-            logo: "img/logo-champions-fire-fundo-claro.png",
-            icon: "img/icone-champions-fire.png",
+            logo: "img/logo_champions_fire.webp",
+            icon: "img/icone_champions_fire.webp",
             slogan: "Do Cinema aos Campeonatos: Definição Absoluta e Emoção Intensa",
             year: "2025",
             os: "Android 14",
             desc: "O Champions Fire foi projetado para elevar sua experiência de entretenimento a um patamar profissional. Equipado com conexões ultrarrápidas de última geração e processamento de ponta, é o dispositivo ideal para quem busca performance extrema, seja assistindo a campeonatos ao vivo ou desfrutando de sessões de cinema em casa.",
             // 5 imagens para a colagem
             collage: {
-                main: "img/fire/fire-isometrico-direita.png",
-                inputs: "img/Banner-miniatura-tema-filmes.jpg",
-                expositor: "img/fire/champion-fire-espositor.png",
-                remote: "img/fire/fire-controle.png",
-                rear: "img/fire/fire-traseira-reto.png"
+                main: "img/fire/fire_isometrico.webp",
+                inputs: "img/banner_tema_filmes.webp",
+                expositor: "img/fire/fire_expositor.webp",
+                remote: "img/fire/fire_controle.webp",
+                rear: "img/fire/fire_traseira.webp"
             },
             // Imagens do carrossel deslizante
             carousel: [
-                "img/fire/fire-isometrico-direita.png",
-                "img/fire/champion-fire-espositor.png",
-                "img/fire/fire-caixa.png",
-                "img/fire/fire-controle.png",
+                "img/fire/fire_isometrico.webp",
+                "img/fire/fire_expositor.webp",
+                "img/fire/fire_caixa.webp",
+                "img/fire/fire_controle.webp",
                 "img/fire/fire-descricao-entradas.png",
-                "img/fire/fire-traseira-reto.png"
+                "img/fire/fire_traseira.webp"
             ],
             // 4 cards de destaques
             highlights: [
@@ -66,24 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ultimate: {
             name: "Champions Ultimate",
-            logo: "img/logo-champions-ultomate-fundo-claro.png",
-            icon: "img/icone-champions-ultimate.png",
+            logo: "img/logo_champions_ultimate.webp",
+            icon: "img/icone_champions_ultimate.webp",
             slogan: "Desfrute de desempenho excepcional e recursos avançados em sua TV",
             year: "2023",
             os: "Linux System",
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
-                main: "img/ultimate/ultimate-isometrico-direita.png",
-                inputs: "img/Banner-miniatura-tema-series.jpg",
-                expositor: "img/ultimate/champions-ultimate-expositor.png",
-                remote: "img/ultimate/Champions-ultimate- Carrossel-extra.png",
-                rear: "img/ultimate/ultimate-traseira-reto.png"
+                main: "img/ultimate/ultimate_isometrico.webp",
+                inputs: "img/banner_tema_series.webp",
+                expositor: "img/ultimate/ultimate_expositor.webp",
+                remote: "img/ultimate/ultimate_remote.webp",
+                rear: "img/ultimate/ultimate_traseira.webp"
             },
             carousel: [
-                "img/ultimate/ultimate-isometrico-direita.png",
-                "img/ultimate/champions-ultimate-expositor.png",
-                "img/ultimate/champion-ultomate-entradas.png",
-                "img/ultimate/champions-ultimate-caixa.jpg"
+                "img/ultimate/ultimate_isometrico.webp",
+                "img/ultimate/ultimate_expositor.webp",
+                "img/ultimate/ultimate_entradas.webp",
+                "img/ultimate/ultimate_caixa.webp"
             ],
             highlights: [
                 {
@@ -130,26 +130,26 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         infinity: {
             name: "Champions Infinity",
-            logo: "img/logo-champions-infinity-fundo-claro.png",
-            icon: "img/icones-champions-infinity.png",
+            logo: "img/logo_champions_infinity.webp",
+            icon: "img/icone_champions_infinity.webp",
             slogan: "A escolha perfeita para sua diversão",
             year: "2023",
             os: "Linux System",
             desc: "A união perfeita de design elegante e o confiável chipset GXPRO. O Champions Infinity GX PRO oferece desempenho fluido com baixo consumo de energia, ideal para quem busca entretenimento estável e navegação ágil no dia a dia.",
             collage: {
-                main: "img/inifinity/infinity-isometrico-direita.png",
-                inputs: "img/Banner-miniatura-tema-futebol.jpg",
-                expositor: "img/inifinity/infinity -expositor.png",
-                remote: "img/inifinity/infinity-controle.png",
-                rear: "img/inifinity/infinity-traseira-reto.png"
+                main: "img/infinity/infinity_isometrico.webp",
+                inputs: "img/banner_tema_futebol.webp",
+                expositor: "img/infinity/infinity_expositor.webp",
+                remote: "img/infinity/infinity_controle.webp",
+                rear: "img/infinity/infinity_traseira.webp"
             },
             carousel: [
-                "img/inifinity/infinity-isometrico-direita.png",
-                "img/inifinity/infinity-caixa.png",
-                "img/inifinity/champions-infinity-botoes.png",
-                "img/inifinity/champions-infinity-entradas.png",
-                "img/inifinity/infinity-controle.png",
-                "img/inifinity/infinity -expositor.png"
+                "img/infinity/infinity_isometrico.webp",
+                "img/infinity/infinity_caixa.webp",
+                "img/infinity/infinity_botoes.webp",
+                "img/infinity/infinity_entradas.webp",
+                "img/infinity/infinity_controle.webp",
+                "img/infinity/infinity_expositor.webp"
             ],
             highlights: [
                 {
@@ -194,26 +194,26 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         play: {
             name: "Champions Play",
-            logo: "img/logo-champions-play-fundo-claro.png",
-            icon: "img/icone-champions-play.png",
+            logo: "img/logo_champions_play.webp",
+            icon: "img/icone_champions_play.webp",
             slogan: "Descubra uma nova dimensão de diversão com o Champions Play GX PRO",
             year: "2023",
             os: "Linux System",
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
-                main: "img/play/play-isometrico-direita.png",
-                inputs: "img/Banner-miniatura-tema-series.jpg",
-                expositor: "img/play/champion-play-expositor.png",
-                remote: "img/play/Champions Play - Carrossel-extra.png",
-                rear: "img/play/play-traseira-reto.png"
+                main: "img/play/play_isometrico.webp",
+                inputs: "img/banner_tema_series.webp",
+                expositor: "img/play/play_expositor.webp",
+                remote: "img/play/play_remote.webp",
+                rear: "img/play/play_traseira.webp"
             },
             carousel: [
-                "img/play/play-isometrico-direita.png",
-                "img/play/champions-play-caixa.png",
-                "img/play/champions-play-botoes.png",
-                "img/play/champions-play-entradas.png",
-                "img/play/Champions Play - Carrossel-extra.png",
-                "img/play/champion-play-expositor.png"
+                "img/play/play_isometrico.webp",
+                "img/play/play_caixa.webp",
+                "img/play/play_botoes.webp",
+                "img/play/play_entradas.webp",
+                "img/play/play_remote.webp",
+                "img/play/play_expositor.webp"
             ],
             highlights: [
                 {

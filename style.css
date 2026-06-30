@@ -182,7 +182,7 @@ header .container {
     background-image: 
         linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
         linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)), 
-        url('img/banner-hero-bg-v4.png');
+        url('img/banner_hero_desktop.webp');
     background-size: cover;
     background-position: left top;
     background-repeat: no-repeat;
@@ -549,7 +549,7 @@ header .container {
         background-image:
             linear-gradient(to top, #F8FAFC 0%, rgba(248,250,252,0) 10%),
             linear-gradient(to right, rgba(248,250,252,0) 30%, rgba(248, 250, 252, 0.9) 60%, rgba(248, 250, 252, 1)),
-            url('img/banner-hero-bg-v4.png') !important;
+            url('img/banner_hero_desktop.webp') !important;
         background-color:    #F8FAFC !important;
         background-position: center center, center center, -150px center !important; /* Corrige corte à direita */
         background-size:     cover !important;
@@ -624,7 +624,7 @@ header .container {
 /* --- MOBILE (1150px) — layout centralizado e fundo mobile --- */
 @media (max-width: 1150px) {
     .hero {
-        background-image: linear-gradient(to bottom, rgba(248,250,252,0) 0px, rgba(248,250,252,0) 420px, rgba(248,250,252,0.6) 530px, rgba(248, 250, 252, 0.95) 680px, #F8FAFC 880px, #F8FAFC 100%), url('img/banner-hero-bg-mb-v4.png') !important;
+        background-image: linear-gradient(to bottom, rgba(248,250,252,0) 0px, rgba(248,250,252,0) 420px, rgba(248,250,252,0.6) 530px, rgba(248, 250, 252, 0.95) 680px, #F8FAFC 880px, #F8FAFC 100%), url('img/banner_hero_mobile.webp') !important;
         background-color:    #F8FAFC !important;
         background-position: center center, left -140px !important;
         align-items:         center !important; /* Centraliza no mobile */
@@ -1194,7 +1194,7 @@ header .container {
    ========================================== */
 .support-cta {
     position: relative;
-    background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('img/atendentes-suporte-champions.jpg');
+    background-image: linear-gradient(rgba(13, 14, 16, 0.88), rgba(13, 14, 16, 0.88)), url('img/atendentes_suporte.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Efeito Parallax */

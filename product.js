@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "img/fire/fire_expositor.webp",
                 "img/fire/fire_caixa.webp",
                 "img/fire/fire_controle.webp",
-                "img/fire/fire-descricao-entradas.png",
+                "img/fire/fire_entradas.webp",
                 "img/fire/fire_traseira.webp"
             ],
             // 4 cards de destaques

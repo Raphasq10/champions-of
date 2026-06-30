@@ -216,7 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 "img/play/play_botoes.webp",
                 "img/play/play_entradas.webp",
                 "img/play/play_remote.webp",
-                "img/play/play_expositor.webp"
+                "img/play/play_expositor.webp",
+                "img/play/play_traseira.webp"
             ],
             highlights: [
                 {

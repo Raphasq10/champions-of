@@ -81,9 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             carousel: [
                 "img/ultimate/ultimate_isometrico.webp",
-                "img/ultimate/ultimate_expositor.webp",
+                "img/ultimate/ultimate_caixa.webp",
+                "img/ultimate/ultimate_botoes.webp",
                 "img/ultimate/ultimate_entradas.webp",
-                "img/ultimate/ultimate_caixa.webp"
+                "img/ultimate/ultimate_remote.webp",
+                "img/ultimate/ultimate_expositor.webp",
+                "img/ultimate/ultimate_traseira.webp"
             ],
             highlights: [
                 {

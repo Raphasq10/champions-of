@@ -157,13 +157,13 @@
                 <div class="product-carousel-side">
                     <div class="product-carousel-static">
                         <div class="product-card-static">
-                            <img src="img/fire/fire_controle.webp" alt="Champions Fire Controle">
+                            <a href="product.html?p=fire"><img src="img/fire/fire_controle.webp" alt="Champions Fire Controle"></a>
                         </div>
                         <div class="product-card-static active">
-                            <img src="img/fire/fire_isometrico.webp" alt="Champions Fire Vista Isométrica">
+                            <a href="product.html?p=fire"><img src="img/fire/fire_isometrico.webp" alt="Champions Fire Vista Isométrica"></a>
                         </div>
                         <div class="product-card-static">
-                            <img src="img/fire/fire_expositor.webp" alt="Champions Fire Expositor">
+                            <a href="product.html?p=fire"><img src="img/fire/fire_expositor.webp" alt="Champions Fire Expositor"></a>
                         </div>
                     </div>
                 </div>
@@ -186,13 +186,13 @@
                 <div class="product-carousel-side">
                     <div class="product-carousel-static">
                         <div class="product-card-static">
-                            <img src="img/ultimate/ultimate_remote.webp" alt="Champions Ultimate Carrossel Extra">
+                            <a href="product.html?p=ultimate"><img src="img/ultimate/ultimate_remote.webp" alt="Champions Ultimate Carrossel Extra"></a>
                         </div>
                         <div class="product-card-static active">
-                            <img src="img/ultimate/ultimate_isometrico.webp" alt="Champions Ultimate Vista Isométrica">
+                            <a href="product.html?p=ultimate"><img src="img/ultimate/ultimate_isometrico.webp" alt="Champions Ultimate Vista Isométrica"></a>
                         </div>
                         <div class="product-card-static">
-                            <img src="img/ultimate/ultimate_expositor.webp" alt="Champions Ultimate Expositor">
+                            <a href="product.html?p=ultimate"><img src="img/ultimate/ultimate_expositor.webp" alt="Champions Ultimate Expositor"></a>
                         </div>
                     </div>
                 </div>
@@ -214,13 +214,13 @@
                 <div class="product-carousel-side">
                     <div class="product-carousel-static">
                         <div class="product-card-static">
-                            <img src="img/infinity/infinity_isometrico.webp" alt="Champions Infinity Vista Lateral">
+                            <a href="product.html?p=infinity"><img src="img/infinity/infinity_isometrico.webp" alt="Champions Infinity Vista Lateral"></a>
                         </div>
                         <div class="product-card-static active">
-                            <img src="img/infinity/infinity_expositor.webp" alt="Champions Infinity Expositor">
+                            <a href="product.html?p=infinity"><img src="img/infinity/infinity_expositor.webp" alt="Champions Infinity Expositor"></a>
                         </div>
                         <div class="product-card-static">
-                            <img src="img/infinity/infinity_traseira.webp" alt="Champions Infinity Painel Traseiro">
+                            <a href="product.html?p=infinity"><img src="img/infinity/infinity_traseira.webp" alt="Champions Infinity Painel Traseiro"></a>
                         </div>
                     </div>
                 </div>
@@ -242,13 +242,13 @@
                 <div class="product-carousel-side">
                     <div class="product-carousel-static">
                         <div class="product-card-static">
-                            <img src="img/play/play_remote.webp" alt="Champions Play Carrossel Extra">
+                            <a href="product.html?p=play"><img src="img/play/play_remote.webp" alt="Champions Play Carrossel Extra"></a>
                         </div>
                         <div class="product-card-static active">
-                            <img src="img/play/play_isometrico.webp" alt="Champions Play Vista Isométrica">
+                            <a href="product.html?p=play"><img src="img/play/play_isometrico.webp" alt="Champions Play Vista Isométrica"></a>
                         </div>
                         <div class="product-card-static">
-                            <img src="img/play/play_expositor.webp" alt="Champions Play Expositor">
+                            <a href="product.html?p=play"><img src="img/play/play_expositor.webp" alt="Champions Play Expositor"></a>
                         </div>
                     </div>
                 </div>
@@ -477,6 +477,9 @@
             const container = document.querySelector(containerSelector);
             if (!container) return;
 
+            const productParam = containerSelector.split('-')[1].split(' ')[0];
+            const productLink = `product.html?p=${productParam}`;
+
             let activeIndex = 1; // O card inicial ativo está no índice 1 (do meio)
             let isTransitioning = false;
             let intervalId = null;
@@ -501,7 +504,7 @@
 
                     const enteringCard = document.createElement('div');
                     enteringCard.className = 'product-card-static entering-right';
-                    enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
+                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${newImageUrl}" alt="Product Image"></a>`;
                     container.appendChild(enteringCard);
 
                     leftCard.classList.add('exiting-left');
@@ -525,7 +528,7 @@
 
                     const enteringCard = document.createElement('div');
                     enteringCard.className = 'product-card-static entering';
-                    enteringCard.innerHTML = `<img src="${newImageUrl}" alt="Product Image">`;
+                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${newImageUrl}" alt="Product Image"></a>`;
                     container.insertBefore(enteringCard, container.firstChild);
 
                     rightCard.classList.add('exiting');

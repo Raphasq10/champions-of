@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: "Do Cinema aos Campeonatos: Definição Absoluta e Emoção Intensa",
             year: "2025",
             os: "Android 14",
+            resolution: "4K ULTRA HD",
             desc: "O Champions Fire foi projetado para elevar sua experiência de entretenimento a um patamar profissional. Equipado com conexões ultrarrápidas de última geração e processamento de ponta, é o dispositivo ideal para quem busca performance extrema, seja assistindo a campeonatos ao vivo ou desfrutando de sessões de cinema em casa.",
             // 5 imagens para a colagem
             collage: {
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: "Desfrute de desempenho excepcional e recursos avançados em sua TV",
             year: "2023",
             os: "Linux System",
+            resolution: "FULL HD 1080P",
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate_isometrico.webp",
@@ -138,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: "A escolha perfeita para sua diversão",
             year: "2023",
             os: "Linux System",
+            resolution: "FULL HD 1080P",
             desc: "A união perfeita de design elegante e o confiável chipset GXPRO. O Champions Infinity GX PRO oferece desempenho fluido com baixo consumo de energia, ideal para quem busca entretenimento estável e navegação ágil no dia a dia.",
             collage: {
                 main: "img/infinity/infinity_isometrico.webp",
@@ -202,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: "Descubra uma nova dimensão de diversão com o Champions Play GX PRO",
             year: "2023",
             os: "Linux System",
+            resolution: "FULL HD 1080P",
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
                 main: "img/play/play_isometrico.webp",
@@ -314,6 +318,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sigLogo.src = data.logo;
     }
     document.getElementById('collage-signature-serif').innerText = data.os;
+
+    const resolutionEl = document.querySelector('.collage-text-year span');
+    if (resolutionEl && data.resolution) {
+        resolutionEl.innerText = data.resolution;
+    }
 
     // Imagens da Colagem do Hero
     document.getElementById('collage-img-main-tag').src = data.collage.main;

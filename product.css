@@ -66,7 +66,7 @@
 }
 
 .hero-brand-logo-img {
-    height: 48px;
+    height: 58px;
     width: auto;
 }
 
@@ -207,16 +207,16 @@
 }
 
 .avatar-dot {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    margin-right: -8px;
+    font-size: 9px;
+    margin-right: -6px;
 }
 
 .avatar-dot:last-child {
@@ -225,15 +225,15 @@
 
 .metric-value {
     font-family: var(--font-title);
-    font-size: 38px;
+    font-size: 26px;
     font-weight: 800;
     line-height: 1;
     margin: 8px 0;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
 .metric-label {
-    font-size: 13px;
+    font-size: 11.5px;
     line-height: 1.4;
     opacity: 0.9;
     font-weight: 500;
@@ -275,6 +275,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.mosaic-card-banner img {
+    object-position: center 25%;
 }
 
 .banner-overlay-dark {

@@ -533,6 +533,22 @@
     transform: scale(0.95);
 }
 
+/* Responsividade intermediária para evitar corte dos cards laterais */
+@media (max-width: 950px) {
+    .product-carousel-container .product-card-static {
+        flex: 0 0 200px;
+        width: 200px;
+        height: 270px;
+    }
+    .product-carousel-container .product-card-static.active {
+        height: 350px;
+    }
+    .product-carousel-static {
+        min-height: 370px;
+        gap: 12px;
+    }
+}
+
 /* Bidirectional transitions for the rotating carousel */
 .product-card-static.entering-right {
     width: 0 !important;

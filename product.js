@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Champions Fire",
             logo: "img/logo_champions_fire.webp",
             icon: "img/icone_champions_fire.webp",
-            slogan: "Do Cinema aos Campeonatos: Definição Absoluta e Emoção Intensa",
+            slogan: "Tecnologia e Performance Extrema para o seu Entretenimento",
             year: "2025",
             os: "Android 14",
             resolution: "4K ULTRA HD",
-            desc: "O Champions Fire foi projetado para elevar sua experiência de entretenimento a um patamar profissional. Equipado com conexões ultrarrápidas de última geração e processamento de ponta, é o dispositivo ideal para quem busca performance extrema, seja assistindo a campeonatos ao vivo ou desfrutando de sessões de cinema em casa.",
+            desc: "Projetado para performance extrema. Com processamento de última geração e conexões ultrarrápidas, é o dispositivo ideal para assistir a campeonatos ao vivo e desfrutar do melhor do cinema em casa.",
             // 5 imagens para a colagem
             collage: {
                 main: "img/fire/fire_isometrico.webp",
@@ -335,10 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const imgInputs = document.getElementById('mosaic-img-inputs');
-    if (imgInputs) imgInputs.src = data.collage.rear; // Vista Traseira / Portas
+    if (imgInputs) imgInputs.src = data.collage.main; // Vista Isometrica (fire_isometrico)
 
     const imgPortrait = document.getElementById('mosaic-img-portrait');
-    if (imgPortrait) imgPortrait.src = data.collage.expositor; // Retrato/Expositor
+    if (imgPortrait) imgPortrait.src = data.collage.rear; // Vista Traseira / Portas (fire_traseira)
 
     const imgBanner = document.getElementById('mosaic-img-banner');
     if (imgBanner) imgBanner.src = data.collage.inputs; // Banner Horizontal de Tema

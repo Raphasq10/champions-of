@@ -24,8 +24,8 @@
 .hero-split-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 60px;
+    justify-content: center;
+    gap: 80px;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -149,7 +149,7 @@
 
 /* Right column (mosaic grid container) */
 .hero-right-column {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     justify-content: flex-end;
 }

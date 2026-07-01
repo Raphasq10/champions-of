@@ -385,6 +385,7 @@
     .hero-left-column {
         flex: 1;
         width: 100%;
+        max-width: 600px;
         align-items: center;
     }
     .hero-brand-header {
@@ -396,6 +397,22 @@
     .hero-right-column {
         justify-content: center;
         width: 100%;
+    }
+    .hero-mosaic-grid {
+        grid-template-columns: 250px 330px;
+        grid-template-rows: 250px 160px 200px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .hero-mosaic-grid {
+        grid-template-columns: 190px 240px;
+        grid-template-rows: 190px 120px 160px;
+        gap: 16px;
+    }
+    .hero-left-column {
+        max-width: 450px;
     }
 }
 

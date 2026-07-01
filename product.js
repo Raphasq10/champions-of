@@ -22,12 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             // Imagens do carrossel deslizante
             carousel: [
-                "img/fire/fire_isometrico.webp",
                 "img/fire/fire_expositor.webp",
                 "img/fire/fire_caixa.webp",
                 "img/fire/fire_controle.webp",
-                "img/fire/fire_entradas.webp",
-                "img/fire/fire_traseira.webp"
+                "img/fire/fire_entradas.webp"
             ],
             // 4 cards de destaques
             highlights: [
@@ -82,13 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 rear: "img/ultimate/ultimate_traseira.webp"
             },
             carousel: [
-                "img/ultimate/ultimate_isometrico.webp",
                 "img/ultimate/ultimate_caixa.webp",
                 "img/ultimate/ultimate_botoes.webp",
                 "img/ultimate/ultimate_entradas.webp",
                 "img/ultimate/ultimate_remote.webp",
-                "img/ultimate/ultimate_expositor.webp",
-                "img/ultimate/ultimate_traseira.webp"
+                "img/ultimate/ultimate_expositor.webp"
             ],
             highlights: [
                 {
@@ -150,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 rear: "img/infinity/infinity_traseira.webp"
             },
             carousel: [
-                "img/infinity/infinity_isometrico.webp",
                 "img/infinity/infinity_caixa.webp",
                 "img/infinity/infinity_botoes.webp",
                 "img/infinity/infinity_entradas.webp",
@@ -215,13 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 rear: "img/play/play_traseira.webp"
             },
             carousel: [
-                "img/play/play_isometrico.webp",
                 "img/play/play_caixa.webp",
                 "img/play/play_botoes.webp",
                 "img/play/play_entradas.webp",
                 "img/play/play_remote.webp",
-                "img/play/play_expositor.webp",
-                "img/play/play_traseira.webp"
+                "img/play/play_expositor.webp"
             ],
             highlights: [
                 {

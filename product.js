@@ -306,30 +306,55 @@ document.addEventListener('DOMContentLoaded', () => {
         collageGrid.classList.add(`product-${activeProductKey}`);
     }
 
-    document.getElementById('collage-brand-icon').src = data.icon;
-    document.getElementById('collage-brand-logo').src = data.logo;
-    document.getElementById('collage-slogan-text').innerText = data.slogan;
-    const yearEl = document.getElementById('collage-year-text');
-    if (yearEl) {
-        yearEl.innerText = data.year;
-    }
-    const sigLogo = document.getElementById('collage-signature-logo');
-    if (sigLogo) {
-        sigLogo.src = data.logo;
-    }
-    document.getElementById('collage-signature-serif').innerText = data.os;
+    // Coluna da Esquerda: Marca e Textos
+    const brandIcon = document.getElementById('hero-brand-icon');
+    if (brandIcon) brandIcon.src = data.icon;
 
-    const resolutionEl = document.querySelector('.collage-text-year span');
-    if (resolutionEl && data.resolution) {
-        resolutionEl.innerText = data.resolution;
+    const brandLogo = document.getElementById('hero-brand-logo');
+    if (brandLogo) brandLogo.src = data.logo;
+
+    const titleText = document.getElementById('hero-title-text');
+    if (titleText) titleText.innerText = data.slogan;
+
+    const descText = document.getElementById('hero-desc-text-id');
+    if (descText) descText.innerText = data.desc;
+
+    // Coluna da Direita: Mosaico Premium
+    const metricVal = document.getElementById('mosaic-metric-value');
+    if (metricVal && data.resolution) {
+        metricVal.innerText = data.resolution;
     }
 
-    // Imagens da Colagem do Hero
-    document.getElementById('collage-img-main-tag').src = data.collage.main;
-    document.getElementById('collage-img-inputs-tag').src = data.collage.inputs;
-    document.getElementById('collage-img-expositor-tag').src = data.collage.expositor;
-    document.getElementById('collage-img-remote-tag').src = data.collage.remote;
-    document.getElementById('collage-img-rear-tag').src = data.collage.rear;
+    const metricLabel = document.getElementById('mosaic-metric-label');
+    if (metricLabel) {
+        if (activeProductKey === 'fire') {
+            metricLabel.innerText = 'Resolução de cinema e fidelidade de cores campeã';
+        } else {
+            metricLabel.innerText = 'Imagem limpa e detalhada em Full HD';
+        }
+    }
+
+    const imgInputs = document.getElementById('mosaic-img-inputs');
+    if (imgInputs) imgInputs.src = data.collage.rear; // Vista Traseira / Portas
+
+    const imgPortrait = document.getElementById('mosaic-img-portrait');
+    if (imgPortrait) imgPortrait.src = data.collage.expositor; // Retrato/Expositor
+
+    const imgBanner = document.getElementById('mosaic-img-banner');
+    if (imgBanner) imgBanner.src = data.collage.inputs; // Banner Horizontal de Tema
+
+    const bannerTitle = document.getElementById('mosaic-banner-title');
+    if (bannerTitle) {
+        if (activeProductKey === 'fire') {
+            bannerTitle.innerText = 'Cinema e Campeonatos';
+        } else if (activeProductKey === 'ultimate') {
+            bannerTitle.innerText = 'Séries e Filmes';
+        } else if (activeProductKey === 'infinity') {
+            bannerTitle.innerText = 'Esportes e Futebol Ao Vivo';
+        } else if (activeProductKey === 'play') {
+            bannerTitle.innerText = 'Diversão Sem Limites';
+        }
+    }
 
     // Slider / Carousel Wrapper
     const carouselContainer = document.getElementById('carousel-static-dynamic');

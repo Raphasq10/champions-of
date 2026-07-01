@@ -23,7 +23,7 @@
 
     <!-- Link para Folhas de Estilo -->
     <link rel="stylesheet" href="style.css?v=1.5">
-    <link rel="stylesheet" href="product.css?v=2.6">
+    <link rel="stylesheet" href="product.css?v=3.0">
 </head>
 <body id="top">
 
@@ -58,56 +58,75 @@
        2. SEÇÃO HERO COLLAGE (ESTILO EDITORIAL)
        ========================================== -->
     <section class="product-hero">
-        <div class="container">
-            <div class="collage-grid">
+        <div class="container hero-split-container">
+            
+            <!-- Coluna da Esquerda: Conteúdos e Ações -->
+            <div class="hero-left-column">
+                <div class="brand-badge" id="hero-brand-badge-text">LINHA PREMIUM</div>
+                <div class="hero-brand-header">
+                    <img src="" id="hero-brand-icon" alt="Ícone" class="hero-brand-icon-img">
+                    <img src="" id="hero-brand-logo" alt="Logo" class="hero-brand-logo-img">
+                </div>
+                <!-- O slogan principal do produto é exibido como título da seção -->
+                <h1 class="hero-main-title" id="hero-title-text">Carregando slogan...</h1>
+                <p class="hero-desc-text" id="hero-desc-text-id">Carregando descrição...</p>
                 
-                <!-- Bloco 1: Bloco de Texto Escuro (Top-Left) -->
-                <div class="collage-text-dark">
-                    <div class="brand-info-top">
-                        <img src="" id="collage-brand-icon" alt="Ícone de Produto" style="width: 55px; height: auto; margin-bottom: 12px; filter: none;">
-                        <img src="" id="collage-brand-logo" alt="Logo de Produto" style="width: 165px; height: auto; margin-bottom: 0; filter: none;">
-                    </div>
-                    <p id="collage-slogan-text">Carregando slogan...</p>
+                <div class="hero-actions">
+                    <a href="#product-slider" class="btn-premium btn-primary-cta">VER DETALHES</a>
+                    <a href="https://wa.me/595975409679" target="_blank" class="btn-secondary-cta">
+                        <span class="btn-circle-icon"><i class="fab fa-whatsapp"></i></span>
+                        <span class="btn-text">Suporte Técnico</span>
+                    </a>
                 </div>
-
-                <!-- Bloco 2: Imagem Isométrica Principal (Top-Right) -->
-                <div class="collage-item collage-img-main offset-br">
-                    <img src="" id="collage-img-main-tag" alt="Champions Vista Principal">
-                </div>
-
-                <!-- Bloco 3: Quadro Horizontal de Portas (Middle-Left) -->
-                <div class="collage-item collage-img-inputs offset-tl">
-                    <img src="" id="collage-img-inputs-tag" alt="Champions Conectores">
-                </div>
-
-                <!-- Bloco 4: Aparelho no Expositor (Center-Middle) -->
-                <div class="collage-item collage-img-expositor offset-bl">
-                    <img src="" id="collage-img-expositor-tag" alt="Champions Expositor">
-                </div>
-
-                <!-- Bloco 5: Controle Remoto por Voz (Middle-Right) -->
-                <div class="collage-item collage-img-remote offset-tr">
-                    <img src="" id="collage-img-remote-tag" alt="Champions Controle">
-                </div>
-
-                <!-- Bloco 6: Vista Traseira / Linhas (Bottom-Left) -->
-                <div class="collage-item collage-img-rear offset-br">
-                    <img src="" id="collage-img-rear-tag" alt="Champions Vista Traseira">
-                </div>
-
-                <!-- Bloco 7: Bloco com Ano/Detalhe (Bottom-Center) -->
-                <div class="collage-text-year">
-                    <span>4K ULTRA HD</span>
-                </div>
-
-                <!-- Bloco 8: Tipografia Elegante (Bottom-Right) -->
-                <div class="collage-signature">
-                    <span class="handwritten">Nova Geração</span>
-                    <img src="" id="collage-signature-logo" alt="Logo de Produto" class="signature-logo">
-                    <span class="serif-subtitle" id="collage-signature-serif" style="font-family: var(--font-body); font-size: 13px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-top: 5px;">Sistema</span>
-                </div>
-
             </div>
+
+            <!-- Coluna da Direita: Mosaico Premium -->
+            <div class="hero-right-column">
+                <div class="hero-mosaic-grid">
+                    
+                    <!-- Card 1: Métricas de Resolução (Sólido Laranja) -->
+                    <div class="mosaic-card-metrics">
+                        <div class="avatar-group">
+                            <span class="avatar-dot"><i class="fas fa-check"></i></span>
+                            <span class="avatar-dot"><i class="fas fa-star"></i></span>
+                            <span class="avatar-dot"><i class="fas fa-shield-alt"></i></span>
+                        </div>
+                        <h2 class="metric-value" id="mosaic-metric-value">4K UHD</h2>
+                        <p class="metric-label" id="mosaic-metric-label">Definição absoluta e fidelidade de cores campeã</p>
+                    </div>
+
+                    <!-- Card 2: Entradas / Conexões (Inferior Esquerdo) -->
+                    <div class="mosaic-card-inputs">
+                        <img src="" id="mosaic-img-inputs" alt="Conexões do Aparelho">
+                        <div class="card-overlay-label">Conectividade</div>
+                    </div>
+
+                    <!-- Card 3: Imagem Principal Retrato (Limpo, sem tags flutuantes) -->
+                    <div class="mosaic-card-portrait">
+                        <img src="" id="mosaic-img-portrait" alt="Visualização do Aparelho">
+                    </div>
+
+                    <!-- Card 4: Banner Horizontal de Experiência (Inferior Completo) -->
+                    <div class="mosaic-card-banner">
+                        <img src="" id="mosaic-img-banner" alt="Experiência Imersiva">
+                        <div class="banner-overlay-dark"></div>
+                        <span class="banner-title" id="mosaic-banner-title">Cinema e Campeonatos</span>
+                    </div>
+
+                    <!-- Selo circular rotativo decorativo -->
+                    <div class="mosaic-circle-badge">
+                        <svg viewBox="0 0 100 100" class="circular-text-svg">
+                            <path id="textPath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                            <text class="circular-text">
+                                <textPath href="#textPath" startOffset="0%">CHAMPIONS ORIGINAL • PREMIUM QUALITY •</textPath>
+                            </text>
+                        </svg>
+                        <div class="badge-center-icon"><i class="fas fa-crown"></i></div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 

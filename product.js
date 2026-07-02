@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             collage: {
                 main: "img/infinity/infinity_isometrico.webp",
                 inputs: "img/assistindo-tv-3.jpg",
-                inputsPos: "center",
+                inputsPos: "center 10%",
                 expositor: "img/infinity/infinity_expositor.webp",
                 remote: "img/infinity/infinity_controle.webp",
                 rear: "img/infinity/infinity_traseira.webp"

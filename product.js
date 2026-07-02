@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             collage: {
                 main: "img/ultimate/ultimate_isometrico.webp",
                 inputs: "img/assistindo-tv-2.jpg",
-                inputsPos: "center 30%",
+                inputsPos: "center 25%",
                 expositor: "img/ultimate/ultimate_expositor.webp",
                 remote: "img/ultimate/ultimate_remote.webp",
                 rear: "img/ultimate/ultimate_traseira.webp"
@@ -207,8 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
                 main: "img/play/play_isometrico.webp",
-                inputs: "img/assistindo-tv-2.jpg",
-                inputsPos: "center 30%",
+                inputs: "img/assistindo-tv-4.jpg",
+                inputsPos: "center 20%",
                 expositor: "img/play/play_expositor.webp",
                 remote: "img/play/play_remote.webp",
                 rear: "img/play/play_traseira.webp"

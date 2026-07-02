@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 5 imagens para a colagem
             collage: {
                 main: "img/fire/fire_isometrico.webp",
-                inputs: "img/banner_tema_filmes.webp",
+                inputs: "img/assistindo-tv-1.jpg",
+                inputsPos: "center",
                 expositor: "img/fire/fire_expositor.webp",
                 remote: "img/fire/fire_controle.webp",
                 rear: "img/fire/fire_traseira.webp"
@@ -74,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate_isometrico.webp",
-                inputs: "img/banner_tema_series.webp",
+                inputs: "img/assistindo-tv-2.jpg",
+                inputsPos: "center 30%",
                 expositor: "img/ultimate/ultimate_expositor.webp",
                 remote: "img/ultimate/ultimate_remote.webp",
                 rear: "img/ultimate/ultimate_traseira.webp"
@@ -140,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A união perfeita de design elegante e o confiável chipset GXPRO. O Champions Infinity GX PRO oferece desempenho fluido com baixo consumo de energia, ideal para quem busca entretenimento estável e navegação ágil no dia a dia.",
             collage: {
                 main: "img/infinity/infinity_isometrico.webp",
-                inputs: "img/banner_tema_futebol.webp",
+                inputs: "img/assistindo-tv-3.jpg",
+                inputsPos: "center",
                 expositor: "img/infinity/infinity_expositor.webp",
                 remote: "img/infinity/infinity_controle.webp",
                 rear: "img/infinity/infinity_traseira.webp"
@@ -204,7 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
                 main: "img/play/play_isometrico.webp",
-                inputs: "img/banner_tema_series.webp",
+                inputs: "img/assistindo-tv-2.jpg",
+                inputsPos: "center 30%",
                 expositor: "img/play/play_expositor.webp",
                 remote: "img/play/play_remote.webp",
                 rear: "img/play/play_traseira.webp"
@@ -334,7 +338,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (imgPortrait) imgPortrait.src = data.collage.main; // Vista Isometrica (fire_isometrico)
 
     const imgBanner = document.getElementById('mosaic-img-banner');
-    if (imgBanner) imgBanner.src = data.collage.inputs; // Banner Horizontal de Tema
+    if (imgBanner) {
+        imgBanner.src = data.collage.inputs; // Banner Horizontal de Tema
+        imgBanner.style.objectPosition = data.collage.inputsPos || 'center';
+    }
 
     const bannerTitle = document.getElementById('mosaic-banner-title');
     if (bannerTitle) {

@@ -14,19 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Desenvolvido para oferecer máxima estabilidade de sinal. Com processamento eficiente e conectividade avançada, é o aparelho ideal para acompanhar seus canais favoritos e curtir sessões de cinema em família com toda a tranquilidade.",
             // 5 imagens para a colagem
             collage: {
-                main: "img/fire/fire_isometrico.webp",
-                inputs: "img/assistindo-tv-1.jpg",
+                main: "img/fire/fire-hero-1.jpg",
+                inputs: "img/fire/fire-hero-horizontal-descricao-3.jpg",
                 inputsPos: "center",
+                inputsHideOverlay: true,
                 expositor: "img/fire/fire_expositor.webp",
                 remote: "img/fire/fire_controle.webp",
-                rear: "img/fire/fire_traseira.webp"
+                rear: "img/fire/fire-hero-2.jpg"
             },
             // Imagens do carrossel deslizante
             carousel: [
                 "img/fire/fire_expositor.webp",
                 "img/fire/fire_caixa.webp",
                 "img/fire/fire_controle.webp",
-                "img/fire/fire_entradas.webp"
+                "img/fire/fire_entradas_2.jpg"
             ],
             // 4 cards de destaques
             highlights: [
@@ -341,6 +342,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (imgBanner) {
         imgBanner.src = data.collage.inputs; // Banner Horizontal de Tema
         imgBanner.style.objectPosition = data.collage.inputsPos || 'center';
+        imgBanner.style.objectFit = data.collage.inputsFit || 'cover';
+        
+        const bannerCard = imgBanner.parentElement;
+        if (bannerCard) {
+            bannerCard.style.backgroundColor = data.collage.inputsBg || '';
+            imgBanner.style.padding = data.collage.inputsPadding || '0';
+            
+            const overlay = bannerCard.querySelector('.banner-overlay-dark');
+            if (overlay) {
+                overlay.style.display = data.collage.inputsHideOverlay ? 'none' : 'block';
+            }
+        }
     }
 
     const bannerTitle = document.getElementById('mosaic-banner-title');
@@ -760,6 +773,31 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(index) {
         currentImgIndex = index;
         lightboxImg.src = imagesList[currentImgIndex];
+        lightboxPrev.style.display = 'block';
+        lightboxNext.style.display = 'block';
+        lightboxImg.style.width = '';
+        lightboxImg.classList.remove('zoomed');
+        lightboxWrapper.classList.remove('has-zoomed');
+        lightboxWrapper.scrollLeft = 0;
+        lightboxWrapper.scrollTop = 0;
+        lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+    }
+
+    function openLightboxWithSrc(src) {
+        let index = imagesList.indexOf(src);
+        if (index === -1) {
+            lightboxImg.src = src;
+            lightboxPrev.style.display = 'none';
+            lightboxNext.style.display = 'none';
+        } else {
+            currentImgIndex = index;
+            lightboxImg.src = imagesList[currentImgIndex];
+            lightboxPrev.style.display = 'block';
+            lightboxNext.style.display = 'block';
+        }
         lightboxImg.style.width = '';
         lightboxImg.classList.remove('zoomed');
         lightboxWrapper.classList.remove('has-zoomed');
@@ -778,6 +816,8 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxImg.style.width = '';
             lightboxImg.classList.remove('zoomed');
             lightboxWrapper.classList.remove('has-zoomed');
+            lightboxPrev.style.display = 'block';
+            lightboxNext.style.display = 'block';
         }, 300);
     }
 
@@ -897,10 +937,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             closeLightbox();
         } else if (e.key === 'ArrowLeft') {
-            navigateLightbox(-1);
+            if (lightboxPrev.style.display !== 'none') {
+                navigateLightbox(-1);
+            }
         } else if (e.key === 'ArrowRight') {
-            navigateLightbox(1);
+            if (lightboxNext.style.display !== 'none') {
+                navigateLightbox(1);
+            }
         }
+    });
+
+    // Permite abrir qualquer imagem do mosaico do hero no Lightbox para dar zoom
+    const mosaicImages = document.querySelectorAll('.hero-mosaic-grid img');
+    mosaicImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.style.transition = 'transform 0.3s ease, filter 0.3s ease';
+        img.addEventListener('click', () => {
+            const src = img.getAttribute('src');
+            openLightboxWithSrc(src);
+        });
     });
 
     // Recalcula as posições do ScrollTrigger após todas as inicializações de animações

@@ -75,17 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
             resolution: "FULL HD 1080P",
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
-                main: "img/ultimate/ultimate_isometrico.webp",
-                inputs: "img/assistindo-tv-2.jpg",
-                inputsPos: "center 0%",
+                main: "img/ultimate/ultimate-isometrico-direita-2.jpg",
+                inputs: "img/ultimate/ultimate_entradas_horizontal_2.jpg",
+                inputsPos: "center",
+                inputsHideOverlay: true,
                 expositor: "img/ultimate/ultimate_expositor.webp",
                 remote: "img/ultimate/ultimate_remote.webp",
-                rear: "img/ultimate/ultimate_traseira.webp"
+                rear: "img/ultimate/ultima-traseira-reto-2.jpg"
             },
             carousel: [
                 "img/ultimate/ultimate_caixa.webp",
                 "img/ultimate/ultimate_botoes.webp",
-                "img/ultimate/ultimate_entradas.webp",
+                "img/ultimate/ultimate_entradas-2.jpg",
                 "img/ultimate/ultimate_remote.webp",
                 "img/ultimate/ultimate_expositor.webp"
             ],
@@ -142,17 +143,18 @@ document.addEventListener('DOMContentLoaded', () => {
             resolution: "FULL HD 1080P",
             desc: "A união perfeita de design elegante e o confiável chipset GXPRO. O Champions Infinity GX PRO oferece desempenho fluido com baixo consumo de energia, ideal para quem busca entretenimento estável e navegação ágil no dia a dia.",
             collage: {
-                main: "img/infinity/infinity_isometrico.webp",
-                inputs: "img/assistindo-tv-3.jpg",
-                inputsPos: "center 10%",
+                main: "img/infinity/infinity_isometrico_2-1.jpg",
+                inputs: "img/infinity/infiniry-hero-horizontal-descricao-3.jpg",
+                inputsPos: "center",
+                inputsHideOverlay: true,
                 expositor: "img/infinity/infinity_expositor.webp",
                 remote: "img/infinity/infinity_controle.webp",
-                rear: "img/infinity/infinity_traseira.webp"
+                rear: "img/infinity/infinity_traseira_2_1.jpg"
             },
             carousel: [
                 "img/infinity/infinity_caixa.webp",
                 "img/infinity/infinity_botoes.webp",
-                "img/infinity/infinity_entradas.webp",
+                "img/infinity/infinity_entradas-2.jpg",
                 "img/infinity/infinity_controle.webp",
                 "img/infinity/infinity_expositor.webp"
             ],
@@ -207,17 +209,18 @@ document.addEventListener('DOMContentLoaded', () => {
             resolution: "FULL HD 1080P",
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
-                main: "img/play/play_isometrico.webp",
-                inputs: "img/assistindo-tv-4.jpg",
-                inputsPos: "center 10%",
+                main: "img/play/play_isometrico_2-1.jpg",
+                inputs: "img/play/play-hero-horizontal-descricao-3.jpg",
+                inputsPos: "center",
+                inputsHideOverlay: true,
                 expositor: "img/play/play_expositor.webp",
                 remote: "img/play/play_remote.webp",
-                rear: "img/play/play_traseira.webp"
+                rear: "img/play/play_traseira_2-1.jpg"
             },
             carousel: [
                 "img/play/play_caixa.webp",
                 "img/play/play_botoes.webp",
-                "img/play/play_entradas.webp",
+                "img/play/play_entradas-2.jpg",
                 "img/play/play_remote.webp",
                 "img/play/play_expositor.webp"
             ],

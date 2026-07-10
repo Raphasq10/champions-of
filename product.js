@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A união perfeita de design elegante e o confiável chipset GXPRO. O Champions Infinity GX PRO oferece desempenho fluido com baixo consumo de energia, ideal para quem busca entretenimento estável e navegação ágil no dia a dia.",
             collage: {
                 main: "img/infinity/infinity_isometrico_2-1.jpg",
-                inputs: "img/infinity/infiniry-hero-horizontal-descricao-3.jpg",
+                inputs: "img/infinity/infiniry-hero-horizontal-descricao-4.jpg",
                 inputsPos: "center",
                 inputsHideOverlay: true,
                 expositor: "img/infinity/infinity_expositor.webp",
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel: [
                 "img/infinity/infinity_caixa.webp",
                 "img/infinity/infinity_botoes.webp",
-                "img/infinity/infinity_entradas-2.jpg",
+                "img/infinity/infinity_entradas-3.jpg",
                 "img/infinity/infinity_controle.webp",
                 "img/infinity/infinity_expositor.webp"
             ],

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Desenvolvido para oferecer máxima estabilidade de sinal. Com processamento eficiente e conectividade avançada, é o aparelho ideal para acompanhar seus canais favoritos e curtir sessões de cinema em família com toda a tranquilidade.",
             // 5 imagens para a colagem
             collage: {
-                main: "img/fire/fire-hero-1.jpg",
+                main: "img/fire/fire-hero-3.jpg",
                 inputs: "img/fire/fire-hero-horizontal-descricao-3.jpg",
                 inputsPos: "center",
                 inputsHideOverlay: true,

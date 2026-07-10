@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O modelo mais compacto e inteligente da linha GX PRO. Ideal para quem quer todas as funções premium da marca em um formato micro, sem abrir mão de alta velocidade, sintonizador digital estável e excelente custo-benefício.",
             collage: {
                 main: "img/play/play_isometrico_2-1.jpg",
-                inputs: "img/play/play-hero-horizontal-descricao-3.jpg",
+                inputs: "img/play/play-hero-horizontal-descricao-4.jpg",
                 inputsPos: "center",
                 inputsHideOverlay: true,
                 expositor: "img/play/play_expositor.webp",
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel: [
                 "img/play/play_caixa.webp",
                 "img/play/play_botoes.webp",
-                "img/play/play_entradas-2.jpg",
+                "img/play/play_entradas-3.jpg",
                 "img/play/play_remote.webp",
                 "img/play/play_expositor.webp"
             ],

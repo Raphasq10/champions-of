@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 5 imagens para a colagem
             collage: {
                 main: "img/fire/fire-hero-3.jpg",
-                inputs: "img/fire/fire-hero-horizontal-descricao-3.jpg",
+                inputs: "img/fire/receptor-champions-fire-painel-traseiro-conexoes.jpg",
                 inputsPos: "center",
                 inputsHideOverlay: true,
                 expositor: "img/fire/fire_expositor.webp",
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "img/fire/fire_expositor.webp",
                 "img/fire/fire_caixa.webp",
                 "img/fire/fire_controle.webp",
-                "img/fire/fire_entradas_2.jpg"
+                "img/fire/receptor-champions-fire-conexoes-cabos.jpg"
             ],
             // 4 cards de destaques
             highlights: [
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "O Champions Ultimate GX PRO combina a simplicidade do sistema Linux com recursos avançados de hardware and sintonizador duplo. Projetado para quem prioriza estabilidade de recepção e qualidade de imagem clássica em Full HD 1080p.",
             collage: {
                 main: "img/ultimate/ultimate-isometrico-direita-2.jpg",
-                inputs: "img/ultimate/ultimate_entradas_horizontal_2.jpg",
+                inputs: "img/ultimate/receptor-champions-ultimate-painel-traseiro-conexoes.jpg",
                 inputsPos: "center",
                 inputsHideOverlay: true,
                 expositor: "img/ultimate/ultimate_expositor.webp",
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel: [
                 "img/ultimate/ultimate_caixa.webp",
                 "img/ultimate/ultimate_botoes.webp",
-                "img/ultimate/ultimate_entradas-2.jpg",
+                "img/ultimate/receptor-champions-ultimate-conexoes-cabos.jpg",
                 "img/ultimate/ultimate_remote.webp",
                 "img/ultimate/ultimate_expositor.webp"
             ],

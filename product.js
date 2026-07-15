@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Aborta se não for a página de showroom do produto (evita conflito na Home)
+    if (!document.querySelector('.product-hero') && !document.querySelector('.collage-grid')) {
+        return;
+    }
+
     // ==========================================
     // 1. DICIONÁRIO DE DADOS DOS PRODUTOS
     // ==========================================

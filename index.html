@@ -333,6 +333,16 @@
        ========================================= -->
     
     <script>
+        // Helper function to resolve asset URLs dynamically for WordPress theme support
+        const getAssetUrl = (url) => {
+            if (!url) return '';
+            if (typeof wpData !== 'undefined' && wpData.themeUri) {
+                if (url.startsWith('http') || url.includes(wpData.themeUri)) return url;
+                return wpData.themeUri + '/' + url;
+            }
+            return url;
+        };
+
         // Swiper para Produtos
         const productSwipers = document.querySelectorAll('.product-swiper');
         productSwipers.forEach(container => {
@@ -504,7 +514,7 @@
 
                     const enteringCard = document.createElement('div');
                     enteringCard.className = 'product-card-static entering-right';
-                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${newImageUrl}" alt="Product Image"></a>`;
+                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${getAssetUrl(newImageUrl)}" alt="Product Image"></a>`;
                     container.appendChild(enteringCard);
 
                     leftCard.classList.add('exiting-left');
@@ -528,7 +538,7 @@
 
                     const enteringCard = document.createElement('div');
                     enteringCard.className = 'product-card-static entering';
-                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${newImageUrl}" alt="Product Image"></a>`;
+                    enteringCard.innerHTML = `<a href="${productLink}"><img src="${getAssetUrl(newImageUrl)}" alt="Product Image"></a>`;
                     container.insertBefore(enteringCard, container.firstChild);
 
                     rightCard.classList.add('exiting');

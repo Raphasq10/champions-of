@@ -221,6 +221,7 @@
                 <a href="product.html?p=ultimate" class="footer-link">Ultimate</a>
                 <a href="product.html?p=infinity" class="footer-link">Infinity</a>
                 <a href="product.html?p=play" class="footer-link">Play</a>
+                <a href="privacy.html" class="footer-link">Política de Privacidade</a>
                 <a href="https://wa.me/595975409679" target="_blank" class="btn-premium">
                     <i class="fab fa-whatsapp"></i> SUPORTE
                 </a>
@@ -257,7 +258,59 @@
                 }
             }
         });
+
+        // Lógica do Banner de Cookies
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAcceptBtn = document.getElementById('cookie-accept');
+        const cookieRejectBtn = document.getElementById('cookie-reject');
+        
+        if (cookieBanner && cookieAcceptBtn && cookieRejectBtn) {
+            const consent = localStorage.getItem('champions_cookie_consent');
+            if (!consent) {
+                setTimeout(() => {
+                    cookieBanner.classList.remove('hidden');
+                    cookieBanner.offsetHeight; // force reflow
+                    cookieBanner.classList.add('visible');
+                }, 1200);
+            }
+            
+            cookieAcceptBtn.addEventListener('click', () => {
+                localStorage.setItem('champions_cookie_consent', 'accepted');
+                hideCookieBanner();
+            });
+            
+            cookieRejectBtn.addEventListener('click', () => {
+                localStorage.setItem('champions_cookie_consent', 'rejected');
+                hideCookieBanner();
+            });
+            
+            function hideCookieBanner() {
+                cookieBanner.classList.remove('visible');
+                setTimeout(() => {
+                    cookieBanner.classList.add('hidden');
+                }, 500);
+            }
+        }
     </script>
+
+    <!-- BANNER FLUTUANTE DE CONSENTIMENTO DE COOKIES -->
+    <div id="cookie-banner" class="cookie-banner hidden">
+        <div class="cookie-content">
+            <div class="cookie-icon-wrapper">
+                <i class="fas fa-cookie-bite cookie-icon"></i>
+            </div>
+            <div class="cookie-text-block">
+                <h4 class="cookie-title">Sua Privacidade Importa</h4>
+                <p class="cookie-text">
+                    Nós usamos cookies para melhorar sua experiência de navegação no Showroom Premium da Champions. Ao continuar, você concorda com nossa <a href="privacy.html">Política de Privacidade</a>.
+                </p>
+            </div>
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-reject" class="btn-cookie-secondary">Recusar</button>
+            <button id="cookie-accept" class="btn-cookie-primary">Aceitar Tudo</button>
+        </div>
+    </div>
 
 </body>
 </html>

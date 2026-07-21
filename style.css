@@ -1598,3 +1598,259 @@ footer {
 /* Fix SplitType Text Wrapping */
 .line { overflow: hidden; padding-bottom: 5px; }
 .word { padding-bottom: 5px; }
+
+/* ==========================================
+   POLÍTICA DE PRIVACIDADE PAGE STYLES
+   ========================================== */
+.privacy-page {
+    background-color: #0B0F19;
+    color: #E2E8F0;
+}
+.privacy-main {
+    padding: 120px 0 80px 0;
+    min-height: 80vh;
+}
+.privacy-header-box {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+.privacy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    background: rgba(245, 106, 37, 0.12);
+    border: 1px solid rgba(245, 106, 37, 0.3);
+    color: #F56A25;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.privacy-title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+}
+.privacy-subtitle {
+    font-size: 16px;
+    color: #94A3B8;
+    line-height: 1.6;
+}
+.privacy-card {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    max-width: 960px;
+    margin: 0 auto;
+}
+.privacy-section {
+    margin-bottom: 36px;
+}
+.privacy-section:last-of-type {
+    margin-bottom: 0;
+}
+.privacy-section h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.privacy-section h2 i {
+    color: #F56A25;
+    font-size: 18px;
+}
+.privacy-section p {
+    font-size: 15px;
+    color: #CBD5E1;
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+.privacy-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 12px 0;
+}
+.privacy-section ul li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #CBD5E1;
+    line-height: 1.6;
+}
+.privacy-section ul li::before {
+    content: "•";
+    color: #F56A25;
+    font-size: 20px;
+    position: absolute;
+    left: 8px;
+    top: -2px;
+}
+.privacy-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.privacy-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    color: #FFFFFF;
+}
+.privacy-footer-note {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    margin-top: 36px;
+    font-size: 13px;
+    color: #64748B;
+}
+
+/* ==========================================
+   COOKIE CONSENT BANNER STYLES
+   ========================================== */
+.cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 460px;
+    width: calc(100% - 48px);
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(245, 106, 37, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 106, 37, 0.1);
+    transform: translateY(120%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+.cookie-banner.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+.cookie-banner.hidden {
+    display: none;
+}
+.cookie-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+.cookie-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    background: rgba(245, 106, 37, 0.15);
+    border: 1px solid rgba(245, 106, 37, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F56A25;
+    font-size: 20px;
+}
+.cookie-text-block {
+    flex: 1;
+}
+.cookie-title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+.cookie-text {
+    font-size: 13px;
+    color: #94A3B8;
+    line-height: 1.5;
+    margin: 0;
+}
+.cookie-text a {
+    color: #F56A25;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.cookie-text a:hover {
+    color: #FF884D;
+}
+.cookie-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+.btn-cookie-primary {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #F56A25 0%, #D85511 100%);
+    color: #FFFFFF;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-cookie-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(245, 106, 37, 0.4);
+}
+.btn-cookie-secondary {
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #CBD5E1;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-cookie-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+    .cookie-banner {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        padding: 18px;
+    }
+    .privacy-card {
+        padding: 24px;
+        border-radius: 16px;
+    }
+    .privacy-title {
+        font-size: 28px;
+    }
+}

@@ -1603,8 +1603,8 @@ footer {
    POLÍTICA DE PRIVACIDADE PAGE STYLES
    ========================================== */
 .privacy-page {
-    background-color: #0B0F19;
-    color: #E2E8F0;
+    background-color: #F8FAFC !important;
+    color: #334155 !important;
 }
 .privacy-main {
     padding: 120px 0 80px 0;
@@ -1621,9 +1621,9 @@ footer {
     gap: 8px;
     padding: 6px 16px;
     border-radius: 50px;
-    background: rgba(245, 106, 37, 0.12);
-    border: 1px solid rgba(245, 106, 37, 0.3);
-    color: #F56A25;
+    background: rgba(245, 106, 37, 0.08);
+    border: 1px solid rgba(245, 106, 37, 0.2);
+    color: #E0530A;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -1633,22 +1633,20 @@ footer {
     font-family: 'Rubik', sans-serif;
     font-size: 42px;
     font-weight: 800;
-    color: #FFFFFF;
+    color: #0F172A;
     margin-bottom: 12px;
 }
 .privacy-subtitle {
     font-size: 16px;
-    color: #94A3B8;
+    color: #64748B;
     line-height: 1.6;
 }
 .privacy-card {
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
     border-radius: 24px;
     padding: 48px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06);
     max-width: 960px;
     margin: 0 auto;
 }
@@ -1662,7 +1660,7 @@ footer {
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color: #F8FAFC;
+    color: #0F172A !important;
     margin-bottom: 14px;
     display: flex;
     align-items: center;
@@ -1674,7 +1672,7 @@ footer {
 }
 .privacy-section p {
     font-size: 15px;
-    color: #CBD5E1;
+    color: #475569 !important;
     line-height: 1.75;
     margin-bottom: 12px;
 }
@@ -1688,7 +1686,7 @@ footer {
     padding-left: 24px;
     margin-bottom: 10px;
     font-size: 15px;
-    color: #CBD5E1;
+    color: #475569 !important;
     line-height: 1.6;
 }
 .privacy-section ul li::before {
@@ -1719,11 +1717,11 @@ footer {
     color: #FFFFFF;
 }
 .privacy-footer-note {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid #E2E8F0 !important;
     padding-top: 24px;
     margin-top: 36px;
     font-size: 13px;
-    color: #64748B;
+    color: #94A3B8;
 }
 
 /* ==========================================
